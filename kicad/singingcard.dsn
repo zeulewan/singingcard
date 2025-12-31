@@ -39,7 +39,7 @@
   )
   (placement
     (component "singingcard:BAT-TH_CR2032-BS-6-1"
-      (place BT1 167000 132500 front 0
+      (place BT1 167000 127500 front 0
       )
     )
     (component "Capacitor_SMD:C_0603_1608Metric"
@@ -63,11 +63,11 @@
       )
     )
     (component "Capacitor_SMD:C_0603_1608Metric"
-      (place C6 166000 129500 front 0
+      (place C6 160000 117500 front 0
       )
     )
-    (component "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-      (place J1 115000 147000 front 0
+    (component "speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL"
+      (place LS1 115000 137500 front 0
       )
     )
     (component "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
@@ -99,13 +99,17 @@
       )
     )
     (component "singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
-      (place U2 166000 112500 front 0
+      (place U2 160000 109500 front 0
       )
     )
   )
   (library
     (padstack "Rect[T]Pad_270x1500_um"
       (shape (rect F.Cu -135 -750 135 750))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_2000x2500_um"
+      (shape (rect F.Cu -1000 -1250 1000 1250))
       (attach off)
     )
     (padstack "Rect[T]Pad_630x2250_um"
@@ -181,9 +185,11 @@
       (pin "Rect[T]Pad_1700x1700_um" 1 0 0)
       (pin "Rect[T]Pad_1700x1700_um" 2 0 2540)
     )
-    (image "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-      (pin "Rect[T]Pad_1700x1700_um" 1 0 0)
-      (pin "Rect[T]Pad_1700x1700_um" 2 0 2540)
+    (image "speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL"
+      (pin "Rect[T]Pad_2000x2500_um" 1 -5700 4350)
+      (pin "Rect[T]Pad_2000x2500_um" 2 5700 4350)
+      (pin "Rect[T]Pad_2000x2500_um" 3 5700 -4350)
+      (pin "Rect[T]Pad_2000x2500_um" 4 -5700 -4350)
     )
     (image "singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5"
       (pin "Rect[T]Pad_1520x1520_um" 1 0 -1700)
@@ -278,11 +284,11 @@
     (net "VREG"
       (pins C3-1 U1-12)
     )
-    (net "N$1"
-      (pins J1-1 U1-18)
+    (net "SPK+"
+      (pins LS1-1 U1-18)
     )
-    (net "N$2"
-      (pins J1-2 U1-20)
+    (net "SPK-"
+      (pins LS1-2 U1-20)
     )
     (net "GPIO2_TAB"
       (pins J2-1 U1-31)
@@ -311,7 +317,7 @@
     (net "SPI_MOSI"
       (pins U1-16 U2-5)
     )
-    (class kicad_default "" "+3V" "GND" "VREG" "N$1" "N$2" "GPIO2_TAB" "GPIO0_LDR" "RESET" "CSB" "GPIO1_BTN" "SPI_MISO" "SPI_SCK" "SPI_CS" "SPI_MOSI"
+    (class kicad_default "" "+3V" "GND" "VREG" "SPK+" "SPK-" "GPIO2_TAB" "GPIO0_LDR" "RESET" "CSB" "GPIO1_BTN" "SPI_MISO" "SPI_SCK" "SPI_CS" "SPI_MOSI"
       (circuit
         (use_via Via[0-1]_600:300_um)
       )

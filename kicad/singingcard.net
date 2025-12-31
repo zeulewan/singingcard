@@ -204,24 +204,24 @@
         (tstamps "/"))
       (tstamps "22ea5c75-801f-5495-b712-e5c60e1e1888"))
     (comp
-      (ref "J1")
-      (value "Speaker 8ohm")
-      (description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
-      (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+      (ref "LS1")
+      (value "KLJ-01304T-08R07W")
+      (description "SMD Speaker 8ohm 700mW 13x13mm")
+      (footprint "speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL")
       (fields
         (field
-          (name "Description") "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
+          (name "Description") "SMD Speaker 8ohm 700mW 13x13mm")
         (field
-          (name "Footprint") "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical")
+          (name "Footprint") "speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL")
         (field
-          (name "Datasheet") "~")
+          (name "Datasheet") "https://jlcpcb.com/partdetail/KELIKING-KLJ_01304T08R07W/C18186315")
         (field
-          (name "SKiDL Tag") "_wXBYZOWhu")
+          (name "LCSC Part") "C18186315")
         (field
           (name "SKiDL Line") "generate_schematic.py:126"))
       (libsource
-        (lib "Connector_Generic")
-        (part "Conn_01x02"))
+        (lib "speaker")
+        (part "KLJ-01304T-08R07W"))
       (sheetpath
         (names "/")
         (tstamps "/"))
@@ -592,7 +592,7 @@
       (name "N$1")
       (class "Default")
       (node
-        (ref "J1")
+        (ref "LS1")
         (pin "1")
         (pintype "PASSIVE"))
       (node
@@ -604,7 +604,7 @@
       (name "N$2")
       (class "Default")
       (node
-        (ref "J1")
+        (ref "LS1")
         (pin "2")
         (pintype "PASSIVE"))
       (node

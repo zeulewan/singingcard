@@ -183,7 +183,7 @@ def add_routes_to_pcb(pcb_file, routes, vias, output_file):
     print(f"Added {len(tracks)} track segments and {len(via_strs)} vias")
 
 def main():
-    ses_file = 'singingcard.ses'
+    ses_file = 'singingcard_routed.ses'
     pcb_file = 'singingcard.kicad_pcb'
     output_file = 'singingcard_routed.kicad_pcb'
 

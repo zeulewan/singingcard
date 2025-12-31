@@ -74,10 +74,12 @@ def place_components(components):
     positions = {
         # Main ICs
         'U1': (cx, cy, 0),  # MCU in center-left (LQFP-48 is 7x7mm)
-        'U2': (cx + 28, cy - 15, 0),  # SPI flash - moved up to avoid BT1 silkscreen overlap
+        'U2': (cx + 22, cy - 18, 0),  # SPI flash - moved left and up, OUTSIDE battery area
 
-        # Battery holder on far right
-        'BT1': (BOARD_ORIGIN_X + BOARD_WIDTH - 18, cy + 5, 0),  # CR2032 holder - moved down
+        # Battery holder on far right (CR2032 is 24mm diameter, keep components outside)
+        # Battery has pads at +/-14.39mm, size 4.2mm wide, so pad edge at center+16.49mm
+        # Need at least 17mm from edge for 0.5mm clearance
+        'BT1': (BOARD_ORIGIN_X + BOARD_WIDTH - 18, cy, 0),  # CR2032 holder
 
         # Bypass capacitors - spread around U1
         'C1': (cx - 12, cy - 6, 0),   # 0603 near U1 pin 11 (+3V)
@@ -85,7 +87,7 @@ def place_components(components):
         'C3': (cx + 12, cy - 6, 0),   # 0603 VREG bypass
         'C4': (cx - 6, cy - 12, 0),   # 0603 near U1 top
         'C5': (cx + 12, cy + 6, 0),   # 0805
-        'C6': (cx + 28, cy + 2, 0),   # 0603 near U2/battery
+        'C6': (cx + 22, cy - 10, 0),  # 0603 near U2 (NOT inside battery area)
 
         # Resistors - spread out more
         'R1': (BOARD_ORIGIN_X + 12, cy - 8, 0),    # LDR (through-hole)
@@ -93,9 +95,11 @@ def place_components(components):
         'R3': (cx - 6, cy - 18, 0),    # RESET pullup - above U1
         'R4': (cx - 6, cy + 18, 0),    # CSB pullup - below U1
 
-        # Connectors on bottom edge - spread apart to avoid routing conflicts
-        'J1': (BOARD_ORIGIN_X + 15, BOARD_ORIGIN_Y + BOARD_HEIGHT - 8, 0),  # Speaker
-        'J2': (BOARD_ORIGIN_X + 50, BOARD_ORIGIN_Y + BOARD_HEIGHT - 8, 0),  # Tab trigger (moved right)
+        # Speaker (13x13mm SMD) on left side
+        'LS1': (BOARD_ORIGIN_X + 15, cy + 10, 0),  # SMD Speaker
+
+        # Connectors on bottom edge
+        'J2': (BOARD_ORIGIN_X + 50, BOARD_ORIGIN_Y + BOARD_HEIGHT - 8, 0),  # Tab trigger (audio input)
 
         # Button on right side, away from main routing
         'SW1': (cx + 28, cy + 18, 0),  # Button near bottom right
@@ -276,6 +280,8 @@ def load_footprint(footprint_str, ref, value, x, y, rot, fp_uuid, net_by_ref_pin
 
     if lib == 'singingcard':
         fp_path = FOOTPRINT_LIB_PATH
+    elif lib == 'speaker':
+        fp_path = os.path.abspath('libs/speaker.pretty')
     else:
         fp_path = os.path.join(KICAD_FOOTPRINT_PATH, f"{lib}.pretty")
 

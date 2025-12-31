@@ -150,11 +150,11 @@ COMPONENTS = {
         'num_pins': 2,
         'position': (251.46, 81.28),
     },
-    'J1': {
-        'name': 'Conn_01x02',
-        'value': 'Speaker',
-        'footprint': 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical',
-        'description': 'Speaker connector',
+    'LS1': {
+        'name': 'Speaker',
+        'value': 'KLJ-01304T-08R07W',
+        'footprint': 'speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL',
+        'description': 'SMD Speaker 8ohm 700mW',
         'num_pins': 2,
         'position': (180.34, 50.8),
     },
@@ -192,8 +192,8 @@ NETS = {
     'SPI_MOSI': [('U1', '43'), ('U2', '5')],
     'SPI_MISO': [('U1', '44'), ('U2', '2')],
     'SPI_CLK': [('U1', '32'), ('U2', '6')],
-    'SP+': [('U1', '17'), ('J1', '1')],
-    'SP-': [('U1', '18'), ('J1', '2')],
+    'SP+': [('U1', '17'), ('LS1', '1')],
+    'SP-': [('U1', '18'), ('LS1', '2')],
     'ANA_IN+': [('U1', '14'), ('J2', '1')],
     'ANA_IN-': [('U1', '15'), ('J2', '2')],
 }
@@ -226,8 +226,8 @@ def create_lib_symbols():
     symbols.append(create_ic_symbol('singingcard:W25Q16JVSSIQ', 8, 'U'))
 
     # Create 2-pin symbols
-    for name in ['CR2032', 'LDR', 'R', 'C', 'Conn_01x02', 'SW_Push']:
-        ref = 'BT' if name == 'CR2032' else ('R' if name in ['LDR', 'R'] else ('C' if name == 'C' else ('J' if name == 'Conn_01x02' else 'SW')))
+    for name in ['CR2032', 'LDR', 'R', 'C', 'Conn_01x02', 'SW_Push', 'Speaker']:
+        ref = 'BT' if name == 'CR2032' else ('R' if name in ['LDR', 'R'] else ('C' if name == 'C' else ('J' if name == 'Conn_01x02' else ('LS' if name == 'Speaker' else 'SW'))))
         symbols.append(create_2pin_symbol(f'singingcard:{name}', ref))
 
     return '\n'.join(symbols)
@@ -572,7 +572,7 @@ def main():
 	(generator "create_schematic_v5.py")
 	(generator_version "9.0")
 	(uuid "{project_uuid}")
-	(paper "A3")
+	(paper "A4")
 	(title_block
 		(title "Singing Birthday Card Module")
 		(date "2025-12-30")
