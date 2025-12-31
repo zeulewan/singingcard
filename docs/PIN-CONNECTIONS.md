@@ -54,8 +54,8 @@ Complete pin allocation and connection mapping for schematic design.
 | Pin | Name | Type | Net | Connection | Notes |
 |-----|------|------|-----|------------|-------|
 | 1 | NC | - | - | Float | No connect |
-| 2 | CSB | Input | - | Tie HIGH | Chip select for I2C (not used) |
-| 3 | DI | Input | - | Tie LOW/HIGH | I2C data (not used) |
+| 2 | CSB | Output | SPI_CS | U2./CS | External flash chip select |
+| 3 | DI | Input | SPI_MISO | U2.DO | Data from external flash |
 | 4 | I2S_SDI/GPIO7 | I/O | - | Float/GPIO | Optional |
 | 5 | I2S_SCK/GPIO6 | I/O | - | Float/GPIO | Optional |
 | 6 | I2S_WS/GPIO5 | I/O | - | Float/GPIO | Optional |
@@ -65,10 +65,10 @@ Complete pin allocation and connection mapping for schematic design.
 | 10 | VSS | Power | GND | Ground | **Digital ground** |
 | 11 | VCC | Power | +3V | Battery+ | **100nF to GND** |
 | 12 | VREG | Power | VREG | Regulator out | **10uF to GND** |
-| 13 | MISO | Output | SPI_MISO | U2.DO | SPI data from flash |
-| 14 | SCLK | Output | SPI_SCK | U2.CLK | SPI clock |
-| 15 | SSB | Output | SPI_CS | U2./CS | SPI chip select |
-| 16 | MOSI | Output | SPI_MOSI | U2.DI | SPI data to flash |
+| 13 | MISO | Output | - | Float | Host SPI (not used in standalone) |
+| 14 | SCLK | Input | - | Float | Host SPI (not used in standalone) |
+| 15 | SSB | Input | - | Tie HIGH | Host SPI chip select (not used) |
+| 16 | MOSI | Input | - | Float | Host SPI (not used in standalone) |
 | 17 | VCCD_PWM | Power | +3V | Battery+ | **100nF to GND** |
 | 18 | SPK+ | Output | SP+ | LS1.1 | Speaker + |
 | 19 | VSSD_PWM | Power | GND | Ground | Speaker ground |
@@ -80,8 +80,8 @@ Complete pin allocation and connection mapping for schematic design.
 | 25 | INTB | Output | - | Float | Interrupt (optional) |
 | 26 | RDY/BSYB | Output | - | Float | Ready/Busy (optional) |
 | 27 | RESET | Input | RESET | 10k to VCC | Active low, needs pull-up |
-| 28 | DO | Output | - | Float | Debug out (not used) |
-| 29 | CLK | Output | - | Float | Clock out (not used) |
+| 28 | DO | Output | SPI_MOSI | U2.DI | Data to external flash |
+| 29 | CLK | Output | SPI_SCK | U2.CLK | External flash clock |
 | 30 | GPIO3 | I/O | TRIGGER | R1, SW1, J2 | **Trigger input** |
 | 31 | GPIO2 | I/O | - | Float | Optional |
 | 32 | GPIO1 | I/O | - | Float | Optional |
@@ -113,13 +113,15 @@ Complete pin allocation and connection mapping for schematic design.
 
 **Total decoupling: 4x 100nF + 1x 10uF**
 
-### ISD3900 SPI Interface (to Flash)
-| Signal | ISD3900 Pin | Direction | Flash Pin |
-|--------|-------------|-----------|-----------|
-| MOSI | 16 | Out | U2.5 (DI) |
-| MISO | 13 | In | U2.2 (DO) |
-| SCK | 14 | Out | U2.6 (CLK) |
-| CS | 15 | Out | U2.1 (/CS) |
+### ISD3900 External Flash Interface (to W25Q16)
+| Signal | ISD3900 Pin | Direction | Flash Pin | Notes |
+|--------|-------------|-----------|-----------|-------|
+| CSB | 2 | Out | U2.1 (/CS) | Flash chip select |
+| DI | 3 | In | U2.2 (DO) | Data from flash |
+| DO | 28 | Out | U2.5 (DI) | Data to flash |
+| CLK | 29 | Out | U2.6 (CLK) | Flash clock |
+
+**Note:** Pins 13-16 (MISO, SCLK, SSB, MOSI) are the HOST SPI interface for external MCU control. In standalone mode with internal oscillator, these are not used.
 
 ---
 
@@ -253,10 +255,10 @@ Pull-tab removes to break connection, triggering playback.
 | +3V | BT1+ | U1.11,17,21,43, U2.3,7,8, R1, R3, C1-6 | 3V power |
 | GND | BT1- | U1.10,19,44, U2.4, R2, SW1, J2.2, C1-6 | Ground |
 | VREG | U1.12 | C2 | Internal regulator |
-| SPI_MOSI | U1.16 | U2.5 | SPI data out |
-| SPI_MISO | U2.2 | U1.13 | SPI data in |
-| SPI_SCK | U1.14 | U2.6 | SPI clock |
-| SPI_CS | U1.15 | U2.1 | SPI chip select |
+| SPI_MOSI | U1.28 (DO) | U2.5 (DI) | Data to flash |
+| SPI_MISO | U2.2 (DO) | U1.3 (DI) | Data from flash |
+| SPI_SCK | U1.29 (CLK) | U2.6 (CLK) | Flash clock |
+| SPI_CS | U1.2 (CSB) | U2.1 (/CS) | Flash chip select |
 | SP+ | U1.18 | LS1.1 | Speaker + |
 | SP- | U1.20 | LS1.2 | Speaker - |
 | TRIGGER | U1.30 | R1, R2, SW1, J2.1 | Trigger input |
