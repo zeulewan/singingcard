@@ -1,0 +1,765 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2025-12-30T23:45:08-0500",
+    "kicad_version": "9.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/3ecf5515-96bc-48fe-b92d-8078638fe13b",
+            "violations": [
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol R1 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 0.4492
+                            },
+                            "uuid": "b31e6e21-6c0a-441e-90b8-800b98519e80"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'singingcard'.",
+                    "items": [
+                        {
+                            "description": "Symbol R1 [LDR]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 0.5
+                            },
+                            "uuid": "d5e5d417-aba3-477e-b443-92b7ed2c31f4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol R1 [LDR]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 0.5
+                            },
+                            "uuid": "d5e5d417-aba3-477e-b443-92b7ed2c31f4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol R2 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.6,
+                                "y": 0.4492
+                            },
+                            "uuid": "70994458-c4ec-4daf-a208-98474cdc0b39"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol R2 [R]",
+                            "pos": {
+                                "x": 0.6,
+                                "y": 0.5
+                            },
+                            "uuid": "90e9fb54-9b6d-409a-a830-2f200817ef51"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol R2 [R]",
+                            "pos": {
+                                "x": 0.6,
+                                "y": 0.5
+                            },
+                            "uuid": "90e9fb54-9b6d-409a-a830-2f200817ef51"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol SW1 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 0.6992
+                            },
+                            "uuid": "da36725f-3d29-4c99-b007-fbbccccf671c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'SW_SPST_B3U-1000P' not found in library 'Button_Switch_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol SW1 [SW_Push]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 0.75
+                            },
+                            "uuid": "2e1f398d-1415-4668-a694-f6aa35fc344b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol SW1 [SW_Push]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 0.75
+                            },
+                            "uuid": "2e1f398d-1415-4668-a694-f6aa35fc344b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol R3 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.8,
+                                "y": 0.4492
+                            },
+                            "uuid": "d4dc91e2-35cb-49a2-a64b-c717eda327ed"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol R3 [R]",
+                            "pos": {
+                                "x": 0.8,
+                                "y": 0.5
+                            },
+                            "uuid": "9573dbac-55d7-47f6-ba11-22b315a88613"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol R3 [R]",
+                            "pos": {
+                                "x": 0.8,
+                                "y": 0.5
+                            },
+                            "uuid": "9573dbac-55d7-47f6-ba11-22b315a88613"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol R4 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 1.0,
+                                "y": 0.4492
+                            },
+                            "uuid": "90306384-d7d8-44cb-b417-d4889ad5ba14"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol R4 [R]",
+                            "pos": {
+                                "x": 1.0,
+                                "y": 0.5
+                            },
+                            "uuid": "5f6d3d1a-b522-4942-a7e8-fa37d025b6c8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol R4 [R]",
+                            "pos": {
+                                "x": 1.0,
+                                "y": 0.5
+                            },
+                            "uuid": "5f6d3d1a-b522-4942-a7e8-fa37d025b6c8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol J2 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.6,
+                                "y": 0.9492
+                            },
+                            "uuid": "4cd7a43e-b0a5-4e13-b8e5-8460d5343cd1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'PinHeader_1x02_P2.54mm_Vertical' not found in library 'Connector_PinHeader_2.54mm'.",
+                    "items": [
+                        {
+                            "description": "Symbol J2 [Conn_01x02]",
+                            "pos": {
+                                "x": 0.6,
+                                "y": 1.0
+                            },
+                            "uuid": "5bbb2407-295b-44a3-be95-5d5383e1bde0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol J2 [Conn_01x02]",
+                            "pos": {
+                                "x": 0.6,
+                                "y": 1.0
+                            },
+                            "uuid": "5bbb2407-295b-44a3-be95-5d5383e1bde0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol U1 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 1.073,
+                                "y": 0.7079
+                            },
+                            "uuid": "88a4a49b-c7ba-478c-8a12-a95c24cb2d69"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol C1 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 1.3492
+                            },
+                            "uuid": "88dae288-eab2-4e8a-96c4-caad1990d36d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C1 [C]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 1.4
+                            },
+                            "uuid": "4d3d3ce7-752d-4196-9b42-cf31a9bb18e6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol C1 [C]",
+                            "pos": {
+                                "x": 0.4,
+                                "y": 1.4
+                            },
+                            "uuid": "4d3d3ce7-752d-4196-9b42-cf31a9bb18e6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol C2 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.55,
+                                "y": 1.3492
+                            },
+                            "uuid": "3281c8dc-d8eb-42cb-9df6-f9f7810e3fbc"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'XCLKO'",
+                            "pos": {
+                                "x": 1.073,
+                                "y": 0.9873
+                            },
+                            "uuid": "6bc75eb6-2cd7-4066-ac55-187a038136a8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C2 [C]",
+                            "pos": {
+                                "x": 0.55,
+                                "y": 1.4
+                            },
+                            "uuid": "f975cee0-15f5-4075-9439-6ec53aa37cd9"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol C2 [C]",
+                            "pos": {
+                                "x": 0.55,
+                                "y": 1.4
+                            },
+                            "uuid": "f975cee0-15f5-4075-9439-6ec53aa37cd9"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol C3 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.7,
+                                "y": 1.3492
+                            },
+                            "uuid": "b6ac6a7f-8b8b-451f-9973-207dca1bf0f8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'singingcard'.",
+                    "items": [
+                        {
+                            "description": "Symbol U1 [ISD3900FYI]",
+                            "pos": {
+                                "x": 1.2,
+                                "y": 1.0
+                            },
+                            "uuid": "ef8ff603-3be4-48c8-a30a-9f25b88230b4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol U1 [ISD3900FYI]",
+                            "pos": {
+                                "x": 1.2,
+                                "y": 1.0
+                            },
+                            "uuid": "ef8ff603-3be4-48c8-a30a-9f25b88230b4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C3 [C]",
+                            "pos": {
+                                "x": 0.7,
+                                "y": 1.4
+                            },
+                            "uuid": "20c59cd8-a8fe-42c0-92e9-b12edac9198c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol C3 [C]",
+                            "pos": {
+                                "x": 0.7,
+                                "y": 1.4
+                            },
+                            "uuid": "20c59cd8-a8fe-42c0-92e9-b12edac9198c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol C4 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 0.85,
+                                "y": 1.3492
+                            },
+                            "uuid": "d4550b3c-e709-4eec-abcf-0dbb9182fa77"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C4 [C]",
+                            "pos": {
+                                "x": 0.85,
+                                "y": 1.4
+                            },
+                            "uuid": "5bd38b8e-9583-4b14-a7d1-1bb23bd373a7"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol C4 [C]",
+                            "pos": {
+                                "x": 0.85,
+                                "y": 1.4
+                            },
+                            "uuid": "5bd38b8e-9583-4b14-a7d1-1bb23bd373a7"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'SPIA'",
+                            "pos": {
+                                "x": 1.073,
+                                "y": 1.2667
+                            },
+                            "uuid": "296f14bb-c765-4a3d-9dda-db522e5b37fc"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol C5 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 1.0,
+                                "y": 1.3492
+                            },
+                            "uuid": "017cbb82-45a5-4439-ae38-82bc497c2c90"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C5 [C]",
+                            "pos": {
+                                "x": 1.0,
+                                "y": 1.4
+                            },
+                            "uuid": "a4294ed5-4727-4e74-875c-7243d748cdc2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol C5 [C]",
+                            "pos": {
+                                "x": 1.0,
+                                "y": 1.4
+                            },
+                            "uuid": "a4294ed5-4727-4e74-875c-7243d748cdc2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol J1 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 1.8,
+                                "y": 0.4492
+                            },
+                            "uuid": "4dc41c3a-9a1f-40b7-8eed-8bc2a761a8c3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'PinHeader_1x02_P2.54mm_Vertical' not found in library 'Connector_PinHeader_2.54mm'.",
+                    "items": [
+                        {
+                            "description": "Symbol J1 [Conn_01x02]",
+                            "pos": {
+                                "x": 1.8,
+                                "y": 0.5
+                            },
+                            "uuid": "85404f9f-7fd5-4fba-822f-e56becbb4a37"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol J1 [Conn_01x02]",
+                            "pos": {
+                                "x": 1.8,
+                                "y": 0.5
+                            },
+                            "uuid": "85404f9f-7fd5-4fba-822f-e56becbb4a37"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol U2 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 2.073,
+                                "y": 0.7619
+                            },
+                            "uuid": "490ccd2c-be8b-452b-a898-ee293c8e7575"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'singingcard'.",
+                    "items": [
+                        {
+                            "description": "Symbol U2 [W25Q16JVSSIQ]",
+                            "pos": {
+                                "x": 2.2,
+                                "y": 0.8
+                            },
+                            "uuid": "d01160c7-f0ca-44aa-a5be-63991be59d4c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol U2 [W25Q16JVSSIQ]",
+                            "pos": {
+                                "x": 2.2,
+                                "y": 0.8
+                            },
+                            "uuid": "d01160c7-f0ca-44aa-a5be-63991be59d4c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol C6 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 2.5,
+                                "y": 0.7492
+                            },
+                            "uuid": "bb4ddbd3-e51f-4152-a9fd-630c8a85a2e6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C6 [C]",
+                            "pos": {
+                                "x": 2.5,
+                                "y": 0.8
+                            },
+                            "uuid": "a33ae6b2-ec17-422d-8ff6-a8ce77a7f008"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol C6 [C]",
+                            "pos": {
+                                "x": 2.5,
+                                "y": 0.8
+                            },
+                            "uuid": "a33ae6b2-ec17-422d-8ff6-a8ce77a7f008"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Symbol pin or wire end off connection grid",
+                    "items": [
+                        {
+                            "description": "Symbol BT1 Pin 1 [1, Passive, Line]",
+                            "pos": {
+                                "x": 2.8,
+                                "y": 0.9492
+                            },
+                            "uuid": "459303bc-2293-4054-9d9f-76b4221c7e25"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "endpoint_off_grid"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'singingcard'.",
+                    "items": [
+                        {
+                            "description": "Symbol BT1 [CR2032]",
+                            "pos": {
+                                "x": 2.8,
+                                "y": 1.0
+                            },
+                            "uuid": "1d445222-17e9-4ae1-a989-b665797cb15d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the symbol library 'singingcard'",
+                    "items": [
+                        {
+                            "description": "Symbol BT1 [CR2032]",
+                            "pos": {
+                                "x": 2.8,
+                                "y": 1.0
+                            },
+                            "uuid": "1d445222-17e9-4ae1-a989-b665797cb15d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "lib_symbol_issues"
+                }
+            ]
+        }
+    ],
+    "source": "singingcard.kicad_sch"
+}

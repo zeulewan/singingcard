@@ -1,0 +1,675 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2025-12-30T23:35:25-0500",
+    "kicad_version": "9.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55",
+            "violations": [
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.7079
+                            },
+                            "uuid": "99750964-a32a-4c5a-bab7-0eaaea0e97da"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.7333
+                            },
+                            "uuid": "51791f8c-3f8d-4781-a115-916de4c7d532"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.7587
+                            },
+                            "uuid": "e613627b-e616-4396-8aef-0b979e50c2bf"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'N$2'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.8095
+                            },
+                            "uuid": "3e620b2c-c9a0-4ba7-a7d9-cc9a8cd4a8b4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.8349
+                            },
+                            "uuid": "bbe7bc06-d03f-4dde-97ca-d790dc5d36d4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'N$1'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.8603
+                            },
+                            "uuid": "13ccc8a4-5e0c-4502-9f16-849b0a726fee"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'SPI_MOSI'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.9111
+                            },
+                            "uuid": "a0cce672-6393-4091-9d08-7e085201fc8d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'SPI_CS'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.9365
+                            },
+                            "uuid": "853e8a5a-c42c-4f91-a2c4-8f2b8cb1f0d8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'SPI_SCK'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.9619
+                            },
+                            "uuid": "fdb5c264-67a9-40f1-acc1-25db616088da"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'SPI_MISO'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 0.9873
+                            },
+                            "uuid": "84b71eea-100e-4609-80df-94259e193fcb"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'VREG'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.0127
+                            },
+                            "uuid": "8d6a8ee5-b655-4b90-af16-26a2270d3eb4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label '+3V'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.0381
+                            },
+                            "uuid": "ce6f05c8-2cc5-4430-9da5-e32e3a5e854f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'GND'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.0635
+                            },
+                            "uuid": "e11788d0-06e5-4fa4-a88a-62627c4a3cb8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.0889
+                            },
+                            "uuid": "1518c885-4d9b-495e-a90b-9118da678197"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.1143
+                            },
+                            "uuid": "1ef50610-37da-4087-b85a-f0d7ed2f1b68"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.1397
+                            },
+                            "uuid": "438334d4-8547-4e0e-ae88-6997a4c5c1d7"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.1651
+                            },
+                            "uuid": "38432e60-8a0d-41cb-81a3-8c8cadab8f28"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.1905
+                            },
+                            "uuid": "52465dea-c23d-499d-a31e-4819f7e904ad"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.2159
+                            },
+                            "uuid": "ee6f9f65-f0de-479f-8f2c-cef40b79bd8e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.2413
+                            },
+                            "uuid": "d1571630-76ce-4ce9-88f8-08a600d71b18"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'CSB'",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.2667
+                            },
+                            "uuid": "35bed836-b96b-4b9e-9f9c-e57e7f7480d6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.146,
+                                "y": 1.2921
+                            },
+                            "uuid": "5ce76602-a2ec-4d43-abbf-a2a3f5257872"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.7079
+                            },
+                            "uuid": "44f055ba-8c6f-4ecf-ab6d-784af4a97f85"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.7333
+                            },
+                            "uuid": "5582fcc1-159c-41f2-b1ef-589b5abbfbee"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'RESET'",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.7587
+                            },
+                            "uuid": "4ec6f73b-6b3b-435c-b260-f84121c83225"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.7841
+                            },
+                            "uuid": "e9f0bd99-5f95-479b-81c6-6ba85f2cad93"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.8095
+                            },
+                            "uuid": "c5ceda22-3c99-4280-92df-727c9a5eb63e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.8349
+                            },
+                            "uuid": "ee6af3e9-2ef9-446a-9177-b4b3e3446ae5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'GPIO2_TAB'",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.8603
+                            },
+                            "uuid": "aff7c532-9135-4ba6-9f05-9471414c4e5b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'GPIO1_BTN'",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.8857
+                            },
+                            "uuid": "d63b9dcd-5c25-4595-954c-0e09ce919063"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.9111
+                            },
+                            "uuid": "384b44bf-8d92-4257-a80d-735e3b6a3893"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.9365
+                            },
+                            "uuid": "2f3f2d46-dd8d-47a9-a4fe-97b28e388a9b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.9619
+                            },
+                            "uuid": "5c28ae68-9687-44bb-8114-5d98441374a4"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 0.9873
+                            },
+                            "uuid": "81a69da2-df1e-4f67-98d1-002c4a5108bc"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.0127
+                            },
+                            "uuid": "f8e9ec27-ba5c-48d6-8750-056724ce46b6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Global label not connected anywhere else in the schematic",
+                    "items": [
+                        {
+                            "description": "Global Label 'GPIO0_LDR'",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.0381
+                            },
+                            "uuid": "b2a7fa81-3acb-426b-b33b-373018d90fd3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "global_label_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.0635
+                            },
+                            "uuid": "a5d11dbb-e783-4f42-a9e4-b3921c0c2248"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.0889
+                            },
+                            "uuid": "efb0f8e3-d16c-4b53-9e8a-604ad806fcad"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.1143
+                            },
+                            "uuid": "32fff665-ef55-4f67-8f84-1986aa5a1af8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.1397
+                            },
+                            "uuid": "41d4fbbf-8a64-45dd-9ff4-84bd7ba602ee"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.2159
+                            },
+                            "uuid": "4f3f04e4-0775-44ff-9809-65b029cd5627"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.2413
+                            },
+                            "uuid": "523835da-6553-4cf1-bb81-7c7bac03ea90"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.2667
+                            },
+                            "uuid": "69b761df-68d4-42ed-9946-208bbcdd36a0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                },
+                {
+                    "description": "Unconnected \"no connection\" flag",
+                    "items": [
+                        {
+                            "description": "No Connect",
+                            "pos": {
+                                "x": 1.654,
+                                "y": 1.2921
+                            },
+                            "uuid": "52957653-6e9c-492a-8d54-4c8662941852"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "no_connect_dangling"
+                }
+            ]
+        }
+    ],
+    "source": "singingcard.kicad_sch"
+}

@@ -74,10 +74,10 @@ def place_components(components):
     positions = {
         # Main ICs
         'U1': (cx, cy, 0),  # MCU in center-left (LQFP-48 is 7x7mm)
-        'U2': (cx + 28, cy - 8, 0),  # SPI flash to the right, clear routing path (SOIC-8)
+        'U2': (cx + 28, cy - 15, 0),  # SPI flash - moved up to avoid BT1 silkscreen overlap
 
         # Battery holder on far right
-        'BT1': (BOARD_ORIGIN_X + BOARD_WIDTH - 18, cy, 0),  # CR2032 holder
+        'BT1': (BOARD_ORIGIN_X + BOARD_WIDTH - 18, cy + 5, 0),  # CR2032 holder - moved down
 
         # Bypass capacitors - spread around U1
         'C1': (cx - 12, cy - 6, 0),   # 0603 near U1 pin 11 (+3V)

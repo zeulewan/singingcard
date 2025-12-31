@@ -1,0 +1,457 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2025-12-30T23:17:36-0500",
+    "kicad_version": "9.0.6",
+    "schematic_parity": [],
+    "source": "singingcard.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "The current configuration does not include the footprint library 'singingcard'.",
+            "items": [
+                {
+                    "description": "Footprint BT1",
+                    "pos": {
+                        "x": 167.0,
+                        "y": 127.5
+                    },
+                    "uuid": "b71cfe29-40a6-4857-8570-2a3b0a8ece61"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Capacitor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Capacitor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint C1",
+                    "pos": {
+                        "x": 126.0,
+                        "y": 121.5
+                    },
+                    "uuid": "19a51049-5f77-42d6-8d0e-b320eb8da052"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Capacitor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Capacitor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint C2",
+                    "pos": {
+                        "x": 126.0,
+                        "y": 133.5
+                    },
+                    "uuid": "6226551d-bcac-4966-b04d-b580dfbaa668"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Capacitor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Capacitor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint C3",
+                    "pos": {
+                        "x": 150.0,
+                        "y": 121.5
+                    },
+                    "uuid": "08be9aaa-ca59-4509-9307-4b908cdc81e5"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Capacitor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Capacitor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint C4",
+                    "pos": {
+                        "x": 132.0,
+                        "y": 115.5
+                    },
+                    "uuid": "2d8639ca-8bd6-43b9-ad5b-5c5fc6908f7b"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Capacitor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Capacitor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint C5",
+                    "pos": {
+                        "x": 150.0,
+                        "y": 133.5
+                    },
+                    "uuid": "cb7e56df-aaa0-4a0b-8717-649da309a3df"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Capacitor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Capacitor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint C6",
+                    "pos": {
+                        "x": 166.0,
+                        "y": 129.5
+                    },
+                    "uuid": "66e5f75a-170f-4917-ab48-4b3e02eb7ba0"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Connector_PinHeader_2.54mm' was not found at '/usr/local/bin/SharedSupport/footprints//Connector_PinHeader_2.54mm.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint J1",
+                    "pos": {
+                        "x": 115.0,
+                        "y": 147.0
+                    },
+                    "uuid": "c5a60459-6a7d-4f39-b6ba-1ee5ebd4f2f4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Connector_PinHeader_2.54mm' was not found at '/usr/local/bin/SharedSupport/footprints//Connector_PinHeader_2.54mm.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint J2",
+                    "pos": {
+                        "x": 150.0,
+                        "y": 147.0
+                    },
+                    "uuid": "94b197b6-8a63-4be6-b7cb-3612f75098cf"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'singingcard'.",
+            "items": [
+                {
+                    "description": "Footprint R1",
+                    "pos": {
+                        "x": 112.0,
+                        "y": 119.5
+                    },
+                    "uuid": "9cc35ba1-4f0d-4392-8907-a25a9d3e9bbc"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Resistor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Resistor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint R2",
+                    "pos": {
+                        "x": 112.0,
+                        "y": 109.5
+                    },
+                    "uuid": "911d7048-29d0-413e-abf7-4d40f2963e8a"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Resistor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Resistor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint R3",
+                    "pos": {
+                        "x": 132.0,
+                        "y": 109.5
+                    },
+                    "uuid": "1482fd88-206a-41f1-bdb9-a77576110e37"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Resistor_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Resistor_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint R4",
+                    "pos": {
+                        "x": 132.0,
+                        "y": 145.5
+                    },
+                    "uuid": "5bd5dfec-a966-4941-91ae-a4e153d34fa7"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The footprint library 'Button_Switch_SMD' was not found at '/usr/local/bin/SharedSupport/footprints//Button_Switch_SMD.pretty'.",
+            "items": [
+                {
+                    "description": "Footprint SW1",
+                    "pos": {
+                        "x": 166.0,
+                        "y": 145.5
+                    },
+                    "uuid": "9d978d61-cc5c-4f49-bd31-e74f0542df1f"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'singingcard'.",
+            "items": [
+                {
+                    "description": "Footprint U1",
+                    "pos": {
+                        "x": 138.0,
+                        "y": 127.5
+                    },
+                    "uuid": "24e27290-9abb-487b-ab15-3bffa16aaaba"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'singingcard'.",
+            "items": [
+                {
+                    "description": "Footprint U2",
+                    "pos": {
+                        "x": 166.0,
+                        "y": 119.5
+                    },
+                    "uuid": "7fe195f5-0858-4f19-8a2d-7ed8afb2214e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of BT1",
+                    "pos": {
+                        "x": 167.0,
+                        "y": 124.5
+                    },
+                    "uuid": "75aeaaae-efac-466e-a773-0c68b13765c0"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of U1",
+                    "pos": {
+                        "x": 138.0,
+                        "y": 124.5
+                    },
+                    "uuid": "adde2602-123a-4d17-84c0-5646129e54af"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of U2",
+                    "pos": {
+                        "x": 166.0,
+                        "y": 116.5
+                    },
+                    "uuid": "2b1108c9-c3d5-41a1-8cd7-61eaaff37122"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment of BT1 on F.Silkscreen",
+                    "pos": {
+                        "x": 155.87,
+                        "y": 119.42
+                    },
+                    "uuid": "67562ea7-e050-41b4-9708-53b1a1f70d3b"
+                },
+                {
+                    "description": "Segment of U2 on F.Silkscreen",
+                    "pos": {
+                        "x": 163.36,
+                        "y": 121.68
+                    },
+                    "uuid": "d60b276e-46dc-4b88-85b0-6d0110872193"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment of U2 on F.Silkscreen",
+                    "pos": {
+                        "x": 168.64,
+                        "y": 117.32
+                    },
+                    "uuid": "4cac5b31-08db-4a4b-b0ca-7f7c2f4073d2"
+                },
+                {
+                    "description": "Segment of BT1 on F.Silkscreen",
+                    "pos": {
+                        "x": 155.87,
+                        "y": 119.42
+                    },
+                    "uuid": "67562ea7-e050-41b4-9708-53b1a1f70d3b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference field of SW1",
+                    "pos": {
+                        "x": 166.0,
+                        "y": 142.5
+                    },
+                    "uuid": "c89a6406-48e0-452c-ba67-50e2520b9bfc"
+                },
+                {
+                    "description": "Segment of SW1 on F.Silkscreen",
+                    "pos": {
+                        "x": 164.75,
+                        "y": 142.75
+                    },
+                    "uuid": "e285da31-e958-4dfe-99c0-3b1a54db8474"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment of SW1 on F.Silkscreen",
+                    "pos": {
+                        "x": 164.3,
+                        "y": 143.2
+                    },
+                    "uuid": "b64561e2-5283-4320-ad2f-22d8d155cd2d"
+                },
+                {
+                    "description": "Reference field of SW1",
+                    "pos": {
+                        "x": 166.0,
+                        "y": 142.5
+                    },
+                    "uuid": "c89a6406-48e0-452c-ba67-50e2520b9bfc"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference field of SW1",
+                    "pos": {
+                        "x": 166.0,
+                        "y": 142.5
+                    },
+                    "uuid": "c89a6406-48e0-452c-ba67-50e2520b9bfc"
+                },
+                {
+                    "description": "Segment of SW1 on F.Silkscreen",
+                    "pos": {
+                        "x": 167.7,
+                        "y": 143.2
+                    },
+                    "uuid": "ebcc5964-41c5-4aa8-954a-f8c7f6a325b4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Reference field of R1",
+                    "pos": {
+                        "x": 112.0,
+                        "y": 116.5
+                    },
+                    "uuid": "721aed40-1807-4e56-989f-eb2a54bc1ce5"
+                },
+                {
+                    "description": "Arc of R1 on F.Silkscreen",
+                    "pos": {
+                        "x": 111.9,
+                        "y": 119.159999
+                    },
+                    "uuid": "b3165c23-a2ef-4f05-a112-52eabc2c9698"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen overlap",
+            "items": [
+                {
+                    "description": "Segment of U1 on F.Silkscreen",
+                    "pos": {
+                        "x": 135.11,
+                        "y": 124.16
+                    },
+                    "uuid": "57bf3231-da73-4138-b4d0-5650a34a1672"
+                },
+                {
+                    "description": "Reference field of U1",
+                    "pos": {
+                        "x": 138.0,
+                        "y": 124.5
+                    },
+                    "uuid": "adde2602-123a-4d17-84c0-5646129e54af"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        }
+    ]
+}

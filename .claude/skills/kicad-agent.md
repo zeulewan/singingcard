@@ -6,14 +6,38 @@ This skill guides autonomous PCB design from requirements to fabrication.
 
 Use this skill when user provides PCB project requirements.
 
-## Workflow Overview
+## Workflow Overview (V-Model Systems Engineering Approach)
 
 ```
-Requirements → Component Selection → Library Import → Schematic (Netlist) → PCB Creation →
-Visual Check → Manual Fix → Auto-Route → Visual Check → Manual Fix → DRC → Export → Order
+Requirements → Component Selection → Library Import → SCHEMATIC → ERC (0 errors) →
+Update PCB from Schematic → Board Setup → Component Placement → Routing →
+DRC (0 errors) → Visual Verification → Fabrication Export → Order
 ```
 
-**Key Principle:** Always render and visually inspect after algorithmic steps, then fix manually as needed.
+**CRITICAL PRINCIPLES:**
+
+1. **Schematic FIRST, PCB Second** - The schematic is the source of truth. Never route a PCB without a proper schematic.
+2. **ERC Must Pass (0 errors)** - Run Electrical Rules Check before proceeding to PCB.
+3. **DRC Must Pass (0 errors)** - Run Design Rules Check before fabrication. ALL violations must be resolved.
+4. **Always render and visually inspect** - Don't blindly trust generated files.
+
+## V-Model Design Process
+
+The V-Model ensures verification at each stage:
+
+```
+Design Specs ───────────────────────────── Final Validation
+       ↘                                         ↗
+   Component Selection ─────────────── Assembly Test
+          ↘                               ↗
+      Schematic + ERC ─────────── Functional Test
+             ↘                       ↗
+        PCB Layout ───────── Visual Inspection
+               ↘               ↗
+            Routing + DRC
+```
+
+Key insight: Early decisions propagate throughout the entire design. Spending time on proper schematic design prevents costly respins.
 
 ## Phase 1: Requirements Gathering
 
@@ -97,9 +121,33 @@ ls libs/project.pretty/                   # List footprints
 ls libs/project.3dshapes/                 # List 3D models
 ```
 
-## Phase 3: Schematic Design with SKiDL
+## Phase 3: Schematic Design
 
-Using SKiDL (code-first approach) to generate netlist:
+### 3.1 Understanding Schematics vs Netlists
+
+**CRITICAL DISTINCTION:**
+- **Schematic (.kicad_sch)**: Visual representation of the circuit with symbols, wires, and connections. Required for ERC.
+- **Netlist (.net)**: Text file listing components and their connections. Used for PCB import.
+
+Both are needed for a proper design workflow:
+1. Schematic provides visual verification and ERC capability
+2. Netlist/schematic provides connectivity data for PCB
+
+### 3.2 Creating Proper KiCad Schematics
+
+KiCad 8/9 schematics require:
+1. **lib_symbols section**: Embedded symbol definitions for all components
+2. **Component instances**: Placed symbols with properties (Reference, Value, Footprint)
+3. **Wires and labels**: Connections between components
+4. **Power symbols**: +3V3, GND, etc.
+
+**Grid spacing**: Use 50 mils (1.27mm) for symbol and wire placement. Other grid sizes cause connectivity issues.
+
+**Footprint assignment**: Every symbol MUST have a footprint assigned before PCB generation. Use `property "Footprint" "Library:Footprint"` in each symbol.
+
+### 3.3 SKiDL for Netlist Generation
+
+SKiDL provides a code-first approach for connectivity:
 
 ```python
 from skidl import *
@@ -113,12 +161,74 @@ mcu = Part('project', 'PartName', footprint='project:FootprintName', ref='U1')
 mcu['VCC'] += Net('+3V')
 mcu['GND'] += Net('GND')
 
-# Generate netlist (SKiDL doesn't support KiCad 8 schematic generation)
+# Generate netlist
 generate_netlist(file_='project.net')
 ```
 
-**IMPORTANT:** SKiDL does NOT generate KiCad 8 schematics - only netlists.
-The netlist contains all connectivity info needed for PCB generation.
+**IMPORTANT:** SKiDL generates netlists only, NOT KiCad 8 schematics.
+For a complete design flow, you also need a proper schematic file.
+
+### 3.4 Generating Proper Schematics
+
+Options for schematic generation:
+1. **Manual in KiCad**: Use Eeschema GUI to create schematic
+2. **Python script**: Generate .kicad_sch file with embedded symbols (see create_schematic.py)
+3. **SKiDL + manual schematic**: Use SKiDL for netlist, create matching schematic manually
+
+**Schematic file structure:**
+```
+(kicad_sch
+  (version 20231120)
+  (generator "...")
+  (uuid "...")
+  (paper "A3")
+  (title_block ...)
+  (lib_symbols
+    ; ALL symbol definitions MUST be embedded here
+    (symbol "Device:C" ...)
+    (symbol "singingcard:ISD3900FYI" ...)
+  )
+  ; Component instances
+  (symbol
+    (lib_id "Device:C")
+    (at X Y rotation)
+    (property "Reference" "C1" ...)
+    (property "Value" "100nF" ...)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" ...)
+  )
+  ; Wires, labels, etc.
+)
+```
+
+### 3.5 Run ERC (Electrical Rules Check)
+
+**BEFORE proceeding to PCB, ERC must pass with 0 errors:**
+
+```bash
+kicad-cli sch erc project.kicad_sch --output erc-report.json --format json --severity-all
+```
+
+Check results:
+```bash
+cat erc-report.json | python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+errors = [v for v in d.get('violations',[]) if v.get('severity')=='error']
+warnings = [v for v in d.get('violations',[]) if v.get('severity')=='warning']
+print(f'Errors: {len(errors)}, Warnings: {len(warnings)}')
+if errors:
+    for e in errors[:5]:
+        print(f'  - {e.get(\"description\",\"\")}')
+"
+```
+
+**Common ERC violations:**
+- Floating pins: Unconnected inputs
+- Power pin issues: Power flags missing
+- Duplicate references: Same ref designator used twice
+- Global label issues: Labels used only once
+
+**Fix ALL ERC errors before proceeding to PCB.**
 
 ## Phase 4: PCB Creation from Netlist
 
@@ -222,22 +332,45 @@ Review renders:
 - Verify power traces are wide enough
 - Check both layers if using 2-layer board
 
-## Phase 6: Design Rule Check
+## Phase 6: Design Rule Check (MUST PASS WITH 0 ERRORS)
+
+**CRITICAL: DRC must have 0 violations before fabrication.**
 
 ```bash
-kicad-cli pcb drc --output drc.json --format json project.kicad_pcb
+kicad-cli pcb drc --output drc.json --format json --severity-all project.kicad_pcb
 ```
 
-Parse results:
+Parse and verify:
 ```bash
-cat drc.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(f'Violations: {len(d.get(\"violations\",[]))}'); print(f'Unconnected: {len(d.get(\"unconnected_items\",[]))}')"
+cat drc.json | python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+violations = d.get('violations', [])
+unconnected = d.get('unconnected_items', [])
+print(f'Violations: {len(violations)}')
+print(f'Unconnected: {len(unconnected)}')
+if violations:
+    by_type = {}
+    for v in violations:
+        t = v.get('type', 'unknown')
+        by_type[t] = by_type.get(t, 0) + 1
+    for t, count in sorted(by_type.items()):
+        print(f'  {t}: {count}')
+"
 ```
 
-**Common DRC issues:**
-- `lib_footprint_issues`: Footprint library paths - usually cosmetic, ignore if footprints are embedded
-- `silk_over_copper`: Silkscreen clipped - minor cosmetic issue
-- `silk_overlap`: Text overlap - move silkscreen elements
-- Unconnected items: Need to complete routing
+**ALL DRC issues must be fixed:**
+
+| Violation Type | Fix Strategy |
+|----------------|--------------|
+| `lib_footprint_issues` | Configure project library paths OR embed footprints properly |
+| `silk_over_copper` | Move silkscreen reference designators away from pads |
+| `silk_overlap` | Spread components apart or adjust reference positions |
+| `clearance` | Increase spacing between traces/pads in placement |
+| `track_width` | Adjust trace widths in design rules |
+| `unconnected` | Complete routing for all nets |
+
+**Do NOT proceed to fabrication with any DRC violations.** Warnings that seem "cosmetic" can cause assembly issues or hidden shorts.
 
 ## Phase 7: Final Visual Verification
 
