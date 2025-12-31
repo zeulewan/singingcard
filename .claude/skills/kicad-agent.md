@@ -172,16 +172,17 @@ For a complete design flow, you also need a proper schematic file.
 
 Options for schematic generation:
 1. **Manual in KiCad**: Use Eeschema GUI to create schematic
-2. **Python script**: Generate .kicad_sch file with embedded symbols (see create_schematic.py)
+2. **Python script**: Generate .kicad_sch file with embedded symbols (see create_schematic_v5.py)
 3. **SKiDL + manual schematic**: Use SKiDL for netlist, create matching schematic manually
 
-**Schematic file structure:**
+**Schematic file structure (KiCad 9):**
 ```
 (kicad_sch
-  (version 20231120)
-  (generator "...")
+  (version 20250114)
+  (generator "create_schematic_v5.py")
+  (generator_version "9.0")
   (uuid "...")
-  (paper "A3")
+  (paper "A4")  ; Use A4 for simple designs, A3 for complex
   (title_block ...)
   (lib_symbols
     ; ALL symbol definitions MUST be embedded here
@@ -195,10 +196,64 @@ Options for schematic generation:
     (property "Reference" "C1" ...)
     (property "Value" "100nF" ...)
     (property "Footprint" "Capacitor_SMD:C_0603_1608Metric" ...)
+    (instances
+      (project "projectname"
+        (path "/uuid" (reference "C1") (unit 1))
+      )
+    )
   )
-  ; Wires, labels, etc.
+  ; Wires connecting pins to labels
+  (wire
+    (pts (xy X1 Y1) (xy X2 Y2))
+    (stroke (width 0) (type default))
+    (uuid "...")
+  )
+  ; Global labels for net connections
+  (global_label "NET_NAME"
+    (shape bidirectional)
+    (at X Y ANGLE)  ; ANGLE: 0=right, 90=down, 180=left, 270=up
+    ...
+  )
+  ; No-connect flags for unused pins
+  (no_connect (at X Y) (uuid "..."))
 )
 ```
+
+**Global Label Orientation:**
+Labels should be placed offset from pins with wires connecting them.
+
+Key concepts:
+- **Pin angle** indicates direction wire goes FROM pin AWAY from component body
+  - 0: wire goes right (left-side pin)
+  - 180: wire goes left (right-side pin)
+  - 90: wire goes up (bottom pin) - note: standard math convention
+  - 270: wire goes down (top pin)
+- **KiCad Y-axis** increases downward (screen coordinates)
+- **Label position** should be offset IN the direction of the pin angle (away from component)
+- **Label arrow** should point TOWARD the pin (opposite of pin angle)
+
+```python
+def create_global_label_with_wire(net_name, x, y, angle):
+    offset = 5.08  # mm
+
+    # Offset in direction of pin angle (away from component)
+    # Note: Y formula has minus because KiCad Y is inverted vs standard math
+    label_x = x + offset * math.cos(math.radians(angle))
+    label_y = y - offset * math.sin(math.radians(angle))
+
+    # Label arrow points toward pin (opposite of pin angle)
+    label_angle = (angle + 180) % 360
+
+    # Wire from pin to label
+    wire = f'(wire (pts (xy {x} {y}) (xy {label_x} {label_y})) ...)'
+
+    # Label with arrow pointing back toward pin
+    label = f'(global_label "{net_name}" (at {label_x} {label_y} {label_angle}) ...)'
+
+    return wire + label
+```
+
+**Common mistake:** Using `y + offset * sin(angle)` instead of `y - offset * sin(angle)`. This causes labels to be placed toward the component instead of away from it, making them overlap with pins.
 
 ### 3.5 Run ERC (Electrical Rules Check)
 
@@ -495,6 +550,21 @@ project/
 → Check model paths are relative to project
 → Use ${KIPRJMOD}/ prefix for project-relative paths
 → Verify .wrl/.step files exist
+
+**3D models offset from footprint:**
+→ Common with easyeda2kicad imported footprints
+→ Check the (model ...) section in the .kicad_mod file
+→ Set offset to (xyz 0 0 0) if model appears misaligned
+→ Verify by rendering: `kicad-cli pcb render --perspective ...`
+
+Example fix in .kicad_mod file:
+```
+(model "${KIPRJMOD}/libs/project.3dshapes/Part.wrl"
+    (offset (xyz 0 0 0))      ; Fix: set to 0,0,0
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+)
+```
 
 ## Best Practices
 

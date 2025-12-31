@@ -5,6 +5,7 @@ Places global labels directly at pin endpoints.
 """
 
 import uuid
+import math
 
 def gen_uuid():
     return str(uuid.uuid4())
@@ -527,14 +528,54 @@ def create_symbol_instance(ref, comp, project_uuid):
 '''
     return sym
 
-def create_global_label(net_name, x, y, angle=0):
-    """Generate global label at exact position."""
-    # Convert angle to proper orientation
-    # angle from pin indicates direction pin points, we want opposite
-    label_angle = (angle + 180) % 360
-    return f'''	(global_label "{net_name}"
+def create_global_label_with_wire(net_name, x, y, angle=0):
+    """Generate global label offset from pin position with connecting wire.
+
+    Pin angle indicates direction wire extends FROM pin endpoint AWAY from component body:
+    - 0: wire goes right (pin is on left side of IC, wire extends rightward)
+    - 180: wire goes left (pin is on right side of IC, wire extends leftward)
+    - 90: wire goes up (pin is on bottom of component, wire extends upward)
+    - 270: wire goes down (pin is on top of component, wire extends downward)
+
+    Note: In KiCad schematics, Y increases downward (screen coordinates).
+    Standard math: angle 90 = up, angle 270 = down
+    Screen coords: up = -Y, down = +Y
+
+    Label is placed at the end of the wire (offset from pin in wire direction).
+    Label arrow points back toward the pin (opposite of pin angle).
+    """
+    # Offset label in the direction the wire extends (same as pin angle direction)
+    # Pin angle indicates direction wire goes FROM pin AWAY from component body
+    offset = 5.08  # Offset distance in mm
+    angle_rad = math.radians(angle)
+
+    # Move in direction of pin angle (away from component)
+    # For angle 0 (right): dx = +offset, dy = 0
+    # For angle 180 (left): dx = -offset, dy = 0
+    # For angle 90 (up in standard math, but KiCad Y is down): dy = -offset
+    # For angle 270 (down): dy = +offset
+    label_x = x + offset * math.cos(angle_rad)
+    label_y = y - offset * math.sin(angle_rad)
+
+    # Label angle: arrow points toward pin (opposite of pin angle)
+    label_angle = (int(angle) + 180) % 360
+
+    # Wire from pin to label endpoint
+    wire = f'''	(wire
+		(pts
+			(xy {x:.2f} {y:.2f}) (xy {label_x:.2f} {label_y:.2f})
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "{gen_uuid()}")
+	)
+'''
+
+    label = f'''	(global_label "{net_name}"
 		(shape bidirectional)
-		(at {x:.2f} {y:.2f} {label_angle})
+		(at {label_x:.2f} {label_y:.2f} {label_angle})
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -542,7 +583,7 @@ def create_global_label(net_name, x, y, angle=0):
 		)
 		(uuid "{gen_uuid()}")
 		(property "Intersheetrefs" "${{INTERSHEET_REFS}}"
-			(at {x:.2f} {y:.2f} 0)
+			(at {label_x:.2f} {label_y:.2f} 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -552,6 +593,7 @@ def create_global_label(net_name, x, y, angle=0):
 		)
 	)
 '''
+    return wire + label
 
 def create_no_connect(x, y):
     """Generate no-connect flag at exact position."""
@@ -590,7 +632,7 @@ def main():
     for ref, comp in COMPONENTS.items():
         sch += create_symbol_instance(ref, comp, project_uuid)
 
-    # Add global labels at pin locations
+    # Add global labels at pin locations with connecting wires
     labels_added = 0
     for net_name, connections in NETS.items():
         for ref, pin in connections:
@@ -598,7 +640,7 @@ def main():
                 pos = get_pin_world_position(ref, pin)
                 if pos:
                     x, y, angle = pos
-                    sch += create_global_label(net_name, x, y, angle)
+                    sch += create_global_label_with_wire(net_name, x, y, angle)
                     labels_added += 1
 
     # Add no-connects at NC pin locations

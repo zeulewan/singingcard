@@ -194,9 +194,9 @@
 		(uuid "008f7c75-f0b4-478e-9566-6339ac08303a")
 	)
 	(embedded_fonts no)
-	(model "libs/singingcard.3dshapes/SOIC-8_L5.3-W5.3-H1.9-LS7.9-P1.27.wrl"
+	(model "${KIPRJMOD}/libs/singingcard.3dshapes/SOIC-8_L5.3-W5.3-H1.9-LS7.9-P1.27.wrl"
 		(offset
-			(xyz 1.65 -2.84 -0)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
