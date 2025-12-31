@@ -7,6 +7,9 @@ on:
       - 'kicad/**'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   export:
     uses: zeulewan/shared-workflows/.github/workflows/export-kicad-images.yml@main
