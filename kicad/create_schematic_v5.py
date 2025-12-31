@@ -457,6 +457,18 @@ def create_symbol_instance(ref, comp, project_uuid):
     else:
         pins = [str(i) for i in range(1, comp['num_pins'] + 1)]
 
+    # For 2-pin components, place reference/value to the right to avoid label overlap
+    if comp['num_pins'] == 2:
+        ref_x, ref_y, ref_angle = x + 5.08, y, 0
+        val_x, val_y, val_angle = x + 5.08, y + 2.54, 0
+        ref_justify = '\n\t\t\t\t\t(justify left)'
+        val_justify = '\n\t\t\t\t\t(justify left)'
+    else:
+        ref_x, ref_y, ref_angle = x, y - 12, 0
+        val_x, val_y, val_angle = x, y - 15, 0
+        ref_justify = ''
+        val_justify = ''
+
     sym = f'''	(symbol
 		(lib_id "{lib_name}")
 		(at {x} {y} 0)
@@ -467,19 +479,19 @@ def create_symbol_instance(ref, comp, project_uuid):
 		(dnp no)
 		(uuid "{comp_uuid}")
 		(property "Reference" "{ref}"
-			(at {x} {y - 12} 0)
+			(at {ref_x} {ref_y} {ref_angle})
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
+				){ref_justify}
 			)
 		)
 		(property "Value" "{comp['value']}"
-			(at {x} {y - 15} 0)
+			(at {val_x} {val_y} {val_angle})
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
+				){val_justify}
 			)
 		)
 		(property "Footprint" "{comp['footprint']}"
@@ -543,7 +555,7 @@ def create_global_label_with_wire(net_name, x, y, angle=0):
     """
     # Pin angle indicates direction pin BODY extends (toward component, not away)
     # So we offset OPPOSITE to pin angle to place label away from component
-    offset = 5.08  # Offset distance in mm
+    offset = 7.62  # Offset distance in mm (3 grid units for better spacing)
     angle_rad = math.radians(angle)
 
     # Move OPPOSITE to pin body direction (away from component)

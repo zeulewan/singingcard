@@ -1,12 +1,12 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2025-12-31T00:50:35-0500",
+    "date": "2025-12-31T00:57:40-0500",
     "kicad_version": "9.0.6",
     "sheets": [
         {
             "path": "/",
-            "uuid_path": "/328a0874-1814-4cd0-b1f3-b0fe2e8e2093",
+            "uuid_path": "/e8d49f5c-9c97-44a2-bd86-b44a82cebe2e",
             "violations": [
                 {
                     "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
@@ -17,7 +17,7 @@
                                 "x": 0.6096,
                                 "y": 0.508
                             },
-                            "uuid": "3025eaaf-8ff9-42f1-b5de-b97331c1d55d"
+                            "uuid": "93914024-7d70-4a9a-bda4-7080bd45be3f"
                         }
                     ],
                     "severity": "warning",
@@ -32,7 +32,7 @@
                                 "x": 0.4064,
                                 "y": 0.762
                             },
-                            "uuid": "eda87497-742c-4344-a86e-2d09cf3d9d00"
+                            "uuid": "f23bf5da-2338-474c-babb-ef8f35a0878e"
                         }
                     ],
                     "severity": "warning",
@@ -47,7 +47,7 @@
                                 "x": 0.8128,
                                 "y": 0.508
                             },
-                            "uuid": "884a3c7e-c311-427c-a1f3-108cf8bc737b"
+                            "uuid": "0eb2cc47-4990-4185-b93c-4c2792cb24b5"
                         }
                     ],
                     "severity": "warning",
@@ -62,7 +62,7 @@
                                 "x": 1.016,
                                 "y": 0.508
                             },
-                            "uuid": "42f474a1-c57e-4f18-8b86-27b681173ad2"
+                            "uuid": "96b07217-6b51-4652-8231-37af7082d11d"
                         }
                     ],
                     "severity": "warning",
@@ -77,11 +77,34 @@
                                 "x": 0.6096,
                                 "y": 0.9906
                             },
-                            "uuid": "d69fcd70-6630-4b24-8686-67055843bb37"
+                            "uuid": "9c62fa2e-2499-4d89-9429-87ccfbd1d780"
                         }
                     ],
                     "severity": "warning",
                     "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Both GND and GPIO0 are attached to the same items; GND will be used in the netlist",
+                    "items": [
+                        {
+                            "description": "Global Label 'GND'",
+                            "pos": {
+                                "x": 2.794,
+                                "y": 0.8636
+                            },
+                            "uuid": "236f4bcf-7dec-4430-87b5-d33c4b61bfa2"
+                        },
+                        {
+                            "description": "Global Label 'GPIO0'",
+                            "pos": {
+                                "x": 0.9906,
+                                "y": 0.7747
+                            },
+                            "uuid": "5954d5c6-5920-4036-a8d0-9bb92f50ff43"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "multiple_net_names"
                 },
                 {
                     "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
@@ -92,7 +115,7 @@
                                 "x": 0.4064,
                                 "y": 1.397
                             },
-                            "uuid": "08f77e95-c6f2-4166-ae5e-1a420b9fae33"
+                            "uuid": "ccb7598f-a159-4e3c-8f21-1488c49c3229"
                         }
                     ],
                     "severity": "warning",
@@ -107,7 +130,7 @@
                                 "x": 0.5588,
                                 "y": 1.397
                             },
-                            "uuid": "15476633-7bd6-44f5-96dd-d38133cdf22e"
+                            "uuid": "9b5d2986-3f42-46ce-806b-5778c156bfbe"
                         }
                     ],
                     "severity": "warning",
@@ -122,7 +145,7 @@
                                 "x": 0.7112,
                                 "y": 1.397
                             },
-                            "uuid": "6bde96dd-d436-4ea3-9ebe-e36a6fe504c4"
+                            "uuid": "2cf9b4f6-4d56-4b4e-81d2-768341518d80"
                         }
                     ],
                     "severity": "warning",
@@ -137,7 +160,7 @@
                                 "x": 0.8636,
                                 "y": 1.397
                             },
-                            "uuid": "f1e67814-c67c-458f-9337-0e69ac506326"
+                            "uuid": "51f9c554-65d0-4302-b616-a22bbd15a807"
                         }
                     ],
                     "severity": "warning",
@@ -152,7 +175,7 @@
                                 "x": 1.016,
                                 "y": 1.397
                             },
-                            "uuid": "c8ff5dfb-70f3-45f6-81ad-68c0a7c4a734"
+                            "uuid": "31f69c0d-2a77-4f6e-9f35-013ba0a801b5"
                         }
                     ],
                     "severity": "warning",
@@ -167,7 +190,7 @@
                                 "x": 1.8034,
                                 "y": 0.508
                             },
-                            "uuid": "3096190d-90d9-49a1-b8ff-634e61a184e0"
+                            "uuid": "5bd67cd3-8bf1-4658-9752-e8fb3d10466b"
                         }
                     ],
                     "severity": "warning",
@@ -182,7 +205,7 @@
                                 "x": 2.5146,
                                 "y": 0.8128
                             },
-                            "uuid": "1229505c-e79c-4702-9fbc-0d2c2275a7d8"
+                            "uuid": "93acffe2-9480-4ce0-af92-067b20f256b7"
                         }
                     ],
                     "severity": "warning",
