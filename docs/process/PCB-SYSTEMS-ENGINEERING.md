@@ -10,6 +10,24 @@ A deterministic workflow for PCB development projects following NASA/DoD/IEEE sy
 
 ---
 
+## Tooling Requirements
+
+| Tool | Version | Purpose |
+|------|---------|---------|
+| **KiCad** | 9.0.x | EDA suite (schematic, PCB, 3D) |
+| **kicad-cli** | 9.0.x | Command-line automation |
+| **Python** | 3.11+ | Scripting and automation |
+| **FreeRouting** | 2.0.1 | Auto-routing (requires Java 21) |
+
+**KiCad 9 Library Formats:**
+- Symbols: `.kicad_sym` (single file, multiple symbols)
+- Footprints: `.kicad_mod` files in `.pretty/` folders
+- 3D Models: `.wrl`, `.step` in `.3dshapes/` folders
+
+See [`KICAD-VERSION.md`](../KICAD-VERSION.md) for detailed version notes.
+
+---
+
 ## 1. Lifecycle Overview
 
 This process follows the **V-Model** approach with formal review gates. Each phase has defined entry/exit criteria, required artifacts, and a corresponding verification phase.

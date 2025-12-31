@@ -38,10 +38,10 @@ Master reference linking each PCB development phase to its documentation.
 
 | Document | Description |
 |----------|-------------|
-| [`../process/PCB-SYSTEMS-ENGINEERING.md`](../process/PCB-SYSTEMS-ENGINEERING.md) | Master process definition |
-| [`../process/TOOLING-WISHLIST.md`](../process/TOOLING-WISHLIST.md) | Desired automation tools |
-| [`../process/user-prompts.md`](../process/user-prompts.md) | User prompt history |
-| [`../process/research/`](../process/research/) | Historical research documents |
+| [`process/PCB-SYSTEMS-ENGINEERING.md`](process/PCB-SYSTEMS-ENGINEERING.md) | Master process definition |
+| [`process/TOOLING-WISHLIST.md`](process/TOOLING-WISHLIST.md) | Desired automation tools |
+| [`process/user-prompts.md`](process/user-prompts.md) | User prompt history |
+| [`process/research/`](process/research/) | Historical research documents |
 
 ---
 
@@ -49,24 +49,18 @@ Master reference linking each PCB development phase to its documentation.
 
 Project-level skills in `.claude/skills/`:
 
-| Skill | Description |
-|-------|-------------|
-| `kicad-agent.md` | Main KiCad automation workflow |
-| `pcb-requirements.md` | Requirements gathering interview |
-| `kicad-ci-debug.md` | CI/CD debugging |
-
-User-level skills in `~/.claude/skills/pcb-*/`:
-
-| Skill | Phase |
-|-------|-------|
-| `/pcb-master` | Orchestrator |
-| `/pcb-init` | Phase 0: Project initialization |
-| `/pcb-requirements` | Phase 1: ConOps, requirements |
-| `/pcb-system-design` | Phase 2: Block diagram, ICD |
-| `/pcb-components` | Phase 3: JLCPCB research |
-| `/pcb-pin-allocation` | Phase 3.5: Datasheet analysis |
-| `/pcb-schematic` | Phase 5: Schematic design |
-| `/pcb-layout` | Phase 7: PCB routing |
-| `/pcb-dfm` | Phase 8: DFM review |
-| `/pcb-manufacture` | Phase 10: Gerber generation |
-| `/pcb-test` | Phase 11: Verification |
+| Skill | Phase | Description |
+|-------|-------|-------------|
+| `pcb-master.md` | - | Master orchestrator, invokes other skills |
+| `pcb-init.md` | 0 | Project initialization |
+| `pcb-requirements.md` | 1 | ConOps, requirements gathering |
+| `pcb-system-design.md` | 2 | Block diagram, ICD |
+| `pcb-components.md` | 3 | JLCPCB research, BOM |
+| `pcb-pin-allocation.md` | 3.5 | Datasheet analysis, pin mapping |
+| `pcb-schematic.md` | 5 | Schematic design |
+| `pcb-layout.md` | 7 | PCB routing |
+| `pcb-dfm.md` | 8 | DFM review |
+| `pcb-manufacture.md` | 10 | Gerber generation |
+| `pcb-test.md` | 11 | Verification |
+| `kicad-agent.md` | - | Legacy: Full KiCad workflow |
+| `kicad-ci-debug.md` | - | CI/CD debugging |

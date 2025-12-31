@@ -1,146 +1,155 @@
----
-name: pcb-requirements
-description: Interview user to gather complete PCB project requirements. Use when user wants to start a new PCB project or says "new project", "design a board", "make a PCB", etc.
----
+# PCB Requirements Development
 
-# PCB Requirements Gathering
+Phase 1 of PCB Systems Engineering Lifecycle.
 
-Thoroughly interview the user to capture all PCB project requirements before any design work begins. Ask questions using AskUserQuestion tool until nothing is ambiguous.
+## Activation
+- User says: /pcb-requirements, develop requirements, conops
+- After /pcb-init completes
 
-## When to Use
+## Purpose
 
-Trigger this skill when user:
-- Wants to design a new PCB
-- Says "new project", "make a board", "design a PCB"
-- Provides vague requirements that need clarification
+Decompose PRD into detailed requirements and create Concept of Operations.
 
-## Interview Process
+## Prerequisites
 
-Ask questions in phases. Use AskUserQuestion with multiple choice where possible. Follow up on anything unclear.
+- `requirements/PRD.md` exists and is complete
 
-### Phase 1: Project Overview
+## Process
 
-Ask these first:
-1. **What does this board do?** (main purpose/application)
-2. **What's the end use?** (consumer product, prototype, one-off, hobby, commercial)
-3. **Any existing design to reference?** (Arduino, dev board, previous version)
+### Step 1: Review PRD
 
-### Phase 2: Core Components
+Read `requirements/PRD.md` and extract:
+- All stated requirements
+- Implicit requirements (derived from use cases)
+- Constraints and assumptions
 
-Ask about key parts:
-1. **Main processor/MCU?** (ESP32, STM32, ATmega, RP2040, none)
-2. **Wireless?** (WiFi, Bluetooth, LoRa, Zigbee, none)
-3. **Sensors needed?** (temperature, motion, light, pressure, etc.)
-4. **Displays?** (OLED, LCD, LED indicators, none)
-5. **Connectors?** (USB-C, USB-A, JST, headers, screw terminals)
-6. **Any specific ICs you want to use?**
+### Step 2: Develop Operational Scenarios
 
-### Phase 3: Power
+Ask user about typical use cases:
 
-1. **Input power source?** (USB 5V, battery, external supply, multiple)
-2. **Battery type if applicable?** (LiPo, 18650, coin cell, AA/AAA)
-3. **Voltage rails needed?** (3.3V, 5V, 12V, multiple)
-4. **Estimated current draw?** (low <100mA, medium <500mA, high >500mA)
-5. **Need battery charging on board?**
-
-### Phase 4: I/O & Interfaces
-
-1. **GPIO pins needed?** (how many, what for)
-2. **Communication interfaces?** (I2C, SPI, UART, CAN)
-3. **Analog inputs/outputs?**
-4. **PWM outputs?** (motors, LEDs, buzzers)
-5. **External connections?** (buttons, switches, external sensors)
-
-### Phase 5: Physical Constraints
-
-1. **Board size?** (specific dimensions, or "as small as possible", or "doesn't matter")
-2. **Shape constraints?** (rectangular, must fit enclosure, mounting holes)
-3. **Height restrictions?** (low profile needed?)
-4. **Mounting?** (standoffs, screws, snap-fit, none)
-
-### Phase 6: Environment & Reliability
-
-1. **Operating environment?** (indoor, outdoor, high temp, moisture)
-2. **Expected lifespan?** (prototype only, years of use)
-3. **Compliance needs?** (FCC, CE, UL - usually not for prototypes)
-
-### Phase 7: Fabrication & Budget
-
-1. **Layer count preference?** (2-layer cheaper, 4-layer for complex)
-2. **Quantity?** (5, 10, 20, 100+)
-3. **Budget range?** (cheap prototype <$50, mid $50-150, flexible)
-4. **Timeline?** (ASAP, 1-2 weeks, flexible)
-5. **Manufacturer preference?** (JLCPCB default, PCBWay, other)
-6. **Need assembly?** (bare boards only, or SMT assembly)
-
-### Phase 8: Aesthetic Preferences
-
-1. **Solder mask color?** (green, black, white, blue, red, purple)
-2. **Silkscreen color?** (white, black)
-3. **Surface finish?** (HASL lead-free default, ENIG for fine pitch)
-4. **Any branding/logo to include?**
-
-## Follow-up Questions
-
-After initial answers, probe deeper:
-- "You mentioned [X], can you tell me more about..."
-- "What happens if [component] isn't available?"
-- "Is [feature] required or nice-to-have?"
-- "Any features you explicitly DON'T want?"
-
-## Output
-
-After gathering all requirements, create `kicad/specs.md` with:
-
-```markdown
-# Project: [Name]
-
-## Overview
-- Purpose:
-- Application:
-- Reference designs:
-
-## Components
-- MCU:
-- Wireless:
-- Sensors:
-- Connectors:
-- Other ICs:
-
-## Power
-- Input:
-- Rails needed:
-- Battery:
-- Current estimate:
-
-## I/O
-- GPIO:
-- Interfaces:
-- External connections:
-
-## Physical
-- Size:
-- Shape:
-- Mounting:
-
-## Fabrication
-- Layers:
-- Quantity:
-- Budget:
-- Timeline:
-- Assembly:
-- Colors:
-
-## Notes
-[Any other details]
-
-## Open Questions
-[Anything still unclear]
+**Question: User Profiles**
+```
+Who will use this device?
+- End user (consumer)
+- Technician (professional)
+- Both
+- Automated system (no direct user)
 ```
 
-## Important
+**Question: Primary Scenario**
+```
+Describe the most common way this device will be used:
+1. How is it activated? (button, automatic, remote)
+2. What happens during operation?
+3. How long does typical operation last?
+4. How is it deactivated?
+```
 
-- Don't assume anything - ask
-- Offer sensible defaults when user says "I don't know"
-- Flag anything that seems contradictory
-- Confirm understanding before proceeding to design
+**Question: Edge Cases**
+```
+What unusual situations might occur?
+- Low battery
+- Environmental extremes
+- User errors
+- Component failures
+```
+
+### Step 3: Create ConOps Document
+
+Write `requirements/ConOps.md` with:
+
+1. **System Overview** - One paragraph summary
+2. **User Profiles** - Table of user types
+3. **Operational Scenarios** - Step-by-step for each use case
+4. **Operational Modes** - Normal, standby, error, etc.
+5. **System States** - State machine if applicable
+6. **Failure Modes** - What can go wrong, how detected
+
+### Step 4: Decompose Requirements
+
+Create detailed requirements in categories:
+
+**Functional Requirements (FR-xxx)**
+- What the system must DO
+- Actions, behaviors, responses
+
+**Performance Requirements (PR-xxx)**
+- How WELL the system must perform
+- Speed, accuracy, capacity, timing
+
+**Interface Requirements (IR-xxx)**
+- How system connects to external world
+- Connectors, protocols, signals
+
+**Environmental Requirements (ER-xxx)**
+- Operating conditions
+- Temperature, humidity, shock, vibration
+
+**Physical Requirements (PHR-xxx)**
+- Size, weight, form factor
+- Mounting, enclosure
+
+**Power Requirements (PWR-xxx)**
+- Voltage, current, battery life
+- Power states, consumption budgets
+
+### Step 5: Assign Verification Methods
+
+For each requirement, assign:
+- **T** = Test (measure/observe in operation)
+- **A** = Analysis (calculation/simulation)
+- **I** = Inspection (visual examination)
+- **D** = Demonstration (show it works)
+
+### Step 6: Update RTM
+
+Update `requirements/RTM.md` with all requirements:
+
+```markdown
+| ID | Requirement | Source | Verification | Status |
+|----|-------------|--------|--------------|--------|
+| FR-001 | System shall play audio | PRD 3.1 | T | Open |
+| PR-001 | Audio shall be >70dB @ 10cm | PRD 4.1 | T | Open |
+```
+
+### Step 7: Output Summary
+
+```
+## Requirements Development Complete
+
+### Statistics
+- Functional Requirements: [count]
+- Performance Requirements: [count]
+- Interface Requirements: [count]
+- Total Requirements: [count]
+
+### Key Risks Identified
+1. [risk 1]
+2. [risk 2]
+
+### Next Steps
+1. Review ConOps at requirements/ConOps.md
+2. Review RTM at requirements/RTM.md
+3. Run /pcb-system-design to create ICD
+```
+
+## Requirement Writing Rules
+
+Good requirements are:
+- **Necessary** - Traceable to a need
+- **Verifiable** - Can be tested/measured
+- **Unambiguous** - Only one interpretation
+- **Complete** - All conditions specified
+- **Consistent** - No conflicts with other requirements
+- **Atomic** - One requirement per statement
+
+Bad: "The system should be fast"
+Good: "The system shall respond within 100ms of trigger activation"
+
+## Success Criteria
+
+- [ ] ConOps document complete
+- [ ] All requirements decomposed with IDs
+- [ ] All requirements have verification method
+- [ ] RTM populated
+- [ ] User reviewed and approved
