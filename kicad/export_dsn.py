@@ -108,12 +108,17 @@ def generate_dsn(pcb_data, output_file):
     nets = pcb_data['nets']
     components = pcb_data['components']
 
-    # Convert mm to DSN units (mils * 100 = 0.01 mil)
-    # DSN uses resolution 100 = 0.01 mil
-    scale = 3937.0079  # mm to 0.01 mil
+    # Collect all unique pad sizes for padstack generation
+    pad_sizes = set()
+    for comp in components:
+        for pad in comp['pads']:
+            # Round to avoid floating point issues
+            sx = round(pad['size_x'] * 1000)  # mm to um
+            sy = round(pad['size_y'] * 1000)
+            pad_sizes.add((sx, sy))
 
-    def mm_to_dsn(val):
-        return int(val * scale)
+    def get_padstack_name(sx, sy):
+        return f"Rect[T]Pad_{sx}x{sy}_um"
 
     dsn = []
     dsn.append('(pcb singingcard.dsn')
@@ -181,24 +186,34 @@ def generate_dsn(pcb_data, output_file):
 
     # Library (padstacks)
     dsn.append('  (library')
-    # Default padstack
-    dsn.append('    (padstack "Rect[T]Pad_600x600_um"')
-    dsn.append('      (shape (rect F.Cu -300 -300 300 300))')
-    dsn.append('      (attach off)')
-    dsn.append('    )')
+
+    # Generate padstacks for all unique pad sizes
+    for sx, sy in sorted(pad_sizes):
+        padstack_name = get_padstack_name(sx, sy)
+        half_x = sx // 2
+        half_y = sy // 2
+        dsn.append(f'    (padstack "{padstack_name}"')
+        dsn.append(f'      (shape (rect F.Cu -{half_x} -{half_y} {half_x} {half_y}))')
+        dsn.append('      (attach off)')
+        dsn.append('    )')
+
+    # Via padstack
     dsn.append('    (padstack "Via[0-1]_600:300_um"')
     dsn.append('      (shape (circle F.Cu 600))')
     dsn.append('      (shape (circle B.Cu 600))')
     dsn.append('      (attach off)')
     dsn.append('    )')
 
-    # Component images
+    # Component images with correct pad sizes
     for comp in components:
         dsn.append(f'    (image "{comp["footprint"]}"')
         for pad in comp['pads']:
             px = pad['x'] * 1000
             py = pad['y'] * 1000
-            dsn.append(f'      (pin "Rect[T]Pad_600x600_um" {pad["num"]} {px:.0f} {py:.0f})')
+            sx = round(pad['size_x'] * 1000)
+            sy = round(pad['size_y'] * 1000)
+            padstack_name = get_padstack_name(sx, sy)
+            dsn.append(f'      (pin "{padstack_name}" {pad["num"]} {px:.0f} {py:.0f})')
         dsn.append('    )')
 
     dsn.append('  )')  # library

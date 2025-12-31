@@ -57,24 +57,48 @@ def parse_netlist(netlist_file):
     return components, nets
 
 def place_components(components):
-    """Calculate placement positions for components."""
+    """Calculate placement positions for components.
+
+    Improved placement with more spacing to allow cleaner routing.
+    Key principles:
+    - U1 (MCU) in center-left area
+    - U2 (SPI flash) to the right with clear path for SPI signals
+    - Bypass caps close to their associated IC power pins
+    - Connectors on edges
+    - Button accessible but not in routing path
+    """
+    # Center point for main layout
+    cx = BOARD_ORIGIN_X + 38  # Shift left to give room for SPI flash on right
+    cy = BOARD_ORIGIN_Y + BOARD_HEIGHT/2
+
     positions = {
-        'U1': (BOARD_ORIGIN_X + BOARD_WIDTH/2, BOARD_ORIGIN_Y + BOARD_HEIGHT/2, 0),
-        'U2': (BOARD_ORIGIN_X + BOARD_WIDTH/2 + 15, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 - 10, 0),
-        'BT1': (BOARD_ORIGIN_X + BOARD_WIDTH - 18, BOARD_ORIGIN_Y + BOARD_HEIGHT/2, 0),
-        'C1': (BOARD_ORIGIN_X + BOARD_WIDTH/2 - 10, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 - 10, 0),
-        'C2': (BOARD_ORIGIN_X + BOARD_WIDTH/2 - 10, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 + 10, 0),
-        'C3': (BOARD_ORIGIN_X + BOARD_WIDTH/2 + 10, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 - 10, 0),
-        'C4': (BOARD_ORIGIN_X + BOARD_WIDTH/2 - 15, BOARD_ORIGIN_Y + BOARD_HEIGHT/2, 0),
-        'C5': (BOARD_ORIGIN_X + BOARD_WIDTH/2 + 10, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 + 10, 0),
-        'C6': (BOARD_ORIGIN_X + BOARD_WIDTH/2 + 22, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 - 5, 0),
-        'R1': (BOARD_ORIGIN_X + 12, BOARD_ORIGIN_Y + 20, 0),
-        'R2': (BOARD_ORIGIN_X + 22, BOARD_ORIGIN_Y + 15, 90),
-        'R3': (BOARD_ORIGIN_X + BOARD_WIDTH/2 - 18, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 - 15, 0),
-        'R4': (BOARD_ORIGIN_X + BOARD_WIDTH/2 - 18, BOARD_ORIGIN_Y + BOARD_HEIGHT/2 + 15, 0),
-        'J1': (BOARD_ORIGIN_X + 15, BOARD_ORIGIN_Y + BOARD_HEIGHT - 8, 0),
-        'J2': (BOARD_ORIGIN_X + 35, BOARD_ORIGIN_Y + BOARD_HEIGHT - 8, 0),
-        'SW1': (BOARD_ORIGIN_X + 55, BOARD_ORIGIN_Y + BOARD_HEIGHT - 12, 0),
+        # Main ICs
+        'U1': (cx, cy, 0),  # MCU in center-left (LQFP-48 is 7x7mm)
+        'U2': (cx + 28, cy - 8, 0),  # SPI flash to the right, clear routing path (SOIC-8)
+
+        # Battery holder on far right
+        'BT1': (BOARD_ORIGIN_X + BOARD_WIDTH - 18, cy, 0),  # CR2032 holder
+
+        # Bypass capacitors - spread around U1
+        'C1': (cx - 12, cy - 6, 0),   # 0603 near U1 pin 11 (+3V)
+        'C2': (cx - 12, cy + 6, 0),   # 0805 near U1
+        'C3': (cx + 12, cy - 6, 0),   # 0603 VREG bypass
+        'C4': (cx - 6, cy - 12, 0),   # 0603 near U1 top
+        'C5': (cx + 12, cy + 6, 0),   # 0805
+        'C6': (cx + 28, cy + 2, 0),   # 0603 near U2/battery
+
+        # Resistors - spread out more
+        'R1': (BOARD_ORIGIN_X + 12, cy - 8, 0),    # LDR (through-hole)
+        'R2': (BOARD_ORIGIN_X + 12, cy - 18, 0),   # LDR pullup - NOT rotated, more space
+        'R3': (cx - 6, cy - 18, 0),    # RESET pullup - above U1
+        'R4': (cx - 6, cy + 18, 0),    # CSB pullup - below U1
+
+        # Connectors on bottom edge - spread apart to avoid routing conflicts
+        'J1': (BOARD_ORIGIN_X + 15, BOARD_ORIGIN_Y + BOARD_HEIGHT - 8, 0),  # Speaker
+        'J2': (BOARD_ORIGIN_X + 50, BOARD_ORIGIN_Y + BOARD_HEIGHT - 8, 0),  # Tab trigger (moved right)
+
+        # Button on right side, away from main routing
+        'SW1': (cx + 28, cy + 18, 0),  # Button near bottom right
     }
 
     placements = []

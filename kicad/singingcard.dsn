@@ -43,27 +43,27 @@
       )
     )
     (component "Capacitor_SMD:C_0603_1608Metric"
-      (place C1 132500 117500 front 0
+      (place C1 126000 121500 front 0
       )
     )
     (component "Capacitor_SMD:C_0805_2012Metric"
-      (place C2 132500 137500 front 0
+      (place C2 126000 133500 front 0
       )
     )
     (component "Capacitor_SMD:C_0603_1608Metric"
-      (place C3 152500 117500 front 0
+      (place C3 150000 121500 front 0
       )
     )
     (component "Capacitor_SMD:C_0603_1608Metric"
-      (place C4 127500 127500 front 0
+      (place C4 132000 115500 front 0
       )
     )
     (component "Capacitor_SMD:C_0805_2012Metric"
-      (place C5 152500 137500 front 0
+      (place C5 150000 133500 front 0
       )
     )
     (component "Capacitor_SMD:C_0603_1608Metric"
-      (place C6 164500 122500 front 0
+      (place C6 166000 129500 front 0
       )
     )
     (component "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
@@ -71,41 +71,77 @@
       )
     )
     (component "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-      (place J2 135000 147000 front 0
+      (place J2 150000 147000 front 0
       )
     )
     (component "singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5"
-      (place R1 112000 120000 front 0
+      (place R1 112000 119500 front 0
       )
     )
     (component "Resistor_SMD:R_0603_1608Metric"
-      (place R2 122000 115000 front 90
+      (place R2 112000 109500 front 0
       )
     )
     (component "Resistor_SMD:R_0603_1608Metric"
-      (place R3 124500 112500 front 0
+      (place R3 132000 109500 front 0
       )
     )
     (component "Resistor_SMD:R_0603_1608Metric"
-      (place R4 124500 142500 front 0
+      (place R4 132000 145500 front 0
       )
     )
     (component "Button_Switch_SMD:SW_SPST_TL3342"
-      (place SW1 155000 143000 front 0
+      (place SW1 166000 145500 front 0
       )
     )
     (component "singingcard:LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL"
-      (place U1 142500 127500 front 0
+      (place U1 138000 127500 front 0
       )
     )
     (component "singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
-      (place U2 157500 117500 front 0
+      (place U2 166000 119500 front 0
       )
     )
   )
   (library
-    (padstack "Rect[T]Pad_600x600_um"
-      (shape (rect F.Cu -300 -300 300 300))
+    (padstack "Rect[T]Pad_270x1500_um"
+      (shape (rect F.Cu -135 -750 135 750))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_630x2250_um"
+      (shape (rect F.Cu -315 -1125 315 1125))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_800x950_um"
+      (shape (rect F.Cu -400 -475 400 475))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_900x950_um"
+      (shape (rect F.Cu -450 -475 450 475))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_1000x1450_um"
+      (shape (rect F.Cu -500 -725 500 725))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_1500x270_um"
+      (shape (rect F.Cu -750 -135 750 135))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_1520x1520_um"
+      (shape (rect F.Cu -760 -760 760 760))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_1700x1000_um"
+      (shape (rect F.Cu -850 -500 850 500))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_1700x1700_um"
+      (shape (rect F.Cu -850 -850 850 850))
+      (attach off)
+    )
+    (padstack "Rect[T]Pad_4200x3800_um"
+      (shape (rect F.Cu -2100 -1900 2100 1900))
       (attach off)
     )
     (padstack "Via[0-1]_600:300_um"
@@ -114,122 +150,122 @@
       (attach off)
     )
     (image "singingcard:BAT-TH_CR2032-BS-6-1"
-      (pin "Rect[T]Pad_600x600_um" 1 14390 0)
-      (pin "Rect[T]Pad_600x600_um" 2 -14390 0)
+      (pin "Rect[T]Pad_4200x3800_um" 1 14390 0)
+      (pin "Rect[T]Pad_4200x3800_um" 2 -14390 0)
     )
     (image "Capacitor_SMD:C_0603_1608Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
-      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+      (pin "Rect[T]Pad_900x950_um" 1 -775 0)
+      (pin "Rect[T]Pad_900x950_um" 2 775 0)
     )
     (image "Capacitor_SMD:C_0805_2012Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -950 0)
-      (pin "Rect[T]Pad_600x600_um" 2 950 0)
+      (pin "Rect[T]Pad_1000x1450_um" 1 -950 0)
+      (pin "Rect[T]Pad_1000x1450_um" 2 950 0)
     )
     (image "Capacitor_SMD:C_0603_1608Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
-      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+      (pin "Rect[T]Pad_900x950_um" 1 -775 0)
+      (pin "Rect[T]Pad_900x950_um" 2 775 0)
     )
     (image "Capacitor_SMD:C_0603_1608Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
-      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+      (pin "Rect[T]Pad_900x950_um" 1 -775 0)
+      (pin "Rect[T]Pad_900x950_um" 2 775 0)
     )
     (image "Capacitor_SMD:C_0805_2012Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -950 0)
-      (pin "Rect[T]Pad_600x600_um" 2 950 0)
+      (pin "Rect[T]Pad_1000x1450_um" 1 -950 0)
+      (pin "Rect[T]Pad_1000x1450_um" 2 950 0)
     )
     (image "Capacitor_SMD:C_0603_1608Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
-      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+      (pin "Rect[T]Pad_900x950_um" 1 -775 0)
+      (pin "Rect[T]Pad_900x950_um" 2 775 0)
     )
     (image "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-      (pin "Rect[T]Pad_600x600_um" 1 0 0)
-      (pin "Rect[T]Pad_600x600_um" 2 0 2540)
+      (pin "Rect[T]Pad_1700x1700_um" 1 0 0)
+      (pin "Rect[T]Pad_1700x1700_um" 2 0 2540)
     )
     (image "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-      (pin "Rect[T]Pad_600x600_um" 1 0 0)
-      (pin "Rect[T]Pad_600x600_um" 2 0 2540)
+      (pin "Rect[T]Pad_1700x1700_um" 1 0 0)
+      (pin "Rect[T]Pad_1700x1700_um" 2 0 2540)
     )
     (image "singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5"
-      (pin "Rect[T]Pad_600x600_um" 1 0 -1700)
-      (pin "Rect[T]Pad_600x600_um" 2 0 1700)
+      (pin "Rect[T]Pad_1520x1520_um" 1 0 -1700)
+      (pin "Rect[T]Pad_1520x1520_um" 2 0 1700)
     )
     (image "Resistor_SMD:R_0603_1608Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -825 0)
-      (pin "Rect[T]Pad_600x600_um" 2 825 0)
+      (pin "Rect[T]Pad_800x950_um" 1 -825 0)
+      (pin "Rect[T]Pad_800x950_um" 2 825 0)
     )
     (image "Resistor_SMD:R_0603_1608Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -825 0)
-      (pin "Rect[T]Pad_600x600_um" 2 825 0)
+      (pin "Rect[T]Pad_800x950_um" 1 -825 0)
+      (pin "Rect[T]Pad_800x950_um" 2 825 0)
     )
     (image "Resistor_SMD:R_0603_1608Metric"
-      (pin "Rect[T]Pad_600x600_um" 1 -825 0)
-      (pin "Rect[T]Pad_600x600_um" 2 825 0)
+      (pin "Rect[T]Pad_800x950_um" 1 -825 0)
+      (pin "Rect[T]Pad_800x950_um" 2 825 0)
     )
     (image "Button_Switch_SMD:SW_SPST_TL3342"
-      (pin "Rect[T]Pad_600x600_um" 1 -3150 -1900)
-      (pin "Rect[T]Pad_600x600_um" 1 3150 -1900)
-      (pin "Rect[T]Pad_600x600_um" 2 -3150 1900)
-      (pin "Rect[T]Pad_600x600_um" 2 3150 1900)
+      (pin "Rect[T]Pad_1700x1000_um" 1 -3150 -1900)
+      (pin "Rect[T]Pad_1700x1000_um" 1 3150 -1900)
+      (pin "Rect[T]Pad_1700x1000_um" 2 -3150 1900)
+      (pin "Rect[T]Pad_1700x1000_um" 2 3150 1900)
     )
     (image "singingcard:LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL"
-      (pin "Rect[T]Pad_600x600_um" 1 -2750 4250)
-      (pin "Rect[T]Pad_600x600_um" 2 -2250 4250)
-      (pin "Rect[T]Pad_600x600_um" 3 -1750 4250)
-      (pin "Rect[T]Pad_600x600_um" 4 -1250 4250)
-      (pin "Rect[T]Pad_600x600_um" 5 -750 4250)
-      (pin "Rect[T]Pad_600x600_um" 6 -250 4250)
-      (pin "Rect[T]Pad_600x600_um" 7 250 4250)
-      (pin "Rect[T]Pad_600x600_um" 8 750 4250)
-      (pin "Rect[T]Pad_600x600_um" 9 1250 4250)
-      (pin "Rect[T]Pad_600x600_um" 10 1750 4250)
-      (pin "Rect[T]Pad_600x600_um" 11 2250 4250)
-      (pin "Rect[T]Pad_600x600_um" 12 2750 4250)
-      (pin "Rect[T]Pad_600x600_um" 13 4250 2750)
-      (pin "Rect[T]Pad_600x600_um" 14 4250 2250)
-      (pin "Rect[T]Pad_600x600_um" 15 4250 1750)
-      (pin "Rect[T]Pad_600x600_um" 16 4250 1250)
-      (pin "Rect[T]Pad_600x600_um" 17 4250 750)
-      (pin "Rect[T]Pad_600x600_um" 18 4250 250)
-      (pin "Rect[T]Pad_600x600_um" 19 4250 -250)
-      (pin "Rect[T]Pad_600x600_um" 20 4250 -750)
-      (pin "Rect[T]Pad_600x600_um" 21 4250 -1250)
-      (pin "Rect[T]Pad_600x600_um" 22 4250 -1750)
-      (pin "Rect[T]Pad_600x600_um" 23 4250 -2250)
-      (pin "Rect[T]Pad_600x600_um" 24 4250 -2750)
-      (pin "Rect[T]Pad_600x600_um" 25 2750 -4250)
-      (pin "Rect[T]Pad_600x600_um" 26 2250 -4250)
-      (pin "Rect[T]Pad_600x600_um" 27 1750 -4250)
-      (pin "Rect[T]Pad_600x600_um" 28 1250 -4250)
-      (pin "Rect[T]Pad_600x600_um" 29 750 -4250)
-      (pin "Rect[T]Pad_600x600_um" 30 250 -4250)
-      (pin "Rect[T]Pad_600x600_um" 31 -250 -4250)
-      (pin "Rect[T]Pad_600x600_um" 32 -750 -4250)
-      (pin "Rect[T]Pad_600x600_um" 33 -1250 -4250)
-      (pin "Rect[T]Pad_600x600_um" 34 -1750 -4250)
-      (pin "Rect[T]Pad_600x600_um" 35 -2250 -4250)
-      (pin "Rect[T]Pad_600x600_um" 36 -2750 -4250)
-      (pin "Rect[T]Pad_600x600_um" 37 -4250 -2750)
-      (pin "Rect[T]Pad_600x600_um" 38 -4250 -2250)
-      (pin "Rect[T]Pad_600x600_um" 39 -4250 -1750)
-      (pin "Rect[T]Pad_600x600_um" 40 -4250 -1250)
-      (pin "Rect[T]Pad_600x600_um" 41 -4250 -750)
-      (pin "Rect[T]Pad_600x600_um" 42 -4250 -250)
-      (pin "Rect[T]Pad_600x600_um" 43 -4250 250)
-      (pin "Rect[T]Pad_600x600_um" 44 -4250 750)
-      (pin "Rect[T]Pad_600x600_um" 45 -4250 1250)
-      (pin "Rect[T]Pad_600x600_um" 46 -4250 1750)
-      (pin "Rect[T]Pad_600x600_um" 47 -4250 2250)
-      (pin "Rect[T]Pad_600x600_um" 48 -4250 2750)
+      (pin "Rect[T]Pad_270x1500_um" 1 -2750 4250)
+      (pin "Rect[T]Pad_270x1500_um" 2 -2250 4250)
+      (pin "Rect[T]Pad_270x1500_um" 3 -1750 4250)
+      (pin "Rect[T]Pad_270x1500_um" 4 -1250 4250)
+      (pin "Rect[T]Pad_270x1500_um" 5 -750 4250)
+      (pin "Rect[T]Pad_270x1500_um" 6 -250 4250)
+      (pin "Rect[T]Pad_270x1500_um" 7 250 4250)
+      (pin "Rect[T]Pad_270x1500_um" 8 750 4250)
+      (pin "Rect[T]Pad_270x1500_um" 9 1250 4250)
+      (pin "Rect[T]Pad_270x1500_um" 10 1750 4250)
+      (pin "Rect[T]Pad_270x1500_um" 11 2250 4250)
+      (pin "Rect[T]Pad_270x1500_um" 12 2750 4250)
+      (pin "Rect[T]Pad_1500x270_um" 13 4250 2750)
+      (pin "Rect[T]Pad_1500x270_um" 14 4250 2250)
+      (pin "Rect[T]Pad_1500x270_um" 15 4250 1750)
+      (pin "Rect[T]Pad_1500x270_um" 16 4250 1250)
+      (pin "Rect[T]Pad_1500x270_um" 17 4250 750)
+      (pin "Rect[T]Pad_1500x270_um" 18 4250 250)
+      (pin "Rect[T]Pad_1500x270_um" 19 4250 -250)
+      (pin "Rect[T]Pad_1500x270_um" 20 4250 -750)
+      (pin "Rect[T]Pad_1500x270_um" 21 4250 -1250)
+      (pin "Rect[T]Pad_1500x270_um" 22 4250 -1750)
+      (pin "Rect[T]Pad_1500x270_um" 23 4250 -2250)
+      (pin "Rect[T]Pad_1500x270_um" 24 4250 -2750)
+      (pin "Rect[T]Pad_270x1500_um" 25 2750 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 26 2250 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 27 1750 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 28 1250 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 29 750 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 30 250 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 31 -250 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 32 -750 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 33 -1250 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 34 -1750 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 35 -2250 -4250)
+      (pin "Rect[T]Pad_270x1500_um" 36 -2750 -4250)
+      (pin "Rect[T]Pad_1500x270_um" 37 -4250 -2750)
+      (pin "Rect[T]Pad_1500x270_um" 38 -4250 -2250)
+      (pin "Rect[T]Pad_1500x270_um" 39 -4250 -1750)
+      (pin "Rect[T]Pad_1500x270_um" 40 -4250 -1250)
+      (pin "Rect[T]Pad_1500x270_um" 41 -4250 -750)
+      (pin "Rect[T]Pad_1500x270_um" 42 -4250 -250)
+      (pin "Rect[T]Pad_1500x270_um" 43 -4250 250)
+      (pin "Rect[T]Pad_1500x270_um" 44 -4250 750)
+      (pin "Rect[T]Pad_1500x270_um" 45 -4250 1250)
+      (pin "Rect[T]Pad_1500x270_um" 46 -4250 1750)
+      (pin "Rect[T]Pad_1500x270_um" 47 -4250 2250)
+      (pin "Rect[T]Pad_1500x270_um" 48 -4250 2750)
     )
     (image "singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
-      (pin "Rect[T]Pad_600x600_um" 1 -1910 3530)
-      (pin "Rect[T]Pad_600x600_um" 2 -630 3530)
-      (pin "Rect[T]Pad_600x600_um" 3 630 3530)
-      (pin "Rect[T]Pad_600x600_um" 4 1900 3530)
-      (pin "Rect[T]Pad_600x600_um" 5 1900 -3530)
-      (pin "Rect[T]Pad_600x600_um" 6 630 -3530)
-      (pin "Rect[T]Pad_600x600_um" 7 -630 -3530)
-      (pin "Rect[T]Pad_600x600_um" 8 -1910 -3530)
+      (pin "Rect[T]Pad_630x2250_um" 1 -1910 3530)
+      (pin "Rect[T]Pad_630x2250_um" 2 -630 3530)
+      (pin "Rect[T]Pad_630x2250_um" 3 630 3530)
+      (pin "Rect[T]Pad_630x2250_um" 4 1900 3530)
+      (pin "Rect[T]Pad_630x2250_um" 5 1900 -3530)
+      (pin "Rect[T]Pad_630x2250_um" 6 630 -3530)
+      (pin "Rect[T]Pad_630x2250_um" 7 -630 -3530)
+      (pin "Rect[T]Pad_630x2250_um" 8 -1910 -3530)
     )
   )
   (network

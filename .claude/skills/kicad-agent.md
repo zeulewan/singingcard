@@ -9,8 +9,11 @@ Use this skill when user provides PCB project requirements.
 ## Workflow Overview
 
 ```
-Requirements → Component Selection → Library Import → Schematic → Layout → Routing → DRC → Export → Order
+Requirements → Component Selection → Library Import → Schematic (Netlist) → PCB Creation →
+Visual Check → Manual Fix → Auto-Route → Visual Check → Manual Fix → DRC → Export → Order
 ```
+
+**Key Principle:** Always render and visually inspect after algorithmic steps, then fix manually as needed.
 
 ## Phase 1: Requirements Gathering
 
@@ -53,7 +56,7 @@ For each required component:
    - Extended parts: $3 setup fee per unique part
    - If out of stock: find alternative
 
-**Common Issue:** Many specialty chips (e.g., MH2024K, WT2003S, JQ6500) are NOT on LCSC.
+**Common Issue:** Many specialty chips (e.g., MH2024K, WT2003S, JQ6500, ISD1820) are NOT on LCSC.
 Always verify availability before committing to a design.
 
 ## Phase 2.5: Library Import with easyeda2kicad
@@ -75,11 +78,17 @@ easyeda2kicad --lcsc_id CXXXXXX --full --output libs/project.kicad_sym
 - `libs/project.pretty/` - Footprint library folder
 - `libs/project.3dshapes/` - 3D models (.wrl and .step)
 
+**IMPORTANT: Upgrade footprints to KiCad 8/9 format:**
+```bash
+kicad-cli fp upgrade --force libs/project.pretty
+```
+
 **Important notes:**
 - Each `--full` call adds to the same library file
 - Some parts may fail to import (no EasyEDA data)
 - For generic parts (passives, connectors), use KiCad built-in libraries
 - Symbols include LCSC Part property for BOM generation
+- easyeda2kicad outputs older format - MUST upgrade with kicad-cli
 
 **Verify imports:**
 ```bash
@@ -88,82 +97,114 @@ ls libs/project.pretty/                   # List footprints
 ls libs/project.3dshapes/                 # List 3D models
 ```
 
-## Phase 3: Schematic Design
+## Phase 3: Schematic Design with SKiDL
 
-Using SKiDL (code-first approach):
+Using SKiDL (code-first approach) to generate netlist:
 
 ```python
 from skidl import *
+set_default_tool(KICAD8)
+lib_search_paths[KICAD8].append('libs')
 
-# Example structure
-mcu = Part('MCU_Microchip_ATmega', 'ATmega328P-AU',
-           footprint='Package_QFP:TQFP-32_7x7mm_P0.8mm')
+# Import custom parts from project library
+mcu = Part('project', 'PartName', footprint='project:FootprintName', ref='U1')
 
 # Connect power
-mcu['VCC'] += Net('VCC')
+mcu['VCC'] += Net('+3V')
 mcu['GND'] += Net('GND')
 
-# Generate netlist
+# Generate netlist (SKiDL doesn't support KiCad 8 schematic generation)
 generate_netlist(file_='project.net')
 ```
 
-**Verification:**
-1. Run ERC: `kicad-cli sch erc --output erc.json --format json project.kicad_sch`
-2. Review and fix any errors
+**IMPORTANT:** SKiDL does NOT generate KiCad 8 schematics - only netlists.
+The netlist contains all connectivity info needed for PCB generation.
 
-## Phase 4: PCB Layout
+## Phase 4: PCB Creation from Netlist
 
-1. Set board outline based on user dimensions
-2. Place components:
-   - MCU/main IC in center
+Use custom Python script to create PCB from netlist:
+
+1. Parse netlist for components, footprints, and nets
+2. Load footprints from library files
+3. Place components algorithmically:
+   - Main ICs in center
    - Connectors on edges
    - Decoupling caps near IC power pins
    - Keep sensitive analog away from digital
-3. Document placement decisions in `kicad/design-log.md`
+4. Assign nets to pads
+5. Write KiCad PCB file
+
+**CRITICAL: Visual verification after placement:**
+```bash
+kicad-cli pcb render --output renders/top.png --side top --width 2048 --height 1536 --quality high project.kicad_pcb
+kicad-cli pcb render --output renders/perspective.png --perspective --rotate "45,0,45" --zoom 1.5 --quality high project.kicad_pcb
+```
+
+Review renders:
+- Check component placement makes sense
+- Verify all components are present
+- Check for overlapping footprints
+- Verify 3D models are loading
+
+If issues found, manually adjust positions in `create_pcb.py` and regenerate.
 
 ## Phase 5: Routing
 
+**Note:** kicad-cli does NOT have DSN export. Use custom `export_dsn.py` script.
+
 1. Export DSN for auto-routing:
 ```bash
-kicad-cli pcb export dsn --output board.dsn project.kicad_pcb
+python export_dsn.py  # Creates project.dsn
 ```
 
-2. Run FreeRouting (if installed):
+2. Run FreeRouting:
 ```bash
-java -jar freerouting.jar -de board.dsn -do board.ses
+# Download FreeRouting if not present
+curl -L -o freerouting.jar "https://github.com/freerouting/freerouting/releases/download/v2.0.1/freerouting-2.0.1.jar"
+
+# Auto-route (headless mode)
+java -jar freerouting.jar -de project.dsn -do project.ses
 ```
 
-3. Import SES back into KiCad
+3. Import SES back into KiCad (requires custom script or manual import)
 
-4. Manual cleanup if needed
+4. **CRITICAL: Visual verification after routing:**
+```bash
+kicad-cli pcb render --output renders/top_routed.png --side top --width 2048 --height 1536 project.kicad_pcb
+```
+
+Review renders:
+- Check all nets are connected
+- Look for routing issues
+- Verify power traces are wide enough
 
 ## Phase 6: Design Rule Check
 
 ```bash
-kicad-cli pcb drc --output drc.json --format json --exit-code-violations project.kicad_pcb
+kicad-cli pcb drc --output drc.json --format json project.kicad_pcb
 ```
 
-**Fix common issues:**
-- Clearance violations: adjust trace spacing
-- Unconnected nets: complete routing
-- Silk overlap: move silkscreen text
+Parse results:
+```bash
+cat drc.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(f'Violations: {len(d.get(\"violations\",[]))}'); print(f'Unconnected: {len(d.get(\"unconnected_items\",[]))}')"
+```
 
-## Phase 7: Visual Verification
+**Common DRC issues:**
+- `lib_footprint_issues`: Footprint library paths - usually cosmetic, ignore if footprints are embedded
+- `silk_over_copper`: Silkscreen clipped - minor cosmetic issue
+- `silk_overlap`: Text overlap - move silkscreen elements
+- Unconnected items: Need to complete routing
 
-Generate renders for inspection:
+## Phase 7: Final Visual Verification
+
+Generate comprehensive renders:
 
 ```bash
-# Top view
-kicad-cli pcb render --output kicad/renders/top.png --side top --width 2048 --height 2048 project.kicad_pcb
-
-# Bottom view
-kicad-cli pcb render --output kicad/renders/bottom.png --side bottom --width 2048 --height 2048 project.kicad_pcb
+# All views
+kicad-cli pcb render --output renders/top.png --side top --width 2048 --height 1536 --quality high project.kicad_pcb
+kicad-cli pcb render --output renders/bottom.png --side bottom --width 2048 --height 1536 --quality high project.kicad_pcb
+kicad-cli pcb render --output renders/perspective.png --perspective --rotate "45,0,45" --zoom 1.5 --quality high project.kicad_pcb
 ```
-
-**Check:**
-- Component placement looks correct
-- Silkscreen readable
-- No obvious routing issues
 
 ## Phase 8: Fabrication Export
 
@@ -173,11 +214,17 @@ Using KiBot (recommended):
 kibot -c kibot.yaml -b project.kicad_pcb
 ```
 
-Output files for JLCPCB:
-- Gerber files (all layers)
-- Drill files
-- BOM (CSV format)
-- CPL/Pick-and-Place (CSV format)
+Or use kicad-cli directly:
+```bash
+# Gerbers
+kicad-cli pcb export gerbers --output output/gerbers/ project.kicad_pcb
+
+# Drill files
+kicad-cli pcb export drill --output output/ project.kicad_pcb
+
+# Position file (for assembly)
+kicad-cli pcb export pos --output output/project-pos.csv project.kicad_pcb
+```
 
 ## Phase 9: Ordering
 
@@ -192,24 +239,34 @@ Output files for JLCPCB:
 - Shipping method
 - Total cost confirmation
 
-## File Locations
+## File Structure
 
 ```
-kicad/
-├── specs.md              # Project requirements
-├── component-selection.md # Selected parts
-├── design-log.md         # Design decisions
-├── project.kicad_pro     # KiCad project
-├── project.kicad_sch     # Schematic
-├── project.kicad_pcb     # PCB layout
-├── kibot.yaml            # KiBot config
-├── output/               # Generated files
-│   ├── gerbers/          # Gerber files
-│   ├── bom.csv           # Bill of materials
-│   └── cpl.csv           # Pick and place
-└── renders/              # Visual inspection
-    ├── top.png
-    └── bottom.png
+project/
+├── venv/                     # Python virtual environment
+├── freerouting.jar           # Auto-routing tool
+├── .claude/skills/
+│   └── kicad-agent.md       # This skill file
+├── kicad/
+│   ├── specs.md             # Project requirements
+│   ├── component-selection.md # Selected parts
+│   ├── schematic-design.md  # Schematic documentation
+│   ├── design-log.md        # Design decisions
+│   ├── libs/
+│   │   ├── project.kicad_sym     # Symbol library
+│   │   ├── project.pretty/       # Footprint library
+│   │   └── project.3dshapes/     # 3D models
+│   ├── create_pcb.py        # PCB generation script
+│   ├── export_dsn.py        # DSN export script
+│   ├── project.net          # SKiDL netlist
+│   ├── project.dsn          # Specctra DSN for routing
+│   ├── project.ses          # Routed session file
+│   ├── project.kicad_pro    # KiCad project
+│   ├── project.kicad_sch    # Schematic (may be minimal)
+│   ├── project.kicad_pcb    # PCB layout
+│   ├── drc-report.json      # DRC results
+│   ├── renders/             # Visual inspection images
+│   └── output/              # Fabrication files
 ```
 
 ## Error Recovery
@@ -217,21 +274,29 @@ kicad/
 **Component out of stock:**
 → Search for pin-compatible alternative
 → Update component-selection.md
-→ Re-run schematic
+→ Re-run schematic generation
 
 **DRC failures:**
-→ Read error details from JSON
-→ Fix in PCB editor
+→ Parse JSON for specific issues
+→ Fix in PCB generation script
+→ Regenerate PCB
 → Re-run DRC until clean
 
 **Routing incomplete:**
+→ Check DSN export captured all nets
 → Try different FreeRouting settings
-→ Or route manually via MCP server
+→ Manual routing may be needed for complex sections
 
-## Context Management
+**3D models not showing:**
+→ Check model paths are relative to project
+→ Use ${KIPRJMOD}/ prefix for project-relative paths
+→ Verify .wrl/.step files exist
 
-This is a long project. To maintain context:
-- Keep `specs.md` updated with current requirements
-- Log decisions in `design-log.md`
-- Reference `workflow-reference.md` for commands
-- Check `tool-setup.md` for tool versions
+## Best Practices
+
+1. **Always render after algorithmic changes** - Don't blindly trust generated files
+2. **Commit frequently** - Save working states before major changes
+3. **Document decisions** - Update design-log.md with rationale
+4. **Verify LCSC availability early** - Avoid redesign later
+5. **Keep skill file updated** - Document new learnings and workarounds
+6. **Use screenshots for debugging** - Visual inspection catches many issues
