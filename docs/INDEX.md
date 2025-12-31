@@ -26,6 +26,7 @@ Master reference linking each PCB development phase to its documentation.
 
 | Document | Description |
 |----------|-------------|
+| [`KICAD-VERSION.md`](KICAD-VERSION.md) | **KiCad 9 version notes, library formats, CLI commands** |
 | [`tool-setup.md`](tool-setup.md) | Installed tools and versions |
 | [`workflow-reference.md`](workflow-reference.md) | Quick command reference |
 | [`notes.md`](notes.md) | Miscellaneous learnings |
