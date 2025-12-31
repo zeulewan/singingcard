@@ -15,8 +15,8 @@ _autosave-*
 *.kicad_sch-bak
 fp-info-cache
 
-# Output files (can be regenerated)
-kicad/output/
+# Output files - keeping for JLCPCB submission
+# kicad/output/
 # kicad/renders/ - keeping renders for visual debugging
 
 # OS
