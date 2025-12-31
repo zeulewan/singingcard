@@ -34,3 +34,5 @@ Thumbs.db
 # Large binaries
 *.jar
 *.step
+# Allow exported board.step in images
+!images/board.step
