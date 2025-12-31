@@ -531,34 +531,31 @@ def create_symbol_instance(ref, comp, project_uuid):
 def create_global_label_with_wire(net_name, x, y, angle=0):
     """Generate global label offset from pin position with connecting wire.
 
-    Pin angle indicates direction wire extends FROM pin endpoint AWAY from component body:
-    - 0: wire goes right (pin is on left side of IC, wire extends rightward)
-    - 180: wire goes left (pin is on right side of IC, wire extends leftward)
-    - 90: wire goes up (pin is on bottom of component, wire extends upward)
-    - 270: wire goes down (pin is on top of component, wire extends downward)
+    Pin angle indicates direction pin BODY extends FROM connection point TOWARD component:
+    - 0: pin body extends right (pin is on left side of IC)
+    - 180: pin body extends left (pin is on right side of IC)
+    - 90: pin body extends down in screen coords (pin is at top of 2-pin component)
+    - 270: pin body extends up in screen coords (pin is at bottom of 2-pin component)
 
-    Note: In KiCad schematics, Y increases downward (screen coordinates).
-    Standard math: angle 90 = up, angle 270 = down
-    Screen coords: up = -Y, down = +Y
-
-    Label is placed at the end of the wire (offset from pin in wire direction).
-    Label arrow points back toward the pin (opposite of pin angle).
+    Label is placed OPPOSITE to pin body direction (away from component).
+    Label arrow points toward pin (same as pin angle).
+    Wire connects pin to label.
     """
-    # Offset label in the direction the wire extends (same as pin angle direction)
-    # Pin angle indicates direction wire goes FROM pin AWAY from component body
+    # Pin angle indicates direction pin BODY extends (toward component, not away)
+    # So we offset OPPOSITE to pin angle to place label away from component
     offset = 5.08  # Offset distance in mm
     angle_rad = math.radians(angle)
 
-    # Move in direction of pin angle (away from component)
-    # For angle 0 (right): dx = +offset, dy = 0
-    # For angle 180 (left): dx = -offset, dy = 0
-    # For angle 90 (up in standard math, but KiCad Y is down): dy = -offset
-    # For angle 270 (down): dy = +offset
-    label_x = x + offset * math.cos(angle_rad)
+    # Move OPPOSITE to pin body direction (away from component)
+    # For angle 0 (body extends right): label goes LEFT (x - offset)
+    # For angle 180 (body extends left): label goes RIGHT (x + offset)
+    # For angle 90 (body extends down in screen coords): label goes UP (y - offset)
+    # For angle 270 (body extends up in screen coords): label goes DOWN (y + offset)
+    label_x = x - offset * math.cos(angle_rad)
     label_y = y - offset * math.sin(angle_rad)
 
-    # Label angle: arrow points toward pin (opposite of pin angle)
-    label_angle = (int(angle) + 180) % 360
+    # Label arrow points toward pin (same direction as pin body)
+    label_angle = int(angle)
 
     # Wire from pin to label endpoint
     wire = f'''	(wire

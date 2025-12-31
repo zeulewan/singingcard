@@ -223,37 +223,36 @@ Options for schematic generation:
 Labels should be placed offset from pins with wires connecting them.
 
 Key concepts:
-- **Pin angle** indicates direction wire goes FROM pin AWAY from component body
-  - 0: wire goes right (left-side pin)
-  - 180: wire goes left (right-side pin)
-  - 90: wire goes up (bottom pin) - note: standard math convention
-  - 270: wire goes down (top pin)
+- **Pin angle** indicates direction pin BODY extends FROM connection point TOWARD component
+  - 0: pin body extends right (left-side IC pin, label goes LEFT)
+  - 180: pin body extends left (right-side IC pin, label goes RIGHT)
+  - 90: pin body extends down in screen coords (top 2-pin, label goes UP)
+  - 270: pin body extends up in screen coords (bottom 2-pin, label goes DOWN)
 - **KiCad Y-axis** increases downward (screen coordinates)
-- **Label position** should be offset IN the direction of the pin angle (away from component)
-- **Label arrow** should point TOWARD the pin (opposite of pin angle)
+- **Label position** should be offset OPPOSITE to pin body direction (away from component)
+- **Label arrow** should point TOWARD the pin (same as pin angle)
 
 ```python
 def create_global_label_with_wire(net_name, x, y, angle):
     offset = 5.08  # mm
 
-    # Offset in direction of pin angle (away from component)
-    # Note: Y formula has minus because KiCad Y is inverted vs standard math
-    label_x = x + offset * math.cos(math.radians(angle))
+    # Offset OPPOSITE to pin body direction (away from component)
+    label_x = x - offset * math.cos(math.radians(angle))
     label_y = y - offset * math.sin(math.radians(angle))
 
-    # Label arrow points toward pin (opposite of pin angle)
-    label_angle = (angle + 180) % 360
+    # Label arrow points toward pin (same as pin angle)
+    label_angle = angle
 
     # Wire from pin to label
     wire = f'(wire (pts (xy {x} {y}) (xy {label_x} {label_y})) ...)'
 
-    # Label with arrow pointing back toward pin
+    # Label pointing toward pin
     label = f'(global_label "{net_name}" (at {label_x} {label_y} {label_angle}) ...)'
 
     return wire + label
 ```
 
-**Common mistake:** Using `y + offset * sin(angle)` instead of `y - offset * sin(angle)`. This causes labels to be placed toward the component instead of away from it, making them overlap with pins.
+**Key insight:** The pin angle points TOWARD the component body. To place labels AWAY from the body, offset in the OPPOSITE direction (hence the minus signs in both X and Y formulas).
 
 ### 3.5 Run ERC (Electrical Rules Check)
 
