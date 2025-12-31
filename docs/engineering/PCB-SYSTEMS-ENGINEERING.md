@@ -24,7 +24,7 @@ A deterministic workflow for PCB development projects following NASA/DoD/IEEE sy
 - Footprints: `.kicad_mod` files in `.pretty/` folders
 - 3D Models: `.wrl`, `.step` in `.3dshapes/` folders
 
-See [`KICAD-VERSION.md`](../KICAD-VERSION.md) for detailed version notes.
+See [`KICAD-VERSION.md`](KICAD-VERSION.md) for detailed version notes.
 
 ---
 

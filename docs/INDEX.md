@@ -1,66 +1,57 @@
 # Documentation Index
 
-Master reference linking each PCB development phase to its documentation.
+## Folder Structure
 
-**Process Reference:** [`../process/PCB-SYSTEMS-ENGINEERING.md`](../process/PCB-SYSTEMS-ENGINEERING.md)
-
----
-
-## Phase Documents
-
-| Phase | Document | Description |
-|-------|----------|-------------|
-| **0. Requirements** | [`PRD.md`](PRD.md) | Product Requirements Document - project specs |
-| **1. ConOps** | *Not yet created* | Concept of Operations - usage scenarios |
-| **2. System Design** | [`schematic-design.md`](schematic-design.md) | Block diagram and interface definitions |
-| **3. Component Selection** | [`component-selection.md`](component-selection.md) | BOM with LCSC parts research |
-| **3.5. Pin Allocation** | [`PIN-CONNECTIONS.md`](PIN-CONNECTIONS.md) | Complete pin mapping from datasheets |
-| **5. Schematic** | `../kicad/*.kicad_sch` | KiCad schematic files |
-| **7. PCB Layout** | `../kicad/*.kicad_pcb` | KiCad PCB files |
-| **8. DFM Review** | *Generated at runtime* | DRC/ERC reports |
-| **10. Manufacturing** | `../kicad/jlcpcb/` | Gerbers, BOM, CPL files |
+| Folder | Purpose |
+|--------|---------|
+| `engineering/` | General PCB engineering process (reusable across projects) |
+| `project/` | Project-specific documentation |
 
 ---
 
-## Reference Documents
+## Engineering Documentation
+
+General process and reference docs applicable to any PCB project.
 
 | Document | Description |
 |----------|-------------|
-| [`KICAD-VERSION.md`](KICAD-VERSION.md) | **KiCad 9 version notes, library formats, CLI commands** |
-| [`tool-setup.md`](tool-setup.md) | Installed tools and versions |
-| [`workflow-reference.md`](workflow-reference.md) | Quick command reference |
-| [`notes.md`](notes.md) | Miscellaneous learnings |
-| [`status.md`](status.md) | Current project status |
+| [`engineering/PCB-SYSTEMS-ENGINEERING.md`](engineering/PCB-SYSTEMS-ENGINEERING.md) | **Master process** - V-model lifecycle, review gates |
+| [`engineering/KICAD-VERSION.md`](engineering/KICAD-VERSION.md) | KiCad 9 formats, library structure, CLI commands |
+| [`engineering/TOOLING-WISHLIST.md`](engineering/TOOLING-WISHLIST.md) | Desired automation tools |
+| [`engineering/workflow-reference.md`](engineering/workflow-reference.md) | Quick command reference |
+| [`engineering/tool-setup.md`](engineering/tool-setup.md) | Installed tools and versions |
 
 ---
 
-## Process Documents
+## Project Documentation
 
-| Document | Description |
-|----------|-------------|
-| [`process/PCB-SYSTEMS-ENGINEERING.md`](process/PCB-SYSTEMS-ENGINEERING.md) | Master process definition |
-| [`process/TOOLING-WISHLIST.md`](process/TOOLING-WISHLIST.md) | Desired automation tools |
-| [`process/user-prompts.md`](process/user-prompts.md) | User prompt history |
-| [`process/research/`](process/research/) | Historical research documents |
+Specific to this singing birthday card project.
+
+| Document | Phase | Description |
+|----------|-------|-------------|
+| [`project/PRD.md`](project/PRD.md) | 0 | Product Requirements Document |
+| [`project/component-selection.md`](project/component-selection.md) | 3 | BOM with LCSC parts research |
+| [`project/PIN-CONNECTIONS.md`](project/PIN-CONNECTIONS.md) | 3.5 | Complete pin mapping from datasheets |
+| [`project/schematic-design.md`](project/schematic-design.md) | 5 | Block diagram, interface definitions |
+| [`project/status.md`](project/status.md) | - | Current project status |
+| [`project/notes.md`](project/notes.md) | - | Miscellaneous learnings |
+| [`project/user-prompts.md`](project/user-prompts.md) | - | User prompt history |
+| [`project/research/`](project/research/) | - | Historical research documents |
 
 ---
 
-## Skills (Claude Code)
-
-Project-level skills in `.claude/skills/`:
+## Skills (`.claude/skills/`)
 
 | Skill | Phase | Description |
 |-------|-------|-------------|
-| `pcb-master.md` | - | Master orchestrator, invokes other skills |
+| `pcb-master.md` | - | Master orchestrator |
 | `pcb-init.md` | 0 | Project initialization |
-| `pcb-requirements.md` | 1 | ConOps, requirements gathering |
+| `pcb-requirements.md` | 1 | Requirements gathering |
 | `pcb-system-design.md` | 2 | Block diagram, ICD |
-| `pcb-components.md` | 3 | JLCPCB research, BOM |
-| `pcb-pin-allocation.md` | 3.5 | Datasheet analysis, pin mapping |
+| `pcb-components.md` | 3 | JLCPCB research |
+| `pcb-pin-allocation.md` | 3.5 | Datasheet analysis |
 | `pcb-schematic.md` | 5 | Schematic design |
 | `pcb-layout.md` | 7 | PCB routing |
 | `pcb-dfm.md` | 8 | DFM review |
 | `pcb-manufacture.md` | 10 | Gerber generation |
 | `pcb-test.md` | 11 | Verification |
-| `kicad-agent.md` | - | Legacy: Full KiCad workflow |
-| `kicad-ci-debug.md` | - | CI/CD debugging |
