@@ -1,0 +1,34 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.Python
+
+# KiCad
+*-backups/
+*.kicad_prl
+*-bak
+*~
+_autosave-*
+*.kicad_pcb-bak
+*.kicad_sch-bak
+fp-info-cache
+
+# Output files (can be regenerated)
+kicad/output/
+kicad/renders/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary
+*.tmp
+*.temp
