@@ -1,12 +1,12 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2025-12-31T00:57:40-0500",
+    "date": "2025-12-31T01:08:55-0500",
     "kicad_version": "9.0.6",
     "sheets": [
         {
             "path": "/",
-            "uuid_path": "/e8d49f5c-9c97-44a2-bd86-b44a82cebe2e",
+            "uuid_path": "/3ff51d03-bc7f-4950-b549-646f36be3f16",
             "violations": [
                 {
                     "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
@@ -14,10 +14,10 @@
                         {
                             "description": "Symbol R2 [R]",
                             "pos": {
-                                "x": 0.6096,
-                                "y": 0.508
+                                "x": 0.889,
+                                "y": 0.6858
                             },
-                            "uuid": "93914024-7d70-4a9a-bda4-7080bd45be3f"
+                            "uuid": "245ee2fe-4f30-4694-af77-7afd5286282a"
                         }
                     ],
                     "severity": "warning",
@@ -29,10 +29,10 @@
                         {
                             "description": "Symbol SW1 [SW_Push]",
                             "pos": {
-                                "x": 0.4064,
-                                "y": 0.762
+                                "x": 0.508,
+                                "y": 1.0922
                             },
-                            "uuid": "f23bf5da-2338-474c-babb-ef8f35a0878e"
+                            "uuid": "7059a8b7-02b8-4e2a-87db-b7460b02d3de"
                         }
                     ],
                     "severity": "warning",
@@ -44,25 +44,10 @@
                         {
                             "description": "Symbol R3 [R]",
                             "pos": {
-                                "x": 0.8128,
-                                "y": 0.508
+                                "x": 1.27,
+                                "y": 0.6858
                             },
-                            "uuid": "0eb2cc47-4990-4185-b93c-4c2792cb24b5"
-                        }
-                    ],
-                    "severity": "warning",
-                    "type": "footprint_link_issues"
-                },
-                {
-                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
-                    "items": [
-                        {
-                            "description": "Symbol R4 [R]",
-                            "pos": {
-                                "x": 1.016,
-                                "y": 0.508
-                            },
-                            "uuid": "96b07217-6b51-4652-8231-37af7082d11d"
+                            "uuid": "11642288-2363-4faf-b68a-0fa9e7f0456b"
                         }
                     ],
                     "severity": "warning",
@@ -74,37 +59,29 @@
                         {
                             "description": "Symbol J2 [Conn_01x02]",
                             "pos": {
-                                "x": 0.6096,
-                                "y": 0.9906
+                                "x": 0.508,
+                                "y": 1.4986
                             },
-                            "uuid": "9c62fa2e-2499-4d89-9429-87ccfbd1d780"
+                            "uuid": "afb76661-4bcb-47db-82d3-a020f33de359"
                         }
                     ],
                     "severity": "warning",
                     "type": "footprint_link_issues"
                 },
                 {
-                    "description": "Both GND and GPIO0 are attached to the same items; GND will be used in the netlist",
+                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
                     "items": [
                         {
-                            "description": "Global Label 'GND'",
+                            "description": "Symbol R4 [R]",
                             "pos": {
-                                "x": 2.794,
-                                "y": 0.8636
+                                "x": 1.651,
+                                "y": 0.6858
                             },
-                            "uuid": "236f4bcf-7dec-4430-87b5-d33c4b61bfa2"
-                        },
-                        {
-                            "description": "Global Label 'GPIO0'",
-                            "pos": {
-                                "x": 0.9906,
-                                "y": 0.7747
-                            },
-                            "uuid": "5954d5c6-5920-4036-a8d0-9bb92f50ff43"
+                            "uuid": "0971181f-783c-4287-bda3-96b97b1cc9f4"
                         }
                     ],
                     "severity": "warning",
-                    "type": "multiple_net_names"
+                    "type": "footprint_link_issues"
                 },
                 {
                     "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
@@ -112,10 +89,10 @@
                         {
                             "description": "Symbol C1 [C]",
                             "pos": {
-                                "x": 0.4064,
-                                "y": 1.397
+                                "x": 0.508,
+                                "y": 2.4892
                             },
-                            "uuid": "ccb7598f-a159-4e3c-8f21-1488c49c3229"
+                            "uuid": "d6183cd5-1f32-43e6-9c6c-214449aa9c11"
                         }
                     ],
                     "severity": "warning",
@@ -127,10 +104,10 @@
                         {
                             "description": "Symbol C2 [C]",
                             "pos": {
-                                "x": 0.5588,
-                                "y": 1.397
+                                "x": 0.889,
+                                "y": 2.4892
                             },
-                            "uuid": "9b5d2986-3f42-46ce-806b-5778c156bfbe"
+                            "uuid": "04c5e4c1-eff3-4f4d-a625-23dbe36f4f68"
                         }
                     ],
                     "severity": "warning",
@@ -142,40 +119,10 @@
                         {
                             "description": "Symbol C3 [C]",
                             "pos": {
-                                "x": 0.7112,
-                                "y": 1.397
+                                "x": 1.27,
+                                "y": 2.4892
                             },
-                            "uuid": "2cf9b4f6-4d56-4b4e-81d2-768341518d80"
-                        }
-                    ],
-                    "severity": "warning",
-                    "type": "footprint_link_issues"
-                },
-                {
-                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
-                    "items": [
-                        {
-                            "description": "Symbol C4 [C]",
-                            "pos": {
-                                "x": 0.8636,
-                                "y": 1.397
-                            },
-                            "uuid": "51f9c554-65d0-4302-b616-a22bbd15a807"
-                        }
-                    ],
-                    "severity": "warning",
-                    "type": "footprint_link_issues"
-                },
-                {
-                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
-                    "items": [
-                        {
-                            "description": "Symbol C5 [C]",
-                            "pos": {
-                                "x": 1.016,
-                                "y": 1.397
-                            },
-                            "uuid": "31f69c0d-2a77-4f6e-9f35-013ba0a801b5"
+                            "uuid": "6289ce40-e58a-46a0-a044-0bee8ac935fc"
                         }
                     ],
                     "severity": "warning",
@@ -187,14 +134,44 @@
                         {
                             "description": "Symbol LS1 [Speaker]",
                             "pos": {
-                                "x": 1.8034,
-                                "y": 0.508
+                                "x": 2.794,
+                                "y": 0.6858
                             },
-                            "uuid": "5bd67cd3-8bf1-4658-9752-e8fb3d10466b"
+                            "uuid": "6765c4df-d58c-4d71-9460-bd87453d2136"
                         }
                     ],
                     "severity": "warning",
                     "type": "lib_symbol_issues"
+                },
+                {
+                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C4 [C]",
+                            "pos": {
+                                "x": 1.651,
+                                "y": 2.4892
+                            },
+                            "uuid": "044f0d01-9bff-45af-8bb1-7797d8b4f097"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C5 [C]",
+                            "pos": {
+                                "x": 2.032,
+                                "y": 2.4892
+                            },
+                            "uuid": "132e0be2-3b2f-4bfe-8ac0-b37899b5a73e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
                 },
                 {
                     "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
@@ -202,10 +179,10 @@
                         {
                             "description": "Symbol C6 [C]",
                             "pos": {
-                                "x": 2.5146,
-                                "y": 0.8128
+                                "x": 3.5814,
+                                "y": 1.1938
                             },
-                            "uuid": "93acffe2-9480-4ce0-af92-067b20f256b7"
+                            "uuid": "1f5351d9-b426-4006-9005-e4342209238e"
                         }
                     ],
                     "severity": "warning",

@@ -45,7 +45,7 @@ def get_2pin_positions():
         '2': (0, -5.08, 90),
     }
 
-# Component definitions
+# Component definitions - spread out for A3 page (grid-aligned to 2.54mm)
 COMPONENTS = {
     'U1': {
         'name': 'ISD3900FYI',
@@ -53,7 +53,7 @@ COMPONENTS = {
         'footprint': 'singingcard:LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL',
         'description': 'Audio record/playback IC',
         'num_pins': 48,
-        'position': (119.38, 99.06),  # Grid aligned
+        'position': (200.66, 149.86),  # Grid aligned (79x59 grid units)
     },
     'U2': {
         'name': 'W25Q16JVSSIQ',
@@ -61,7 +61,7 @@ COMPONENTS = {
         'footprint': 'singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL',
         'description': 'SPI Flash memory',
         'num_pins': 8,
-        'position': (220.98, 81.28),  # Grid aligned
+        'position': (330.2, 119.38),  # Grid aligned
     },
     'BT1': {
         'name': 'CR2032',
@@ -69,7 +69,7 @@ COMPONENTS = {
         'footprint': 'singingcard:BAT-TH_CR2032-BS-6-1',
         'description': 'CR2032 battery holder',
         'num_pins': 2,
-        'position': (279.4, 99.06),  # Grid aligned
+        'position': (381.0, 149.86),  # Grid aligned
     },
     'R1': {
         'name': 'LDR',
@@ -77,7 +77,7 @@ COMPONENTS = {
         'footprint': 'singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5',
         'description': 'Light dependent resistor',
         'num_pins': 2,
-        'position': (40.64, 50.8),  # Grid aligned
+        'position': (50.8, 68.58),  # Grid aligned (20x27)
     },
     'R2': {
         'name': 'R',
@@ -85,7 +85,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (60.96, 50.8),  # Grid aligned
+        'position': (88.9, 68.58),  # 15 grid units spacing
     },
     'R3': {
         'name': 'R',
@@ -93,7 +93,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (81.28, 50.8),  # Grid aligned
+        'position': (127.0, 68.58),
     },
     'R4': {
         'name': 'R',
@@ -101,7 +101,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (101.6, 50.8),  # Grid aligned
+        'position': (165.1, 68.58),
     },
     'C1': {
         'name': 'C',
@@ -109,7 +109,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (40.64, 139.7),
+        'position': (50.8, 248.92),  # Bottom row
     },
     'C2': {
         'name': 'C',
@@ -117,7 +117,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (55.88, 139.7),
+        'position': (88.9, 248.92),
     },
     'C3': {
         'name': 'C',
@@ -125,7 +125,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (71.12, 139.7),
+        'position': (127.0, 248.92),
     },
     'C4': {
         'name': 'C',
@@ -133,7 +133,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0805_2012Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (86.36, 139.7),
+        'position': (165.1, 248.92),
     },
     'C5': {
         'name': 'C',
@@ -141,7 +141,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0805_2012Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (101.6, 139.7),
+        'position': (203.2, 248.92),
     },
     'C6': {
         'name': 'C',
@@ -149,7 +149,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (251.46, 81.28),
+        'position': (358.14, 119.38),  # Near U2
     },
     'LS1': {
         'name': 'Speaker',
@@ -157,7 +157,7 @@ COMPONENTS = {
         'footprint': 'speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL',
         'description': 'SMD Speaker 8ohm 700mW',
         'num_pins': 2,
-        'position': (180.34, 50.8),
+        'position': (279.4, 68.58),  # Top right
     },
     'J2': {
         'name': 'Conn_01x02',
@@ -165,7 +165,7 @@ COMPONENTS = {
         'footprint': 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical',
         'description': 'Audio input connector',
         'num_pins': 2,
-        'position': (60.96, 99.06),
+        'position': (50.8, 149.86),  # Left of U1
     },
     'SW1': {
         'name': 'SW_Push',
@@ -173,7 +173,7 @@ COMPONENTS = {
         'footprint': 'Button_Switch_SMD:SW_SPST_TL3342',
         'description': 'Push button switch',
         'num_pins': 2,
-        'position': (40.64, 76.2),
+        'position': (50.8, 109.22),  # Left side
     },
 }
 
@@ -540,7 +540,7 @@ def create_symbol_instance(ref, comp, project_uuid):
 '''
     return sym
 
-def create_global_label_with_wire(net_name, x, y, angle=0):
+def create_global_label_with_wire(net_name, x, y, angle=0, pin_num=0):
     """Generate global label offset from pin position with connecting wire.
 
     Pin angle indicates direction pin BODY extends FROM connection point TOWARD component:
@@ -555,7 +555,14 @@ def create_global_label_with_wire(net_name, x, y, angle=0):
     """
     # Pin angle indicates direction pin BODY extends (toward component, not away)
     # So we offset OPPOSITE to pin angle to place label away from component
-    offset = 7.62  # Offset distance in mm (3 grid units for better spacing)
+    # Use larger offset for horizontal pins (ICs) to spread labels apart
+    # Stagger by pin number mod 3 for better distribution
+    if angle == 0 or angle == 180:
+        base_offset = 5.08  # 2 grid units base (closer for clean look)
+        stagger_level = pin_num % 4  # 4 levels for more spread
+        offset = base_offset + stagger_level * 12.7  # 0, 5, 10, or 15 extra grid units
+    else:
+        offset = 5.08  # 2 grid units for 2-pin vertical components
     angle_rad = math.radians(angle)
 
     # Move OPPOSITE to pin body direction (away from component)
@@ -566,8 +573,12 @@ def create_global_label_with_wire(net_name, x, y, angle=0):
     label_x = x - offset * math.cos(angle_rad)
     label_y = y - offset * math.sin(angle_rad)
 
-    # Label arrow points toward pin (same direction as pin body)
-    label_angle = int(angle)
+    # Label flag should point AWAY from wire direction (opposite of pin angle)
+    # This prevents wire from overlapping with the label flag graphic
+    if angle == 0 or angle == 180:
+        label_angle = (int(angle) + 180) % 360  # Flip horizontal labels
+    else:
+        label_angle = int(angle)  # Keep vertical labels as-is
 
     # Wire from pin to label endpoint
     wire = f'''	(wire
@@ -623,7 +634,7 @@ def main():
 	(generator "create_schematic_v5.py")
 	(generator_version "9.0")
 	(uuid "{project_uuid}")
-	(paper "A4")
+	(paper "A3")
 	(title_block
 		(title "Singing Birthday Card Module")
 		(date "2025-12-30")
@@ -649,7 +660,8 @@ def main():
                 pos = get_pin_world_position(ref, pin)
                 if pos:
                     x, y, angle = pos
-                    sch += create_global_label_with_wire(net_name, x, y, angle)
+                    pin_num = int(pin) if pin.isdigit() else 0
+                    sch += create_global_label_with_wire(net_name, x, y, angle, pin_num)
                     labels_added += 1
 
     # Add no-connects at NC pin locations
