@@ -45,7 +45,7 @@ def get_2pin_positions():
         '2': (0, -5.08, 90),
     }
 
-# Component definitions - compact A4 layout (grid-aligned to 2.54mm)
+# Component definitions - compact layout (grid-aligned to 2.54mm)
 COMPONENTS = {
     'U1': {
         'name': 'ISD3900FYI',
@@ -53,7 +53,7 @@ COMPONENTS = {
         'footprint': 'singingcard:LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL',
         'description': 'Audio record/playback IC',
         'num_pins': 48,
-        'position': (127.0, 106.68),  # Center-left on A4
+        'position': (76.2, 76.2),  # Center
     },
     'U2': {
         'name': 'W25Q16JVSSIQ',
@@ -61,7 +61,7 @@ COMPONENTS = {
         'footprint': 'singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL',
         'description': 'SPI Flash memory',
         'num_pins': 8,
-        'position': (215.9, 78.74),  # Right of U1
+        'position': (139.7, 50.8),  # Right of U1
     },
     'BT1': {
         'name': 'CR2032',
@@ -69,7 +69,7 @@ COMPONENTS = {
         'footprint': 'singingcard:BAT-TH_CR2032-BS-6-1',
         'description': 'CR2032 battery holder',
         'num_pins': 2,
-        'position': (254.0, 106.68),  # Far right
+        'position': (170.18, 76.2),  # Far right
     },
     'R1': {
         'name': 'LDR',
@@ -77,7 +77,7 @@ COMPONENTS = {
         'footprint': 'singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5',
         'description': 'Light dependent resistor',
         'num_pins': 2,
-        'position': (30.48, 38.1),  # Top left row
+        'position': (20.32, 30.48),  # Top left row
     },
     'R2': {
         'name': 'R',
@@ -85,7 +85,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (50.8, 38.1),
+        'position': (33.02, 30.48),
     },
     'R3': {
         'name': 'R',
@@ -93,7 +93,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (71.12, 38.1),
+        'position': (45.72, 30.48),
     },
     'R4': {
         'name': 'R',
@@ -101,7 +101,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (91.44, 38.1),
+        'position': (58.42, 30.48),
     },
     'C1': {
         'name': 'C',
@@ -109,7 +109,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (30.48, 175.26),  # Bottom row
+        'position': (20.32, 114.3),  # Bottom row
     },
     'C2': {
         'name': 'C',
@@ -117,7 +117,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (50.8, 175.26),
+        'position': (33.02, 114.3),
     },
     'C3': {
         'name': 'C',
@@ -125,7 +125,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (71.12, 175.26),
+        'position': (45.72, 114.3),
     },
     'C4': {
         'name': 'C',
@@ -133,7 +133,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0805_2012Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (91.44, 175.26),
+        'position': (58.42, 114.3),
     },
     'C5': {
         'name': 'C',
@@ -141,7 +141,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0805_2012Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (111.76, 175.26),
+        'position': (71.12, 114.3),
     },
     'C6': {
         'name': 'C',
@@ -149,7 +149,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (241.3, 78.74),  # Near U2
+        'position': (160.02, 50.8),  # Near U2
     },
     'LS1': {
         'name': 'Speaker',
@@ -157,7 +157,7 @@ COMPONENTS = {
         'footprint': 'speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL',
         'description': 'SMD Speaker 8ohm 700mW',
         'num_pins': 2,
-        'position': (182.88, 38.1),  # Top right
+        'position': (114.3, 30.48),  # Top right
     },
     'J2': {
         'name': 'Conn_01x02',
@@ -165,7 +165,7 @@ COMPONENTS = {
         'footprint': 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical',
         'description': 'Audio input connector',
         'num_pins': 2,
-        'position': (30.48, 106.68),  # Left of U1
+        'position': (20.32, 76.2),  # Left of U1
     },
     'SW1': {
         'name': 'SW_Push',
@@ -173,7 +173,7 @@ COMPONENTS = {
         'footprint': 'Button_Switch_SMD:SW_SPST_TL3342',
         'description': 'Push button switch',
         'num_pins': 2,
-        'position': (30.48, 68.58),  # Left side
+        'position': (20.32, 53.34),  # Left side
     },
 }
 
@@ -567,9 +567,9 @@ def create_global_label_with_wire(net_name, x, y, angle=0, pin_num=0):
     # We want label to extend AWAY from the component
     # Pin angle indicates direction toward component, so label should extend OPPOSITE
     if angle == 0:
-        label_angle = 180  # Left side IC pins - as user specified for GPIO0
+        label_angle = 180  # Left side IC pins - arrow points left, text extends right
     elif angle == 180:
-        label_angle = 0    # Right side IC pins
+        label_angle = 0    # Right side IC pins - arrow points right, text extends left
     elif angle == 90:
         label_angle = 270  # Pin body goes down, label extends UP
     elif angle == 270:
@@ -580,6 +580,10 @@ def create_global_label_with_wire(net_name, x, y, angle=0, pin_num=0):
     # No wire needed - label connects directly at pin position
     wire = ''
 
+    # Labels extending left (180) or down (90) use justify right
+    # Labels extending right (0) or up (270) use justify left
+    justify = 'right' if label_angle in [90, 180] else 'left'
+
     label = f'''	(global_label "{net_name}"
 		(shape input)
 		(at {label_x:.2f} {label_y:.2f} {label_angle})
@@ -588,7 +592,7 @@ def create_global_label_with_wire(net_name, x, y, angle=0, pin_num=0):
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify {justify})
 		)
 		(uuid "{gen_uuid()}")
 		(property "Intersheetrefs" "${{INTERSHEET_REFS}}"
@@ -623,7 +627,7 @@ def main():
 	(generator "create_schematic_v5.py")
 	(generator_version "9.0")
 	(uuid "{project_uuid}")
-	(paper "A4")
+	(paper "A5")
 	(title_block
 		(title "Singing Birthday Card Module")
 		(date "2025-12-30")
