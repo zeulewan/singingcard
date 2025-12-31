@@ -26,6 +26,7 @@ Thumbs.db
 *.swo
 
 # Temporary
+tmp/
 *.tmp
 *.temp
 *.erc
