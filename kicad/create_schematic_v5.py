@@ -581,12 +581,14 @@ def create_global_label_with_wire(net_name, x, y, angle=0, pin_num=0):
     wire = ''
 
     label = f'''	(global_label "{net_name}"
-		(shape bidirectional)
+		(shape input)
 		(at {label_x:.2f} {label_y:.2f} {label_angle})
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
+			(justify left)
 		)
 		(uuid "{gen_uuid()}")
 		(property "Intersheetrefs" "${{INTERSHEET_REFS}}"
