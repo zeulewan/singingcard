@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nWIP: Singing birthday card module requirements\n\nGathered requirements:\n- MP3 playback with USB upload\n- CR2032 battery powered\n- Light/button/pull-tab triggers \\(jumper selectable\\)\n- ~85x55mm board, green PCB\n- Target <$3/unit\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)"
+    ]
+  }
+}
