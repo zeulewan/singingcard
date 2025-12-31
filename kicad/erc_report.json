@@ -1,12 +1,12 @@
 {
     "$schema": "https://schemas.kicad.org/erc.v1.json",
     "coordinate_units": "mm",
-    "date": "2025-12-31T01:10:28-0500",
+    "date": "2025-12-31T01:13:13-0500",
     "kicad_version": "9.0.6",
     "sheets": [
         {
             "path": "/",
-            "uuid_path": "/7b994266-04b8-4378-91cb-6096748c65af",
+            "uuid_path": "/6c95bb3a-6328-4d30-b137-739b35f84dae",
             "violations": [
                 {
                     "description": "Symbol 'Speaker' not found in symbol library 'singingcard'",
@@ -17,7 +17,7 @@
                                 "x": 2.794,
                                 "y": 0.6858
                             },
-                            "uuid": "1f4e8928-f0dd-4d9b-a01a-51c71c79d4e4"
+                            "uuid": "fd5ce8c1-3e9d-4be4-8ea3-6a0dbb505ff3"
                         }
                     ],
                     "severity": "warning",

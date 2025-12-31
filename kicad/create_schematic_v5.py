@@ -573,12 +573,11 @@ def create_global_label_with_wire(net_name, x, y, angle=0, pin_num=0):
     label_x = x - offset * math.cos(angle_rad)
     label_y = y - offset * math.sin(angle_rad)
 
-    # Label flag should point AWAY from wire direction (opposite of pin angle)
-    # This prevents wire from overlapping with the label flag graphic
-    if angle == 0 or angle == 180:
-        label_angle = (int(angle) + 180) % 360  # Flip horizontal labels
-    else:
-        label_angle = int(angle)  # Keep vertical labels as-is
+    # Label flag should point TOWARD the component (same as pin angle)
+    # This places the connection point close to the wire endpoint
+    # For left pins (angle 0): flag points RIGHT toward component
+    # For right pins (angle 180): flag points LEFT toward component
+    label_angle = int(angle)
 
     # Wire from pin to label endpoint
     wire = f'''	(wire
