@@ -15,10 +15,6 @@ _autosave-*
 *.kicad_sch-bak
 fp-info-cache
 
-# Output files - keeping for JLCPCB submission
-# kicad/output/
-# kicad/renders/ - keeping renders for visual debugging
-
 # OS
 .DS_Store
 Thumbs.db
@@ -32,18 +28,9 @@ Thumbs.db
 # Temporary
 *.tmp
 *.temp
-# SKiDL generated files
 *.erc
 *.log
-skidl_REPL.*
-generate_schematic.*
 
-# KiCad backup files
-*.kicad_pcb-bak
-*.kicad_sch-bak
-*-backups/
-
-# Python
-__pycache__/
-*.pyc
-venv/
+# Large binaries
+*.jar
+*.step
