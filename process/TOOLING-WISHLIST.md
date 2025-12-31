@@ -4,34 +4,77 @@ Tools that would significantly improve Claude Code's ability to work with KiCad 
 
 ---
 
-## High Priority
+## Already Exists in KiCad 9 CLI
 
-### 1. KiCad Headless Render Server
+Reference these capabilities - they're already available!
 
-**Problem:** Cannot view PCB/schematic without user manually opening KiCad.
-
-**Desired Tool:** A headless service that renders KiCad files on demand.
+### PCB Operations (`kicad-cli pcb`)
 
 ```bash
-kicad-render --input project.kicad_pcb --output render.png --view 3d-front
-kicad-render --input project.kicad_sch --output schematic.png --page 1
+# 3D Rendering
+kicad-cli pcb render --side front --output front.png project.kicad_pcb
+kicad-cli pcb render --side back --width 1600 --height 1200 project.kicad_pcb
+
+# Design Rules Check
+kicad-cli pcb drc --output drc-report.json project.kicad_pcb
+
+# Gerber Export
+kicad-cli pcb export gerbers --output gerbers/ project.kicad_pcb
+
+# Drill Files
+kicad-cli pcb export drill --output gerbers/ --format excellon project.kicad_pcb
+
+# Pick-and-Place / Position File
+kicad-cli pcb export pos --output positions.csv --format csv project.kicad_pcb
+
+# 3D Model Export
+kicad-cli pcb export step --output board.step project.kicad_pcb
+kicad-cli pcb export vrml --output board.wrl project.kicad_pcb
+kicad-cli pcb export glb --output board.glb project.kicad_pcb
+
+# 2D Exports
+kicad-cli pcb export svg --layers F.Cu,B.Cu --output layers.svg project.kicad_pcb
+kicad-cli pcb export pdf --layers F.Cu,B.Cu --output layers.pdf project.kicad_pcb
+kicad-cli pcb export dxf --output board.dxf project.kicad_pcb
+
+# Manufacturing Formats
+kicad-cli pcb export ipc2581 --output board.xml project.kicad_pcb
+kicad-cli pcb export odb --output odb_output/ project.kicad_pcb
 ```
 
-**Features:**
-- 3D renders (front, back, isometric)
-- 2D layer views (copper, silkscreen, mask)
-- Schematic page renders
-- Zoom to specific components
-- Diff view between versions
+### Schematic Operations (`kicad-cli sch`)
 
-**Implementation Notes:**
-- Could wrap KiCad's existing render code
-- Or use PCB parsing + custom renderer (Three.js?)
-- Docker container for isolation
+```bash
+# Electrical Rules Check
+kicad-cli sch erc --output erc-report.json project.kicad_sch
+
+# Bill of Materials
+kicad-cli sch export bom --output bom.csv project.kicad_sch
+
+# Netlist Export
+kicad-cli sch export netlist --output netlist.net project.kicad_sch
+
+# PDF/SVG Export
+kicad-cli sch export pdf --output schematic.pdf project.kicad_sch
+kicad-cli sch export svg --output schematic.svg project.kicad_sch
+```
+
+### What's NOT in kicad-cli (gaps to fill)
+
+| Capability | Status | Workaround |
+|------------|--------|------------|
+| Schematic 3D/image render | Missing | Export SVG/PDF |
+| DSN export (autorouting) | Missing | Use KiCad Python |
+| SES import (autorouting) | Missing | Use KiCad Python |
+| Component placement | Missing | Edit .kicad_pcb directly |
+| Net/component queries | Missing | Parse files or use Python |
+| Symbol/footprint creation | Limited | Use fp/sym subcommands |
 
 ---
 
-### 2. KiCad Python Bridge (MCP Server)
+## High Priority
+
+### 1. KiCad Python Bridge (MCP Server)
 
 **Problem:** KiCad's Python API (`pcbnew`) only works inside KiCad's bundled Python, requiring complex subprocess calls.
 
@@ -77,7 +120,7 @@ def get_components(pcb_path: str):
 
 ---
 
-### 3. JLCPCB Parts API Client
+### 2. JLCPCB Parts API Client
 
 **Problem:** Have to manually search JLCPCB website for parts, check stock, verify compatibility.
 
@@ -105,7 +148,7 @@ jlcpcb-parts check-bom bom.csv  # Validate all parts
 
 ---
 
-### 4. Schematic Generator Library
+### 3. Schematic Generator Library
 
 **Problem:** Creating schematics programmatically requires understanding KiCad's complex S-expression format.
 
@@ -141,7 +184,7 @@ sch.save()
 
 ---
 
-### 5. Gerber Analyzer/Validator
+### 4. Gerber Analyzer/Validator
 
 **Problem:** Cannot verify Gerber files without external viewer.
 
@@ -181,7 +224,7 @@ Estimated cost: $2.00 (5 pcs) + $3.00 assembly setup
 
 ## Medium Priority
 
-### 6. Component Footprint Validator
+### 5. Component Footprint Validator
 
 **Problem:** Footprints from various sources may not match actual component dimensions.
 
@@ -200,7 +243,7 @@ footprint-check SOIC-8.kicad_mod --datasheet W25Q16JV.pdf
 
 ---
 
-### 7. BOM Intelligence Tool
+### 6. BOM Intelligence Tool
 
 **Problem:** Manual effort to find equivalent parts, check lifecycle, verify specs.
 
@@ -220,7 +263,7 @@ bom-intel analyze bom.csv --optimize cost --constraints jlcpcb-basic
 
 ---
 
-### 8. PCB Diff Tool
+### 7. PCB Diff Tool
 
 **Problem:** Hard to see what changed between PCB versions.
 
@@ -240,7 +283,7 @@ pcb-diff v1.0/project.kicad_pcb v1.1/project.kicad_pcb --output diff.html
 
 ---
 
-### 9. Design Rule Generator
+### 8. Design Rule Generator
 
 **Problem:** Manually setting up design rules for each manufacturer.
 
@@ -260,7 +303,7 @@ design-rules import jlcpcb --layers 2 --copper 1oz > project.kicad_dru
 
 ---
 
-### 10. Autorouter Integration
+### 9. Autorouter Integration
 
 **Problem:** FreeRouting requires Java, manual file conversion, GUI interaction.
 
@@ -282,7 +325,7 @@ autoroute project.kicad_pcb --engine freerouting --passes 10
 
 ## Lower Priority (Nice to Have)
 
-### 11. 3D Model Fetcher
+### 10. 3D Model Fetcher
 
 **Problem:** Finding and placing 3D models is tedious.
 
@@ -300,7 +343,7 @@ model-fetch --bom bom.csv --output libs/3dmodels/
 
 ---
 
-### 12. Test Point Suggester
+### 11. Test Point Suggester
 
 **Problem:** Forgetting to add test points for debugging.
 
@@ -319,7 +362,7 @@ testpoint-suggest project.kicad_sch --output suggestions.md
 
 ---
 
-### 13. Power Integrity Analyzer
+### 12. Power Integrity Analyzer
 
 **Problem:** Can't easily verify power distribution is adequate.
 
@@ -338,7 +381,7 @@ power-check project.kicad_pcb --load-profile loads.csv
 
 ---
 
-### 14. Interactive Component Placer
+### 13. Interactive Component Placer
 
 **Problem:** Component placement is done blind when generating PCB programmatically.
 
@@ -361,11 +404,12 @@ place-assist project.kicad_pcb --serve 8080
 
 If building these tools, recommended order:
 
-1. **KiCad Python Bridge (MCP)** - Unlocks most other capabilities
-2. **JLCPCB Parts API** - Critical for component selection phase
-3. **Gerber Validator** - Essential for manufacturing confidence
-4. **Headless Renderer** - Enables visual verification
-5. **Schematic Generator** - Improves schematic creation speed
+1. **KiCad Python Bridge (MCP)** - Unlocks DSN/SES export, component queries, everything pcbnew can do
+2. **JLCPCB Parts API** - Critical for component selection phase, stock checking
+3. **Gerber Validator** - DFM checking against manufacturer rules (kicad-cli has DRC, but not manufacturer-specific)
+4. **Schematic Generator** - High-level API for creating schematics programmatically
+
+**Note:** Headless rendering already exists via `kicad-cli pcb render`
 
 ---
 
@@ -373,11 +417,16 @@ If building these tools, recommended order:
 
 | Need | Existing Tool | Gap |
 |------|---------------|-----|
-| Gerber viewing | gerbv, KiCad viewer | No CLI analysis |
-| Autorouting | FreeRouting | Java dependency, no CLI |
+| PCB rendering | `kicad-cli pcb render` | Works great! |
+| DRC | `kicad-cli pcb drc` | No manufacturer-specific rules |
+| ERC | `kicad-cli sch erc` | Works great! |
+| Gerber export | `kicad-cli pcb export gerbers` | Works great! |
+| Gerber viewing | gerbv, KiCad viewer | No CLI DFM analysis |
+| Autorouting | FreeRouting | Java dependency, no direct CLI integration |
 | 3D models | KiCad libraries | Incomplete coverage |
 | Parts search | Octopart API | Not JLCPCB-specific |
 | Schematic gen | skidl, pykicad | Limited, outdated |
+| DSN/SES export | KiCad Python (pcbnew) | Not in kicad-cli |
 
 ---
 
