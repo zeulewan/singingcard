@@ -2,47 +2,45 @@
 
 ## Project: Singing Birthday Card Module
 
-### Status: Requirements gathered, need to research chips on LCSC
+### Status: Component research complete, ready for schematic design
 
-### Gathered Requirements
+### Design Decisions Made
 
-- **Purpose**: Cheap singing birthday card module
-- **Audio**: 10-20 sec, MP3 format, USB drag-and-drop upload
-- **Triggers** (selectable via jumper):
-  - Light sensor (LDR) - card opens, light triggers
-  - Button - manual trigger option
-  - Pull-tab (break-contact) - paper tab removal triggers
-- **Speaker**: 23-28mm, 8 ohm
-- **Battery**: CR2032 coin cell (3V, non-rechargeable)
-- **Board size**: ~85x55mm (credit card), flexible
-- **Volume**: Fixed (no potentiometer)
-- **PCB**: Green, 2-layer
-- **Quantity**: 5-10 prototypes
-- **Budget**: Ultra cheap (<$3/unit target, but USB/MP3 adds cost)
+1. **No USB** - Dropped USB requirement (not available on LCSC, needs 5V)
+2. **SPI Programming** - Each card programmed individually via SPI programmer
+3. **ISD3900FYI** - Nuvoton audio playback IC with built-in Class D amp
+
+### Selected Components
+
+| Component | Part | Price |
+|-----------|------|-------|
+| Audio IC | ISD3900FYI (C2613393) | $1.29 |
+| SPI Flash | W25Q16JVSSIQ | $0.57 |
+| LDR | GL5528 (C10081) | $0.04 |
+| Battery Holder | CR2032-BS-6-1 (C70377) | $0.17 |
+| Speaker | 23mm 8Ω 0.5W | ~$0.50 |
+| Crystal + Passives | Various | ~$0.30 |
+| **Total** | | **~$2.85** |
+
+### Estimated Total Cost
+- Components: ~$2.85
+- PCB + Assembly: ~$1.00-1.50
+- **Per-unit: ~$3.50-4.00** (slightly over $3 target)
+
+### ISD3900FYI Key Features
+- 2.7-3.6V (CR2032 compatible)
+- Built-in 350mW Class D amp
+- External SPI flash (Winbond 25X/25Q)
+- ADPCM compression for long playback
+- ~1µA standby
 
 ### Next Steps
 
-1. Research MP3+USB chips on LCSC (MH2024K-24SS, WT2003S, or similar)
-2. Find LDR light sensor (GL5528 or similar)
-3. Create kicad/specs.md with full specifications
-4. Start component selection in kicad/component-selection.md
+1. [ ] Confirm exact LCSC part numbers for all components
+2. [ ] Create KiCad schematic
+3. [ ] Design PCB layout (~85x55mm)
+4. [ ] Generate Gerbers and BOM for JLCPCB
 
-### Key Chips to Research
-
-From earlier Perplexity research:
-- **MH2024K-24SS**: MP3 decoder, USB mass storage, speaker out, ~$1-2
-- **WT2003S**: USB/MP3 chip, trigger pins
-- **GL5528**: LDR for light sensing (~$0.10)
-- **CR2032 holder**: coin cell battery
-
-### Files Created This Session
-
-- README.md
-- user-prompts.md
-- docs/tool-setup.md
-- docs/workflow-reference.md
-- docs/notes.md
-- .claude/skills/kicad-agent.md
-- .claude/skills/pcb-requirements.md
-- kicad-agent-workflow-research.md (comprehensive tool research)
-- CLAUDE.md (attribution for this repo)
+### Key Files
+- kicad/specs.md - Project specifications
+- kicad/component-selection.md - Full component research and BOM
