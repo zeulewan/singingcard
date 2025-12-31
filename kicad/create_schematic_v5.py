@@ -567,9 +567,9 @@ def create_global_label_with_wire(net_name, x, y, angle=0, pin_num=0):
     # We want label to extend AWAY from the component
     # Pin angle indicates direction toward component, so label should extend OPPOSITE
     if angle == 0:
-        label_angle = 180  # Pin body goes right (toward IC), label extends LEFT
+        label_angle = 0    # Left side IC pins - label points right
     elif angle == 180:
-        label_angle = 0    # Pin body goes left (toward IC), label extends RIGHT
+        label_angle = 0    # Right side IC pins - label points right
     elif angle == 90:
         label_angle = 270  # Pin body goes down, label extends UP
     elif angle == 270:
