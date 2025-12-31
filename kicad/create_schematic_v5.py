@@ -45,6 +45,16 @@ def get_2pin_positions():
         '2': (0, -5.08, 90),
     }
 
+def get_speaker_positions():
+    """Get pin positions for 4-pin speaker symbol (horizontal layout)."""
+    # Matches KLJ-01304T-08R07W: pins 1,2 on left (signal), pins 3,4 on right (dummy)
+    return {
+        '1': (-12.7, 1.27, 0),    # LEAD+ (left side, top)
+        '2': (-12.7, -1.27, 0),   # LEAD- (left side, bottom)
+        '3': (12.7, -1.27, 180),  # DUMMY (right side, bottom)
+        '4': (12.7, 1.27, 180),   # DUMMY (right side, top)
+    }
+
 # Component definitions - compact layout (grid-aligned to 2.54mm)
 COMPONENTS = {
     'U1': {
@@ -156,7 +166,7 @@ COMPONENTS = {
         'value': 'KLJ-01304T-08R07W',
         'footprint': 'speaker:BUZ-SMD_4P-L13.0-W13.0-P11.4-BL',
         'description': 'SMD Speaker 8ohm 700mW',
-        'num_pins': 2,
+        'num_pins': 4,
         'position': (114.3, 30.48),  # Top right
     },
     'J2': {
@@ -208,7 +218,9 @@ def get_pin_world_position(ref, pin_num):
     comp = COMPONENTS[ref]
     cx, cy = comp['position']
 
-    if comp['num_pins'] == 2:
+    if comp['name'] == 'Speaker':
+        pin_offsets = get_speaker_positions()
+    elif comp['num_pins'] == 2:
         pin_offsets = get_2pin_positions()
     else:
         pin_offsets = get_ic_pin_positions(comp['num_pins'])
@@ -227,11 +239,145 @@ def create_lib_symbols():
     symbols.append(create_ic_symbol('singingcard:W25Q16JVSSIQ', 8, 'U'))
 
     # Create 2-pin symbols
-    for name in ['CR2032', 'LDR', 'R', 'C', 'Conn_01x02', 'SW_Push', 'Speaker']:
-        ref = 'BT' if name == 'CR2032' else ('R' if name in ['LDR', 'R'] else ('C' if name == 'C' else ('J' if name == 'Conn_01x02' else ('LS' if name == 'Speaker' else 'SW'))))
+    for name in ['CR2032', 'LDR', 'R', 'C', 'Conn_01x02', 'SW_Push']:
+        ref = 'BT' if name == 'CR2032' else ('R' if name in ['LDR', 'R'] else ('C' if name == 'C' else ('J' if name == 'Conn_01x02' else 'SW')))
         symbols.append(create_2pin_symbol(f'singingcard:{name}', ref))
 
+    # Create 4-pin speaker symbol
+    symbols.append(create_speaker_symbol('singingcard:Speaker', 'LS'))
+
     return '\n'.join(symbols)
+
+def create_speaker_symbol(name, ref_prefix):
+    """Create 4-pin speaker symbol matching KLJ-01304T-08R07W."""
+    sym = f'''		(symbol "{name}"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "{ref_prefix}"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "{name.split(':')[1]}"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "{name.split(':')[1]}_1_1"
+				(rectangle
+					(start -10.16 3.81)
+					(end 10.16 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -12.7 1.27 0)
+					(length 2.54)
+					(name "LEAD+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -1.27 0)
+					(length 2.54)
+					(name "LEAD-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -1.27 180)
+					(length 2.54)
+					(name "DUMMY"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 1.27 180)
+					(length 2.54)
+					(name "DUMMY"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)'''
+    return sym
 
 def create_ic_symbol(name, num_pins, ref_prefix):
     """Create IC symbol with pins."""
@@ -452,13 +598,10 @@ def create_symbol_instance(ref, comp, project_uuid):
     comp_uuid = gen_uuid()
 
     # Get list of pins
-    if comp['num_pins'] == 2:
-        pins = ['1', '2']
-    else:
-        pins = [str(i) for i in range(1, comp['num_pins'] + 1)]
+    pins = [str(i) for i in range(1, comp['num_pins'] + 1)]
 
-    # For 2-pin components, place reference/value to the right to avoid label overlap
-    if comp['num_pins'] == 2:
+    # For 2-pin and speaker components, place reference/value appropriately
+    if comp['num_pins'] == 2 or comp['name'] == 'Speaker':
         ref_x, ref_y, ref_angle = x + 5.08, y, 0
         val_x, val_y, val_angle = x + 5.08, y + 2.54, 0
         ref_justify = '\n\t\t\t\t\t(justify left)'

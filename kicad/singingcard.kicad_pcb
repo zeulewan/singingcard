@@ -1625,7 +1625,7 @@
   		(uuid "bf43bb33-4137-41b5-8f44-f4b6ba8483a8")
   	)
   	(embedded_fonts no)
-  	(model "kicad/libs/speaker.3dshapes/BUZ-SMD_4P-L13.0-W13.0-P11.4-BL.wrl"
+  	(model "${KIPRJMOD}/libs/speaker.3dshapes/BUZ-SMD_4P-L13.0-W13.0-P11.4-BL.wrl"
   		(offset
   			(xyz 0 -0 -0)
   		)

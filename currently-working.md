@@ -2,45 +2,43 @@
 
 ## Project: Singing Birthday Card Module
 
-### Status: Component research complete, ready for schematic design
+### Status: Schematic complete, PCB needs routing
 
 ### Design Decisions Made
 
 1. **No USB** - Dropped USB requirement (not available on LCSC, needs 5V)
 2. **SPI Programming** - Each card programmed individually via SPI programmer
 3. **ISD3900FYI** - Nuvoton audio playback IC with built-in Class D amp
+4. **4-pin Speaker** - KLJ-01304T-08R07W SMD speaker with proper symbol
 
-### Selected Components
+### Completed Tasks
 
-| Component | Part | Price |
-|-----------|------|-------|
-| Audio IC | ISD3900FYI (C2613393) | $1.29 |
-| SPI Flash | W25Q16JVSSIQ | $0.57 |
-| LDR | GL5528 (C10081) | $0.04 |
-| Battery Holder | CR2032-BS-6-1 (C70377) | $0.17 |
-| Speaker | 23mm 8Ω 0.5W | ~$0.50 |
-| Crystal + Passives | Various | ~$0.30 |
-| **Total** | | **~$2.85** |
+- [x] Component research and selection
+- [x] KiCad schematic design (A5 page, compact layout)
+- [x] Symbol library with embedded symbols
+- [x] PCB layout (components placed)
+- [x] 3D models configured
 
-### Estimated Total Cost
-- Components: ~$2.85
-- PCB + Assembly: ~$1.00-1.50
-- **Per-unit: ~$3.50-4.00** (slightly over $3 target)
+### Pending Tasks
 
-### ISD3900FYI Key Features
-- 2.7-3.6V (CR2032 compatible)
-- Built-in 350mW Class D amp
-- External SPI flash (Winbond 25X/25Q)
-- ADPCM compression for long playback
-- ~1µA standby
+1. [ ] **Route PCB traces** - Open in KiCad, use File > Export > Specctra DSN, run FreeRouting, import SES
+2. [ ] Run DRC check
+3. [ ] Generate Gerbers and BOM for JLCPCB
+4. [ ] Order prototype batch
 
-### Next Steps
+### PCB Routing Instructions
 
-1. [ ] Confirm exact LCSC part numbers for all components
-2. [ ] Create KiCad schematic
-3. [ ] Design PCB layout (~85x55mm)
-4. [ ] Generate Gerbers and BOM for JLCPCB
+1. Open `kicad/singingcard.kicad_pcb` in KiCad
+2. File > Export > Specctra DSN
+3. Run FreeRouting: `java -jar freerouting.jar`
+4. Load DSN, autoroute, export SES
+5. In KiCad: File > Import > Specctra Session
+6. Run DRC to verify
 
 ### Key Files
-- kicad/specs.md - Project specifications
-- kicad/component-selection.md - Full component research and BOM
+
+- `kicad/create_schematic_v5.py` - Schematic generator script
+- `kicad/singingcard.kicad_sch` - KiCad schematic
+- `kicad/singingcard.kicad_pcb` - KiCad PCB layout
+- `kicad/specs.md` - Project specifications
+- `kicad/component-selection.md` - Full component research and BOM
