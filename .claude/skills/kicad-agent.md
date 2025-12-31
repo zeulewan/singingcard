@@ -152,31 +152,75 @@ If issues found, manually adjust positions in `create_pcb.py` and regenerate.
 
 **Note:** kicad-cli does NOT have DSN export. Use custom `export_dsn.py` script.
 
-1. Export DSN for auto-routing:
+### 5.1 Export DSN for auto-routing
+
 ```bash
 python export_dsn.py  # Creates project.dsn
 ```
 
-2. Run FreeRouting:
+**CRITICAL: DSN must include actual pad sizes!**
+
+The `export_dsn.py` script MUST export actual pad dimensions from each footprint, NOT use a fixed size.
+If all pads use the same padstack (e.g., 600x600um), FreeRouting will route traces through larger pads
+causing shorts and clearance violations.
+
+Example of correct padstack generation:
+```python
+# Collect unique pad sizes from all footprints
+pad_sizes = set()
+for comp in components:
+    for pad in comp['pads']:
+        sx = round(pad['size_x'] * 1000)  # mm to um
+        sy = round(pad['size_y'] * 1000)
+        pad_sizes.add((sx, sy))
+
+# Generate padstack for each size
+for sx, sy in pad_sizes:
+    half_x, half_y = sx // 2, sy // 2
+    dsn.append(f'(padstack "Rect[T]Pad_{sx}x{sy}_um"')
+    dsn.append(f'  (shape (rect F.Cu -{half_x} -{half_y} {half_x} {half_y}))')
+```
+
+### 5.2 Run FreeRouting
+
 ```bash
 # Download FreeRouting if not present
 curl -L -o freerouting.jar "https://github.com/freerouting/freerouting/releases/download/v2.0.1/freerouting-2.0.1.jar"
 
-# Auto-route (headless mode)
-java -jar freerouting.jar -de project.dsn -do project.ses
+# IMPORTANT: FreeRouting 2.0.1 requires Java 21
+# On macOS: brew install openjdk@21
+# Then use: /opt/homebrew/opt/openjdk@21/bin/java -jar freerouting.jar
+
+# Auto-route (headless mode, single-threaded for best results)
+java -jar freerouting.jar -de project.dsn -do project.ses -mt 1
 ```
 
-3. Import SES back into KiCad (requires custom script or manual import)
+**FreeRouting Tips:**
+- Use `-mt 1` for single-threaded mode (avoids clearance violation bugs)
+- Routing typically completes in 1-5 seconds for simple boards
+- If routing fails, check DSN pad sizes first
 
-4. **CRITICAL: Visual verification after routing:**
+### 5.3 Import SES back into KiCad
+
+Use `import_ses.py` script to parse SES and add tracks/vias to PCB:
+```bash
+python import_ses.py
+cp singingcard_routed.kicad_pcb singingcard.kicad_pcb
+```
+
+### 5.4 Visual Verification
+
+**CRITICAL: Always render and check after routing:**
 ```bash
 kicad-cli pcb render --output renders/top_routed.png --side top --width 2048 --height 1536 project.kicad_pcb
+kicad-cli pcb render --output renders/bottom_routed.png --side bottom --width 2048 --height 1536 project.kicad_pcb
 ```
 
 Review renders:
-- Check all nets are connected
-- Look for routing issues
+- Check all nets are connected (no ratsnest lines)
+- Look for routing issues (traces crossing pads)
 - Verify power traces are wide enough
+- Check both layers if using 2-layer board
 
 ## Phase 6: Design Rule Check
 
@@ -286,6 +330,18 @@ project/
 → Check DSN export captured all nets
 → Try different FreeRouting settings
 → Manual routing may be needed for complex sections
+
+**Routes causing shorts/clearance violations:**
+→ First check: DSN padstack sizes must match actual footprint pad sizes
+→ If all padstacks are same size (e.g., 600x600um), the export_dsn.py needs fixing
+→ Regenerate DSN with correct pad sizes, then re-route
+→ If still failing: adjust component placement to give more routing room
+
+**Components too close together:**
+→ Adjust positions in create_pcb.py placement dictionary
+→ Spread components at least 5mm apart for easy routing
+→ Put connectors on board edges, ICs in center
+→ Keep bypass caps near their associated IC power pins
 
 **3D models not showing:**
 → Check model paths are relative to project
