@@ -1,0 +1,195 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2025-12-30T23:49:52-0500",
+    "kicad_version": "9.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/2e7227eb-1eb1-499c-8b75-1e8bc0de66c6",
+            "violations": [
+                {
+                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol R2 [R]",
+                            "pos": {
+                                "x": 0.6096,
+                                "y": 0.508
+                            },
+                            "uuid": "5f577d89-bc4b-4b77-821e-9a63a64b3af1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'SW_SPST_TL3342' not found in library 'Button_Switch_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol SW1 [SW_Push]",
+                            "pos": {
+                                "x": 0.4064,
+                                "y": 0.762
+                            },
+                            "uuid": "46296a14-f4be-4d1d-86f7-21c972585a62"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol R3 [R]",
+                            "pos": {
+                                "x": 0.8128,
+                                "y": 0.508
+                            },
+                            "uuid": "acda4c4a-34d2-424b-9204-b9f123eff44c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'R_0603_1608Metric' not found in library 'Resistor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol R4 [R]",
+                            "pos": {
+                                "x": 1.016,
+                                "y": 0.508
+                            },
+                            "uuid": "ad80808d-48a4-4e57-b35d-8953b7b16ce3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'PinHeader_1x02_P2.54mm_Vertical' not found in library 'Connector_PinHeader_2.54mm'.",
+                    "items": [
+                        {
+                            "description": "Symbol J2 [Conn_01x02]",
+                            "pos": {
+                                "x": 0.6096,
+                                "y": 0.9906
+                            },
+                            "uuid": "5d727e74-f6c3-403f-aea5-640bd49e57d3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C1 [C]",
+                            "pos": {
+                                "x": 0.4064,
+                                "y": 1.397
+                            },
+                            "uuid": "0ec592da-420f-4d45-924c-162a202942f2"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C2 [C]",
+                            "pos": {
+                                "x": 0.5588,
+                                "y": 1.397
+                            },
+                            "uuid": "9b1e98f2-6123-4865-8d0f-d542867279d8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C3 [C]",
+                            "pos": {
+                                "x": 0.7112,
+                                "y": 1.397
+                            },
+                            "uuid": "4a050c71-c1a7-498d-b092-3b074b1f6b04"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C4 [C]",
+                            "pos": {
+                                "x": 0.8636,
+                                "y": 1.397
+                            },
+                            "uuid": "0a3e875a-a5d8-4a6d-ae49-c75f43365d06"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'C_0805_2012Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C5 [C]",
+                            "pos": {
+                                "x": 1.016,
+                                "y": 1.397
+                            },
+                            "uuid": "dadeb350-327d-4c40-82e5-3da962983b90"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'PinHeader_1x02_P2.54mm_Vertical' not found in library 'Connector_PinHeader_2.54mm'.",
+                    "items": [
+                        {
+                            "description": "Symbol J1 [Conn_01x02]",
+                            "pos": {
+                                "x": 1.8034,
+                                "y": 0.508
+                            },
+                            "uuid": "3a856443-94a9-4816-ad21-7a950e0f4cb0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "Footprint 'C_0603_1608Metric' not found in library 'Capacitor_SMD'.",
+                    "items": [
+                        {
+                            "description": "Symbol C6 [C]",
+                            "pos": {
+                                "x": 2.5146,
+                                "y": 0.8128
+                            },
+                            "uuid": "f6cdc776-4aca-4bb6-9ff0-41863810a87f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                }
+            ]
+        }
+    ],
+    "source": "singingcard.kicad_sch"
+}

@@ -49,18 +49,18 @@ COMPONENTS = {
     'U1': {
         'name': 'ISD3900FYI',
         'value': 'ISD3900FYI',
-        'footprint': 'singingcard:LQFP-48_7x7mm_P0.5mm',
+        'footprint': 'singingcard:LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL',
         'description': 'Audio record/playback IC',
         'num_pins': 48,
-        'position': (120, 100),
+        'position': (119.38, 99.06),  # Grid aligned
     },
     'U2': {
         'name': 'W25Q16JVSSIQ',
         'value': 'W25Q16JVSSIQ',
-        'footprint': 'singingcard:SOIC-8_5.23x5.23mm_P1.27mm',
+        'footprint': 'singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL',
         'description': 'SPI Flash memory',
         'num_pins': 8,
-        'position': (220, 80),
+        'position': (220.98, 81.28),  # Grid aligned
     },
     'BT1': {
         'name': 'CR2032',
@@ -68,15 +68,15 @@ COMPONENTS = {
         'footprint': 'singingcard:BAT-TH_CR2032-BS-6-1',
         'description': 'CR2032 battery holder',
         'num_pins': 2,
-        'position': (280, 100),
+        'position': (279.4, 99.06),  # Grid aligned
     },
     'R1': {
         'name': 'LDR',
         'value': 'GL5528',
-        'footprint': 'singingcard:LDR_GL5528',
+        'footprint': 'singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5',
         'description': 'Light dependent resistor',
         'num_pins': 2,
-        'position': (40, 50),
+        'position': (40.64, 50.8),  # Grid aligned
     },
     'R2': {
         'name': 'R',
@@ -84,7 +84,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (60, 50),
+        'position': (60.96, 50.8),  # Grid aligned
     },
     'R3': {
         'name': 'R',
@@ -92,7 +92,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (80, 50),
+        'position': (81.28, 50.8),  # Grid aligned
     },
     'R4': {
         'name': 'R',
@@ -100,7 +100,7 @@ COMPONENTS = {
         'footprint': 'Resistor_SMD:R_0603_1608Metric',
         'description': 'Resistor',
         'num_pins': 2,
-        'position': (100, 50),
+        'position': (101.6, 50.8),  # Grid aligned
     },
     'C1': {
         'name': 'C',
@@ -108,7 +108,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (40, 140),
+        'position': (40.64, 139.7),
     },
     'C2': {
         'name': 'C',
@@ -116,7 +116,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (55, 140),
+        'position': (55.88, 139.7),
     },
     'C3': {
         'name': 'C',
@@ -124,7 +124,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (70, 140),
+        'position': (71.12, 139.7),
     },
     'C4': {
         'name': 'C',
@@ -132,7 +132,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0805_2012Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (85, 140),
+        'position': (86.36, 139.7),
     },
     'C5': {
         'name': 'C',
@@ -140,7 +140,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0805_2012Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (100, 140),
+        'position': (101.6, 139.7),
     },
     'C6': {
         'name': 'C',
@@ -148,7 +148,7 @@ COMPONENTS = {
         'footprint': 'Capacitor_SMD:C_0603_1608Metric',
         'description': 'Capacitor',
         'num_pins': 2,
-        'position': (250, 80),
+        'position': (251.46, 81.28),
     },
     'J1': {
         'name': 'Conn_01x02',
@@ -156,7 +156,7 @@ COMPONENTS = {
         'footprint': 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical',
         'description': 'Speaker connector',
         'num_pins': 2,
-        'position': (180, 50),
+        'position': (180.34, 50.8),
     },
     'J2': {
         'name': 'Conn_01x02',
@@ -164,15 +164,15 @@ COMPONENTS = {
         'footprint': 'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical',
         'description': 'Audio input connector',
         'num_pins': 2,
-        'position': (60, 100),
+        'position': (60.96, 99.06),
     },
     'SW1': {
         'name': 'SW_Push',
         'value': 'Button',
-        'footprint': 'Button_Switch_SMD:SW_SPST_B3U-1000P',
+        'footprint': 'Button_Switch_SMD:SW_SPST_TL3342',
         'description': 'Push button switch',
         'num_pins': 2,
-        'position': (40, 75),
+        'position': (40.64, 76.2),
     },
 }
 
@@ -196,12 +196,10 @@ NETS = {
     'SP-': [('U1', '18'), ('J1', '2')],
     'ANA_IN+': [('U1', '14'), ('J2', '1')],
     'ANA_IN-': [('U1', '15'), ('J2', '2')],
-    'SPIA': [('U1', '2')],  # SPI bypass - connect to VCC
-    'XCLKO': [('U1', '13')],  # NC
 }
 
 # NC pins for U1 (not connected to any net)
-NC_PINS_U1 = ['1', '3', '4', '5', '6', '7', '8', '9', '19', '22', '23', '24', '25', '26',
+NC_PINS_U1 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '13', '19', '22', '23', '24', '25', '26',
               '28', '29', '30', '33', '34', '35', '36', '37', '39', '40', '41', '42', '45', '46', '47', '48']
 
 def get_pin_world_position(ref, pin_num):

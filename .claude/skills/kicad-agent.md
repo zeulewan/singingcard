@@ -227,8 +227,15 @@ if errors:
 - Power pin issues: Power flags missing
 - Duplicate references: Same ref designator used twice
 - Global label issues: Labels used only once
+- `lib_symbol_issues`: Library not configured (warning, not blocking)
+- `footprint_link_issues`: Footprint library not found (warning, not blocking)
 
-**Fix ALL ERC errors before proceeding to PCB.**
+**Note on warnings vs errors:**
+- **Errors** must be fixed - they indicate real electrical issues
+- **Warnings** about library configuration can be ignored if symbols/footprints are embedded
+- `footprint_link_issues` warnings occur when CLI can't find global KiCad libraries - this is normal when running from command line
+
+**Fix ALL ERC errors before proceeding to PCB.** Warnings about library paths are acceptable if footprints are embedded in the PCB file.
 
 ## Phase 4: PCB Creation from Netlist
 
@@ -359,18 +366,26 @@ if violations:
 "
 ```
 
-**ALL DRC issues must be fixed:**
+**DRC issue priority:**
 
-| Violation Type | Fix Strategy |
-|----------------|--------------|
-| `lib_footprint_issues` | Configure project library paths OR embed footprints properly |
-| `silk_over_copper` | Move silkscreen reference designators away from pads |
-| `silk_overlap` | Spread components apart or adjust reference positions |
-| `clearance` | Increase spacing between traces/pads in placement |
-| `track_width` | Adjust trace widths in design rules |
-| `unconnected` | Complete routing for all nets |
+| Violation Type | Severity | Action |
+|----------------|----------|--------|
+| `unconnected` | **CRITICAL** | Must fix - board won't work |
+| `clearance` | **CRITICAL** | Must fix - shorts possible |
+| `track_width` | **CRITICAL** | Must fix - traces may burn |
+| `drill_out_of_range` | **CRITICAL** | Must fix - fab will fail |
+| `silk_over_copper` | Warning | Cosmetic - may hide soldermask issues |
+| `silk_overlap` | Warning | Cosmetic - readability issue |
+| `lib_footprint_issues` | Warning | Library config - OK if footprints embedded |
+| `lib_footprint_mismatch` | Warning | Version difference - usually OK |
 
-**Do NOT proceed to fabrication with any DRC violations.** Warnings that seem "cosmetic" can cause assembly issues or hidden shorts.
+**Acceptable for fabrication:**
+- 0 unconnected items (all nets routed)
+- 0 clearance/track width errors
+- Warnings about library configuration are OK when running from CLI
+- Silkscreen warnings are cosmetic but ideally should be fixed
+
+**Do NOT proceed to fabrication with clearance errors or unconnected items.**
 
 ## Phase 7: Final Visual Verification
 

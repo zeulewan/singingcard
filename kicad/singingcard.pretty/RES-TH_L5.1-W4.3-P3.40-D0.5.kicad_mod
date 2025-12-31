@@ -1,0 +1,22 @@
+(footprint "RES-TH_L5.1-W4.3-P3.40-D0.5"
+  (version 20240108)
+  (generator "pcbnew")
+  (generator_version "9.0")
+  (layer "F.Cu")
+  (property "Reference" "REF**"
+    (at 0 -3 0)
+    (layer "F.SilkS")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Value" "RES-TH_L5.1-W4.3-P3.40-D0.5"
+    (at 0 3 0)
+    (layer "F.Fab")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Footprint" ""
+    (at 0 0 0)
+    (layer "F.Fab")
+    (hide yes)
+    (effects (font (size 1.27 1.27) (thickness 0.15)))
+  )
+)
