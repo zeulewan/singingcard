@@ -7,6 +7,10 @@ on:
       - 'kicad/**'
   workflow_dispatch:
 
+concurrency:
+  group: export-kicad-images-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
