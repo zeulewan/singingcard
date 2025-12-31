@@ -1,0 +1,290 @@
+(pcb singingcard.dsn
+  (parser
+    (string_quote ")
+    (space_in_quoted_tokens on)
+    (host_cad "KiCad")
+    (host_version "8.0")
+  )
+  (resolution um 10)
+  (unit um)
+  (structure
+    (boundary
+      (path pcb 0
+        100000 100000
+        185000 100000
+        185000 155000
+        100000 155000
+        100000 100000
+      )
+    )
+    (layer F.Cu
+      (type signal)
+      (property
+        (index 0)
+      )
+    )
+    (layer B.Cu
+      (type signal)
+      (property
+        (index 1)
+      )
+    )
+    (via "Via[0-1]_600:300_um")
+    (rule
+      (width 250)
+      (clearance 200)
+      (clearance 200 (type default_smd))
+      (clearance 50 (type smd_smd))
+    )
+  )
+  (placement
+    (component "singingcard:BAT-TH_CR2032-BS-6-1"
+      (place BT1 167000 127500 front 0
+      )
+    )
+    (component "Capacitor_SMD:C_0603_1608Metric"
+      (place C1 132500 117500 front 0
+      )
+    )
+    (component "Capacitor_SMD:C_0805_2012Metric"
+      (place C2 132500 137500 front 0
+      )
+    )
+    (component "Capacitor_SMD:C_0603_1608Metric"
+      (place C3 152500 117500 front 0
+      )
+    )
+    (component "Capacitor_SMD:C_0603_1608Metric"
+      (place C4 127500 127500 front 0
+      )
+    )
+    (component "Capacitor_SMD:C_0805_2012Metric"
+      (place C5 152500 137500 front 0
+      )
+    )
+    (component "Capacitor_SMD:C_0603_1608Metric"
+      (place C6 164500 122500 front 0
+      )
+    )
+    (component "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+      (place J1 115000 147000 front 0
+      )
+    )
+    (component "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+      (place J2 135000 147000 front 0
+      )
+    )
+    (component "singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5"
+      (place R1 112000 120000 front 0
+      )
+    )
+    (component "Resistor_SMD:R_0603_1608Metric"
+      (place R2 122000 115000 front 90
+      )
+    )
+    (component "Resistor_SMD:R_0603_1608Metric"
+      (place R3 124500 112500 front 0
+      )
+    )
+    (component "Resistor_SMD:R_0603_1608Metric"
+      (place R4 124500 142500 front 0
+      )
+    )
+    (component "Button_Switch_SMD:SW_SPST_TL3342"
+      (place SW1 155000 143000 front 0
+      )
+    )
+    (component "singingcard:LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL"
+      (place U1 142500 127500 front 0
+      )
+    )
+    (component "singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
+      (place U2 157500 117500 front 0
+      )
+    )
+  )
+  (library
+    (padstack "Rect[T]Pad_600x600_um"
+      (shape (rect F.Cu -300 -300 300 300))
+      (attach off)
+    )
+    (padstack "Via[0-1]_600:300_um"
+      (shape (circle F.Cu 600))
+      (shape (circle B.Cu 600))
+      (attach off)
+    )
+    (image "singingcard:BAT-TH_CR2032-BS-6-1"
+      (pin "Rect[T]Pad_600x600_um" 1 14390 0)
+      (pin "Rect[T]Pad_600x600_um" 2 -14390 0)
+    )
+    (image "Capacitor_SMD:C_0603_1608Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
+      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+    )
+    (image "Capacitor_SMD:C_0805_2012Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -950 0)
+      (pin "Rect[T]Pad_600x600_um" 2 950 0)
+    )
+    (image "Capacitor_SMD:C_0603_1608Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
+      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+    )
+    (image "Capacitor_SMD:C_0603_1608Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
+      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+    )
+    (image "Capacitor_SMD:C_0805_2012Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -950 0)
+      (pin "Rect[T]Pad_600x600_um" 2 950 0)
+    )
+    (image "Capacitor_SMD:C_0603_1608Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -775 0)
+      (pin "Rect[T]Pad_600x600_um" 2 775 0)
+    )
+    (image "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+      (pin "Rect[T]Pad_600x600_um" 1 0 0)
+      (pin "Rect[T]Pad_600x600_um" 2 0 2540)
+    )
+    (image "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+      (pin "Rect[T]Pad_600x600_um" 1 0 0)
+      (pin "Rect[T]Pad_600x600_um" 2 0 2540)
+    )
+    (image "singingcard:RES-TH_L5.1-W4.3-P3.40-D0.5"
+      (pin "Rect[T]Pad_600x600_um" 1 0 -1700)
+      (pin "Rect[T]Pad_600x600_um" 2 0 1700)
+    )
+    (image "Resistor_SMD:R_0603_1608Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -825 0)
+      (pin "Rect[T]Pad_600x600_um" 2 825 0)
+    )
+    (image "Resistor_SMD:R_0603_1608Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -825 0)
+      (pin "Rect[T]Pad_600x600_um" 2 825 0)
+    )
+    (image "Resistor_SMD:R_0603_1608Metric"
+      (pin "Rect[T]Pad_600x600_um" 1 -825 0)
+      (pin "Rect[T]Pad_600x600_um" 2 825 0)
+    )
+    (image "Button_Switch_SMD:SW_SPST_TL3342"
+      (pin "Rect[T]Pad_600x600_um" 1 -3150 -1900)
+      (pin "Rect[T]Pad_600x600_um" 1 3150 -1900)
+      (pin "Rect[T]Pad_600x600_um" 2 -3150 1900)
+      (pin "Rect[T]Pad_600x600_um" 2 3150 1900)
+    )
+    (image "singingcard:LQFP-48_L7.0-W7.0-P0.50-LS9.0-BL"
+      (pin "Rect[T]Pad_600x600_um" 1 -2750 4250)
+      (pin "Rect[T]Pad_600x600_um" 2 -2250 4250)
+      (pin "Rect[T]Pad_600x600_um" 3 -1750 4250)
+      (pin "Rect[T]Pad_600x600_um" 4 -1250 4250)
+      (pin "Rect[T]Pad_600x600_um" 5 -750 4250)
+      (pin "Rect[T]Pad_600x600_um" 6 -250 4250)
+      (pin "Rect[T]Pad_600x600_um" 7 250 4250)
+      (pin "Rect[T]Pad_600x600_um" 8 750 4250)
+      (pin "Rect[T]Pad_600x600_um" 9 1250 4250)
+      (pin "Rect[T]Pad_600x600_um" 10 1750 4250)
+      (pin "Rect[T]Pad_600x600_um" 11 2250 4250)
+      (pin "Rect[T]Pad_600x600_um" 12 2750 4250)
+      (pin "Rect[T]Pad_600x600_um" 13 4250 2750)
+      (pin "Rect[T]Pad_600x600_um" 14 4250 2250)
+      (pin "Rect[T]Pad_600x600_um" 15 4250 1750)
+      (pin "Rect[T]Pad_600x600_um" 16 4250 1250)
+      (pin "Rect[T]Pad_600x600_um" 17 4250 750)
+      (pin "Rect[T]Pad_600x600_um" 18 4250 250)
+      (pin "Rect[T]Pad_600x600_um" 19 4250 -250)
+      (pin "Rect[T]Pad_600x600_um" 20 4250 -750)
+      (pin "Rect[T]Pad_600x600_um" 21 4250 -1250)
+      (pin "Rect[T]Pad_600x600_um" 22 4250 -1750)
+      (pin "Rect[T]Pad_600x600_um" 23 4250 -2250)
+      (pin "Rect[T]Pad_600x600_um" 24 4250 -2750)
+      (pin "Rect[T]Pad_600x600_um" 25 2750 -4250)
+      (pin "Rect[T]Pad_600x600_um" 26 2250 -4250)
+      (pin "Rect[T]Pad_600x600_um" 27 1750 -4250)
+      (pin "Rect[T]Pad_600x600_um" 28 1250 -4250)
+      (pin "Rect[T]Pad_600x600_um" 29 750 -4250)
+      (pin "Rect[T]Pad_600x600_um" 30 250 -4250)
+      (pin "Rect[T]Pad_600x600_um" 31 -250 -4250)
+      (pin "Rect[T]Pad_600x600_um" 32 -750 -4250)
+      (pin "Rect[T]Pad_600x600_um" 33 -1250 -4250)
+      (pin "Rect[T]Pad_600x600_um" 34 -1750 -4250)
+      (pin "Rect[T]Pad_600x600_um" 35 -2250 -4250)
+      (pin "Rect[T]Pad_600x600_um" 36 -2750 -4250)
+      (pin "Rect[T]Pad_600x600_um" 37 -4250 -2750)
+      (pin "Rect[T]Pad_600x600_um" 38 -4250 -2250)
+      (pin "Rect[T]Pad_600x600_um" 39 -4250 -1750)
+      (pin "Rect[T]Pad_600x600_um" 40 -4250 -1250)
+      (pin "Rect[T]Pad_600x600_um" 41 -4250 -750)
+      (pin "Rect[T]Pad_600x600_um" 42 -4250 -250)
+      (pin "Rect[T]Pad_600x600_um" 43 -4250 250)
+      (pin "Rect[T]Pad_600x600_um" 44 -4250 750)
+      (pin "Rect[T]Pad_600x600_um" 45 -4250 1250)
+      (pin "Rect[T]Pad_600x600_um" 46 -4250 1750)
+      (pin "Rect[T]Pad_600x600_um" 47 -4250 2250)
+      (pin "Rect[T]Pad_600x600_um" 48 -4250 2750)
+    )
+    (image "singingcard:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
+      (pin "Rect[T]Pad_600x600_um" 1 -1910 3530)
+      (pin "Rect[T]Pad_600x600_um" 2 -630 3530)
+      (pin "Rect[T]Pad_600x600_um" 3 630 3530)
+      (pin "Rect[T]Pad_600x600_um" 4 1900 3530)
+      (pin "Rect[T]Pad_600x600_um" 5 1900 -3530)
+      (pin "Rect[T]Pad_600x600_um" 6 630 -3530)
+      (pin "Rect[T]Pad_600x600_um" 7 -630 -3530)
+      (pin "Rect[T]Pad_600x600_um" 8 -1910 -3530)
+    )
+  )
+  (network
+    (net "+3V"
+      (pins BT1-1 C1-1 C2-1 C4-1 C5-1 C6-1 R2-1 R3-1 R4-1 U1-11 U1-17 U1-21 U1-43 U2-3 U2-7 U2-8)
+    )
+    (net "GND"
+      (pins BT1-2 C1-2 C2-2 C3-2 C4-2 C5-2 C6-2 J2-2 R1-2 SW1-2 SW1-2 U1-10 U1-44 U2-4)
+    )
+    (net "VREG"
+      (pins C3-1 U1-12)
+    )
+    (net "N$1"
+      (pins J1-1 U1-18)
+    )
+    (net "N$2"
+      (pins J1-2 U1-20)
+    )
+    (net "GPIO2_TAB"
+      (pins J2-1 U1-31)
+    )
+    (net "GPIO0_LDR"
+      (pins R1-1 R2-2 U1-38)
+    )
+    (net "RESET"
+      (pins R3-2 U1-27)
+    )
+    (net "CSB"
+      (pins R4-2 U1-2)
+    )
+    (net "GPIO1_BTN"
+      (pins SW1-1 SW1-1 U1-32)
+    )
+    (net "SPI_MISO"
+      (pins U1-13 U2-2)
+    )
+    (net "SPI_SCK"
+      (pins U1-14 U2-6)
+    )
+    (net "SPI_CS"
+      (pins U1-15 U2-1)
+    )
+    (net "SPI_MOSI"
+      (pins U1-16 U2-5)
+    )
+    (class kicad_default "" "+3V" "GND" "VREG" "N$1" "N$2" "GPIO2_TAB" "GPIO0_LDR" "RESET" "CSB" "GPIO1_BTN" "SPI_MISO" "SPI_SCK" "SPI_CS" "SPI_MOSI"
+      (circuit
+        (use_via Via[0-1]_600:300_um)
+      )
+      (rule
+        (width 250)
+        (clearance 200)
+      )
+    )
+  )
+  (wiring
+  )
+)
