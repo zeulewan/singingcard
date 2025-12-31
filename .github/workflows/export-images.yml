@@ -1,0 +1,12 @@
+name: Export KiCad Images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'kicad/**'
+  workflow_dispatch:
+
+jobs:
+  export:
+    uses: zeulewan/shared-workflows/.github/workflows/export-kicad-images.yml@main
