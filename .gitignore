@@ -17,7 +17,7 @@ fp-info-cache
 
 # Output files (can be regenerated)
 kicad/output/
-kicad/renders/
+# kicad/renders/ - keeping renders for visual debugging
 
 # OS
 .DS_Store
@@ -32,3 +32,18 @@ Thumbs.db
 # Temporary
 *.tmp
 *.temp
+# SKiDL generated files
+*.erc
+*.log
+skidl_REPL.*
+generate_schematic.*
+
+# KiCad backup files
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*-backups/
+
+# Python
+__pycache__/
+*.pyc
+venv/

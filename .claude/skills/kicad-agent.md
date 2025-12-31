@@ -9,7 +9,7 @@ Use this skill when user provides PCB project requirements.
 ## Workflow Overview
 
 ```
-Requirements → Component Selection → Schematic → Layout → Routing → DRC → Export → Order
+Requirements → Component Selection → Library Import → Schematic → Layout → Routing → DRC → Export → Order
 ```
 
 ## Phase 1: Requirements Gathering
@@ -35,14 +35,13 @@ When user provides project requirements, capture in `kicad/specs.md`:
 
 For each required component:
 
-1. Search JLCPCB parts using easyeda2kicad:
-```bash
-source venv/bin/activate
-easyeda2kicad --full --lcsc_id=CXXXXXX
-```
+1. **Search LCSC** for parts:
+   - Use WebFetch or Perplexity to find LCSC C-numbers
+   - Check stock levels and pricing
+   - Verify voltage/current specs match requirements
 
 2. Document in `kicad/component-selection.md`:
-   - LCSC part number
+   - LCSC part number (C-number)
    - Manufacturer part number
    - Package/footprint
    - Key specs (voltage, current, pins)
@@ -53,6 +52,41 @@ easyeda2kicad --full --lcsc_id=CXXXXXX
    - Basic parts: no extra fee
    - Extended parts: $3 setup fee per unique part
    - If out of stock: find alternative
+
+**Common Issue:** Many specialty chips (e.g., MH2024K, WT2003S, JQ6500) are NOT on LCSC.
+Always verify availability before committing to a design.
+
+## Phase 2.5: Library Import with easyeda2kicad
+
+Import LCSC components with symbols, footprints, and 3D models:
+
+```bash
+# Setup
+mkdir -p kicad/libs kicad/3dmodels
+cd kicad
+source ../venv/bin/activate
+
+# Import component (creates symbol, footprint, and 3D model)
+easyeda2kicad --lcsc_id CXXXXXX --full --output libs/project.kicad_sym
+```
+
+**What gets created:**
+- `libs/project.kicad_sym` - Symbol library
+- `libs/project.pretty/` - Footprint library folder
+- `libs/project.3dshapes/` - 3D models (.wrl and .step)
+
+**Important notes:**
+- Each `--full` call adds to the same library file
+- Some parts may fail to import (no EasyEDA data)
+- For generic parts (passives, connectors), use KiCad built-in libraries
+- Symbols include LCSC Part property for BOM generation
+
+**Verify imports:**
+```bash
+grep "symbol \"" libs/project.kicad_sym  # List symbols
+ls libs/project.pretty/                   # List footprints
+ls libs/project.3dshapes/                 # List 3D models
+```
 
 ## Phase 3: Schematic Design
 

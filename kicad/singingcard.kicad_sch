@@ -1,0 +1,27 @@
+(kicad_sch
+  (version 20231120)
+  (generator "eeschema")
+  (generator_version "8.0")
+  (uuid "e63e39d7-6ac0-4ffd-8aa3-1841a4541b55")
+  (paper "A4")
+  (title_block
+    (title "Singing Birthday Card Module")
+    (date "2025-12-30")
+    (rev "1.0")
+    (company "")
+    (comment 1 "ISD3900FYI Audio Playback")
+    (comment 2 "CR2032 Powered")
+  )
+  (lib_symbols)
+  (text "SINGING BIRTHDAY CARD MODULE\n\nMain Components:\n- U1: ISD3900FYI (Audio IC)\n- U2: W25Q16JVSSIQ (SPI Flash)\n- B1: CR2032 Battery\n- R1: GL5528 LDR (Light Sensor)\n- LS1: Speaker 8ohm 0.5W\n\nOpen this file in KiCad to complete the schematic."
+    (exclude_from_sim no)
+    (at 25.4 25.4 0)
+    (effects
+      (font
+        (size 2.54 2.54)
+      )
+      (justify left top)
+    )
+    (uuid "a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+  )
+)
