@@ -1,12 +1,36 @@
-# PCB Systems Engineering Process
+# PCB Engineering Master Process
 
-A deterministic workflow for PCB development projects following NASA/DoD/IEEE systems engineering standards adapted for small-batch PCB manufacturing with JLCPCB.
+The master orchestrator document for PCB development projects. Follow phases in order, completing review gates before proceeding.
 
-## Document Control
+**Standard:** NASA/DoD/IEEE systems engineering adapted for JLCPCB manufacturing.
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0 | 2025-12-31 | Claude/zeul | Initial release |
+---
+
+## Phase Documents
+
+| Phase | Document | Description | Gate |
+|-------|----------|-------------|------|
+| 1 | [`01-init.md`](01-init.md) | Project initialization, PRD | - |
+| 2 | [`02-requirements.md`](02-requirements.md) | ConOps, requirements decomposition | - |
+| 3 | [`03-system-design.md`](03-system-design.md) | Block diagram, ICD, budgets | **SRR** |
+| 4 | [`04-components.md`](04-components.md) | JLCPCB parts research, BOM | - |
+| 5 | [`05-pin-allocation.md`](05-pin-allocation.md) | Datasheet analysis, pin mapping | **PDR** |
+| 6 | [`06-schematic.md`](06-schematic.md) | KiCad schematic design, ERC | - |
+| 7 | [`07-layout.md`](07-layout.md) | PCB routing, DRC | **CDR** |
+| 8 | [`08-dfm.md`](08-dfm.md) | Design for manufacturing review | - |
+| 9 | [`09-manufacture.md`](09-manufacture.md) | Gerber export, JLCPCB order | **PRR** |
+| 10 | [`10-test.md`](10-test.md) | Verification, acceptance | - |
+
+---
+
+## Reference Documents
+
+| Document | Description |
+|----------|-------------|
+| [`references/KICAD-VERSION.md`](references/KICAD-VERSION.md) | KiCad 9 formats, CLI commands |
+| [`references/TOOLING-WISHLIST.md`](references/TOOLING-WISHLIST.md) | Desired automation tools |
+| [`references/workflow-reference.md`](references/workflow-reference.md) | Quick command reference |
+| [`references/tool-setup.md`](references/tool-setup.md) | Installed tools and versions |
 
 ---
 
@@ -24,7 +48,7 @@ A deterministic workflow for PCB development projects following NASA/DoD/IEEE sy
 - Footprints: `.kicad_mod` files in `.pretty/` folders
 - 3D Models: `.wrl`, `.step` in `.3dshapes/` folders
 
-See [`KICAD-VERSION.md`](KICAD-VERSION.md) for detailed version notes.
+See [`references/KICAD-VERSION.md`](references/KICAD-VERSION.md) for details.
 
 ---
 

@@ -1,0 +1,72 @@
+site_name: PCB Engineering Process
+site_description: Systems engineering workflow for PCB development with KiCad and JLCPCB
+site_url: https://example.com/singingcard
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - content.code.copy
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Engineering:
+    - engineering/index.md
+    - Master Process: engineering/00-MASTER.md
+    - Phases:
+      - "01 - Init": engineering/01-init.md
+      - "02 - Requirements": engineering/02-requirements.md
+      - "03 - System Design": engineering/03-system-design.md
+      - "04 - Components": engineering/04-components.md
+      - "05 - Pin Allocation": engineering/05-pin-allocation.md
+      - "06 - Schematic": engineering/06-schematic.md
+      - "07 - Layout": engineering/07-layout.md
+      - "08 - DFM": engineering/08-dfm.md
+      - "09 - Manufacture": engineering/09-manufacture.md
+      - "10 - Test": engineering/10-test.md
+    - References:
+      - engineering/references/index.md
+      - KiCad 9: engineering/references/KICAD-VERSION.md
+      - Tooling Wishlist: engineering/references/TOOLING-WISHLIST.md
+      - Workflow Commands: engineering/references/workflow-reference.md
+      - Tool Setup: engineering/references/tool-setup.md
+  - Project:
+    - project/index.md
+    - PRD: project/PRD.md
+    - Component Selection: project/component-selection.md
+    - Pin Connections: project/PIN-CONNECTIONS.md
+    - Schematic Design: project/schematic-design.md
+    - Status: project/status.md
+    - Research: project/research/kicad-agent-workflow-research.md
+
+docs_dir: docs
